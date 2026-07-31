@@ -1,0 +1,204 @@
+extends: caseB_valid.yaml
+case_name: caseB_parallel_valid
+
+remove_components:
+  - IndependentMonitor
+  - DisplayGate
+  - DisplayParameterOutput
+
+# The old single IM components inherited from caseB_valid are intentionally
+# left unused.  The two explicit branch instances below own distinct monitor,
+# gate and display-boundary objects.
+components:
+  IndependentMonitor_L:
+    kind: atomic
+    type: IndependentMonitor
+    dal: A
+    resources:
+      PWR: PWR_IM_L
+      CLK: CLK_IM_L
+      SW: SW_IM_L
+      CPU: CPU_IM_L
+  DisplayGate_L:
+    kind: atomic
+    type: Gate
+    dal: A
+    resources:
+      PWR: PWR_GATE_L
+      CLK: CLK_GATE_L
+      SW: SW_GATE_L
+      CPU: CPU_GATE_L
+  DisplayParameterOutput_L:
+    kind: signal
+    type: DisplayOutput
+    dal: A
+    resources: {}
+  IndependentMonitor_R:
+    kind: atomic
+    type: IndependentMonitor
+    dal: A
+    resources:
+      PWR: PWR_IM_R
+      CLK: CLK_IM_R
+      SW: SW_IM_R
+      CPU: CPU_IM_R
+  DisplayGate_R:
+    kind: atomic
+    type: Gate
+    dal: A
+    resources:
+      PWR: PWR_GATE_R
+      CLK: CLK_GATE_R
+      SW: SW_GATE_R
+      CPU: CPU_GATE_R
+  DisplayParameterOutput_R:
+    kind: signal
+    type: DisplayOutput
+    dal: A
+    resources: {}
+
+interfaces:
+  - signal: VotedFlightParameter
+    owner: MN_Sensor
+    port: output
+    type: FlightParameter
+    dal: A
+  - signal: VotedFlightParameter
+    owner: CC_Nav
+    port: input
+    type: FlightParameter
+    dal: A
+  - signal: CheckedNavParameter
+    owner: CC_Nav
+    port: output
+    type: CheckedParameter
+    dal: A
+  - signal: CheckedNavParameter
+    owner: IM_Display_L
+    port: input
+    type: CheckedParameter
+    dal: A
+  - signal: CheckedNavParameter
+    owner: IM_Display_R
+    port: input
+    type: CheckedParameter
+    dal: A
+
+patterns:
+  - id: MN_Sensor
+    kind: MN
+    roles:
+      inputChannels: [Sensor_1, Sensor_2, Sensor_3]
+      voter: Voter
+      output: VotedFlightParameter
+  - id: CC_Nav
+    kind: CC
+    roles:
+      input: VotedFlightParameter
+      channelA: NavProcessor_A
+      channelB: NavProcessor_B
+      comparator: CrossComparator
+      output: CheckedNavParameter
+  - id: IM_Display_L
+    kind: IM
+    roles:
+      input: CheckedNavParameter
+      monitor: IndependentMonitor_L
+      gate: DisplayGate_L
+      output: DisplayParameterOutput_L
+      upstream_critical_nodes: [NavProcessor_A, NavProcessor_B, CrossComparator]
+  - id: IM_Display_R
+    kind: IM
+    roles:
+      input: CheckedNavParameter
+      monitor: IndependentMonitor_R
+      gate: DisplayGate_R
+      output: DisplayParameterOutput_R
+      upstream_critical_nodes: [NavProcessor_A, NavProcessor_B, CrossComparator]
+
+edges:
+  - source: IndependentMonitor_L
+    target: DisplayGate_L
+    kind: control
+  - source: IndependentMonitor_R
+    target: DisplayGate_R
+    kind: control
+
+relations:
+  - kind: sequence
+    source: MN_Sensor.output
+    target: CC_Nav.input
+  - kind: sequence
+    source: CC_Nav.output
+    target: IM_Display_L.input
+  - kind: sequence
+    source: CC_Nav.output
+    target: IM_Display_R.input
+
+# This is deliberately explicit.  Repeating the IM kind alone never creates
+# a PARALLEL obligation.  The shared CheckedNavParameter input is excluded by
+# the execution-role domain; only monitor/gate resource closures are checked.
+parallel_relations:
+  - left_instance: IM_Display_L
+    right_instance: IM_Display_R
+    constrained_resources: [PWR, CPU, CLK]
+    resource_roles: [monitor, gate]
+
+failure_semantics:
+  local:
+    MN_Sensor:
+      output_hazard:
+        or:
+          - and: [F_s1_err, F_s2_err]
+          - and: [F_s1_err, F_s3_err]
+          - and: [F_s2_err, F_s3_err]
+          - F_voter_err
+      output_loss: F_mn_output_loss
+    CC_Nav:
+      output_hazard:
+        or:
+          - ref: CC_Nav.input_hazard
+          - and: [F_nav_diff, F_cmp_miss]
+      trusted_output_loss:
+        or: [{ref: CC_Nav.input_loss}, F_cc_output_loss]
+    IM_Display_L:
+      hazardous_display:
+        and: [{ref: IM_Display_L.input_hazard}, F_im_l_miss]
+      loss_trusted_display:
+        or: [{ref: IM_Display_L.input_loss}, F_im_l_unavailable]
+    IM_Display_R:
+      hazardous_display:
+        and: [{ref: IM_Display_R.input_hazard}, F_im_r_miss]
+      loss_trusted_display:
+        or: [{ref: IM_Display_R.input_loss}, F_im_r_unavailable]
+  boundary_transfers:
+    - connection: {source: MN_Sensor.output, target: CC_Nav.input}
+      source_event: MN_Sensor.output_hazard
+      target_event: CC_Nav.input_hazard
+    - connection: {source: MN_Sensor.output, target: CC_Nav.input}
+      source_event: MN_Sensor.output_loss
+      target_event: CC_Nav.input_loss
+    - connection: {source: CC_Nav.output, target: IM_Display_L.input}
+      source_event: CC_Nav.output_hazard
+      target_event: IM_Display_L.input_hazard
+    - connection: {source: CC_Nav.output, target: IM_Display_R.input}
+      source_event: CC_Nav.output_hazard
+      target_event: IM_Display_R.input_hazard
+    - connection: {source: CC_Nav.output, target: IM_Display_L.input}
+      source_event: CC_Nav.trusted_output_loss
+      target_event: IM_Display_L.input_loss
+    - connection: {source: CC_Nav.output, target: IM_Display_R.input}
+      source_event: CC_Nav.trusted_output_loss
+      target_event: IM_Display_R.input_loss
+  top_events:
+    HazardousParameterDisplayed:
+      or: [{ref: IM_Display_L.hazardous_display}, {ref: IM_Display_R.hazardous_display}]
+    LossOfTrustedParameterDisplay:
+      and: [{ref: IM_Display_L.loss_trusted_display}, {ref: IM_Display_R.loss_trusted_display}]
+  parallel_compositions:
+    - top_event: LossOfTrustedParameterDisplay
+      left_event: IM_Display_L.loss_trusted_display
+      right_event: IM_Display_R.loss_trusted_display
+      operator: AND
+      left_instance: IM_Display_L
+      right_instance: IM_Display_R

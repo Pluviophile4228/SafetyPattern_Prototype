@@ -1,0 +1,11 @@
+extends: caseA_invalid_5_data_path_broken.yaml
+case_name: layered_boundary_flow_failure
+
+# Every local RTA/SR/PSC contract still holds.  Only the real SR -> PSC
+# boundary connection is broken: PSC binds its input to WrongFCCCommand.
+components:
+  WrongFCCCommand:
+    kind: signal
+    type: FCCCommand
+    dal: A
+    resources: {}

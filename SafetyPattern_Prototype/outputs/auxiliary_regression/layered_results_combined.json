@@ -1,0 +1,3450 @@
+[
+  {
+    "case_name": "layered_context_conflict",
+    "status": "CONTEXT_CONFLICT",
+    "stage": "context",
+    "obligation_count": 13,
+    "context_objects": {
+      "RTA_FCC_A": [
+        "AdvancedController",
+        "CommandSelector",
+        "FeatureExtractor",
+        "PrimaryCommand_A",
+        "PrimaryOutput",
+        "RTA_Input",
+        "SafeInputProcessor",
+        "SafetyController",
+        "SafetyMonitor",
+        "SafetyOutput"
+      ],
+      "SR_FCC": [
+        "AdvancedController",
+        "CommandSelector",
+        "FCCFaultDetector",
+        "FCCSwitchingUnit",
+        "FCC_A",
+        "FCC_B",
+        "FeatureExtractor",
+        "PrimaryCommand_A",
+        "PrimaryOutput",
+        "RTA_Input",
+        "SafeInputProcessor",
+        "SafetyController",
+        "SafetyMonitor",
+        "SafetyOutput",
+        "SelectedFCCCommand",
+        "StandbyCommand_B",
+        "StandbyController_B"
+      ],
+      "PSC_ACU": [
+        "ACU_Input",
+        "ActuatorCommandOutput",
+        "ActuatorControlProcessor",
+        "AnomalyMonitor",
+        "DataIntegrityChecker",
+        "SelectedFCCCommand"
+      ]
+    },
+    "unsat_core": [
+      "component:AdvancedController:resource:PWR",
+      "CTX_ADVANCED_CONTROLLER_PWR_CONFLICT"
+    ],
+    "obligation_results": [
+      {
+        "id": "RTA_FCC_A:DAL_A",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.DAL_A",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "SafetyController",
+            "SafetyMonitor",
+            "CommandSelector"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "RTA_FCC_A:RESOURCE_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.RESOURCE_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "AdvancedController",
+            "SafetyController",
+            "SafetyMonitor"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "RTA_FCC_A:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "SafetyMonitor",
+            "CommandSelector"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:PRIMARY_STANDBY_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.PRIMARY_STANDBY_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "AdvancedController",
+            "SafetyController",
+            "SafetyMonitor",
+            "CommandSelector",
+            "StandbyController_B"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:COMMAND_TYPE",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.COMMAND_TYPE",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "PrimaryCommand_A",
+            "StandbyCommand_B",
+            "SelectedFCCCommand"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "FCCFaultDetector",
+            "FCCSwitchingUnit"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:SINGLE_CHANNEL",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.SINGLE_CHANNEL",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:CPU_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.CPU_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [
+            "ActuatorControlProcessor",
+            "DataIntegrityChecker"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:MONITOR_CPU_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.MONITOR_CPU_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [
+            "ActuatorControlProcessor",
+            "AnomalyMonitor"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:SR_FCC.output->PSC_ACU.input",
+        "premise": "architecture_context AND SR_FCC.output_boundary_declared",
+        "conclusion": "compatible_boundary(SR_FCC.output, PSC_ACU.input)",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": "PSC_ACU",
+          "related_objects": [
+            "SelectedFCCCommand",
+            "SelectedFCCCommand"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "REFINEMENT:RTA_FCC_A->SR_FCC.primaryChannel",
+        "premise": "architecture_context AND RTA_FCC_A.output_boundary_declared",
+        "conclusion": "refines(RTA_FCC_A, SR_FCC.primaryChannel)",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": "SR_FCC",
+          "related_objects": [
+            "FCC_A"
+          ],
+          "trigger": "hierarchical_refinement",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:PrimaryCommand_A",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(PrimaryCommand_A)",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": "SR_FCC",
+          "related_objects": [
+            "PrimaryCommand_A",
+            "RTA_FCC_A",
+            "SR_FCC"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:SelectedFCCCommand",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(SelectedFCCCommand)",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": "PSC_ACU",
+          "related_objects": [
+            "SelectedFCCCommand",
+            "SR_FCC",
+            "PSC_ACU"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "NOT_EVALUATED_CONTEXT_CONFLICT",
+        "counterexample": null,
+        "blocked_by": []
+      }
+    ],
+    "failed_obligation": null,
+    "counterexample": null,
+    "guarantees": null,
+    "safety_goal": null,
+    "failure_analysis": null
+  },
+  {
+    "case_name": "layered_obligation_failure",
+    "status": "OBLIGATION_FAILED",
+    "stage": "obligation",
+    "obligation_count": 13,
+    "context_objects": {
+      "RTA_FCC_A": [
+        "AdvancedController",
+        "CommandSelector",
+        "FeatureExtractor",
+        "PrimaryCommand_A",
+        "PrimaryOutput",
+        "RTA_Input",
+        "SafeInputProcessor",
+        "SafetyController",
+        "SafetyMonitor",
+        "SafetyOutput"
+      ],
+      "SR_FCC": [
+        "AdvancedController",
+        "CommandSelector",
+        "FCCFaultDetector",
+        "FCCSwitchingUnit",
+        "FCC_A",
+        "FCC_B",
+        "FeatureExtractor",
+        "PrimaryCommand_A",
+        "PrimaryOutput",
+        "RTA_Input",
+        "SafeInputProcessor",
+        "SafetyController",
+        "SafetyMonitor",
+        "SafetyOutput",
+        "SelectedFCCCommand",
+        "StandbyCommand_B",
+        "StandbyController_B"
+      ],
+      "PSC_ACU": [
+        "ACU_Input",
+        "ActuatorCommandOutput",
+        "ActuatorControlProcessor",
+        "AnomalyMonitor",
+        "DataIntegrityChecker",
+        "SelectedFCCCommand"
+      ]
+    },
+    "unsat_core": [],
+    "obligation_results": [
+      {
+        "id": "RTA_FCC_A:DAL_A",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.DAL_A",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "SafetyController",
+            "SafetyMonitor",
+            "CommandSelector"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "RTA_FCC_A:RESOURCE_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.RESOURCE_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "AdvancedController",
+            "SafetyController",
+            "SafetyMonitor"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "COUNTEREXAMPLE",
+        "counterexample": {
+          "component.ACU_Input.dal": "A",
+          "component.ACU_Input.resource.CLK": "CLK_ACU_IN",
+          "component.ACU_Input.resource.CPU": "CPU_ACU_IN",
+          "component.ACU_Input.resource.PWR": "PWR_ACU_IN",
+          "component.ACU_Input.resource.SW": "SW_ACU_IN",
+          "component.ACU_Input.type": "Input",
+          "component.ActuatorCommandOutput.dal": "A",
+          "component.ActuatorCommandOutput.type": "ActuatorCommand",
+          "component.ActuatorControlProcessor.dal": "A",
+          "component.ActuatorControlProcessor.resource.CLK": "CLK_H",
+          "component.ActuatorControlProcessor.resource.CPU": "CPU_H",
+          "component.ActuatorControlProcessor.resource.PWR": "PWR_H",
+          "component.ActuatorControlProcessor.resource.SW": "SW_H",
+          "component.ActuatorControlProcessor.type": "Processor",
+          "component.AdvancedController.dal": "B",
+          "component.AdvancedController.resource.CLK": "CLK_A",
+          "component.AdvancedController.resource.CPU": "CPU_A",
+          "component.AdvancedController.resource.PWR": "PWR_A",
+          "component.AdvancedController.resource.SW": "SW_A",
+          "component.AdvancedController.type": "Controller",
+          "component.AnomalyMonitor.dal": "A",
+          "component.AnomalyMonitor.resource.CLK": "CLK_J",
+          "component.AnomalyMonitor.resource.CPU": "CPU_J",
+          "component.AnomalyMonitor.resource.PWR": "PWR_J",
+          "component.AnomalyMonitor.resource.SW": "SW_J",
+          "component.AnomalyMonitor.type": "Monitor",
+          "component.CommandSelector.dal": "A",
+          "component.CommandSelector.resource.CLK": "CLK_D",
+          "component.CommandSelector.resource.CPU": "CPU_D",
+          "component.CommandSelector.resource.PWR": "PWR_D",
+          "component.CommandSelector.resource.SW": "SW_D",
+          "component.CommandSelector.type": "Selector",
+          "component.DataIntegrityChecker.dal": "A",
+          "component.DataIntegrityChecker.resource.CLK": "CLK_I",
+          "component.DataIntegrityChecker.resource.CPU": "CPU_I",
+          "component.DataIntegrityChecker.resource.PWR": "PWR_I",
+          "component.DataIntegrityChecker.resource.SW": "SW_I",
+          "component.DataIntegrityChecker.type": "Checker",
+          "component.FCCFaultDetector.dal": "A",
+          "component.FCCFaultDetector.resource.CLK": "CLK_FD",
+          "component.FCCFaultDetector.resource.CPU": "CPU_FD",
+          "component.FCCFaultDetector.resource.PWR": "PWR_FD",
+          "component.FCCFaultDetector.resource.SW": "SW_FD",
+          "component.FCCFaultDetector.type": "FaultDetector",
+          "component.FCCSwitchingUnit.dal": "A",
+          "component.FCCSwitchingUnit.resource.CLK": "CLK_SWU",
+          "component.FCCSwitchingUnit.resource.CPU": "CPU_SWU",
+          "component.FCCSwitchingUnit.resource.PWR": "PWR_SWU",
+          "component.FCCSwitchingUnit.resource.SW": "SW_SWU",
+          "component.FCCSwitchingUnit.type": "SwitchingUnit",
+          "component.FCC_A.dal": "A",
+          "component.FCC_A.type": "PrimaryChannel",
+          "component.FCC_B.dal": "A",
+          "component.FCC_B.type": "StandbyChannel",
+          "component.FeatureExtractor.dal": "B",
+          "component.FeatureExtractor.resource.CLK": "CLK_FE",
+          "component.FeatureExtractor.resource.CPU": "CPU_FE",
+          "component.FeatureExtractor.resource.PWR": "PWR_FE",
+          "component.FeatureExtractor.resource.SW": "SW_FE",
+          "component.FeatureExtractor.type": "Processor",
+          "component.PrimaryOutput.dal": "A",
+          "component.PrimaryOutput.resource.CLK": "CLK_PO",
+          "component.PrimaryOutput.resource.CPU": "CPU_PO",
+          "component.PrimaryOutput.resource.PWR": "PWR_PO",
+          "component.PrimaryOutput.resource.SW": "SW_PO",
+          "component.PrimaryOutput.type": "Output",
+          "component.RTA_Input.dal": "A",
+          "component.RTA_Input.resource.CLK": "CLK_IN",
+          "component.RTA_Input.resource.CPU": "CPU_IN",
+          "component.RTA_Input.resource.PWR": "PWR_IN",
+          "component.RTA_Input.resource.SW": "SW_IN",
+          "component.RTA_Input.type": "Input",
+          "component.SafeInputProcessor.dal": "A",
+          "component.SafeInputProcessor.resource.CLK": "CLK_SIP",
+          "component.SafeInputProcessor.resource.CPU": "CPU_SIP",
+          "component.SafeInputProcessor.resource.PWR": "PWR_SIP",
+          "component.SafeInputProcessor.resource.SW": "SW_SIP",
+          "component.SafeInputProcessor.type": "Processor",
+          "component.SafetyController.dal": "A",
+          "component.SafetyController.resource.CLK": "CLK_B",
+          "component.SafetyController.resource.CPU": "CPU_B",
+          "component.SafetyController.resource.PWR": "PWR_A",
+          "component.SafetyController.resource.SW": "SW_B",
+          "component.SafetyController.type": "Controller",
+          "component.SafetyMonitor.dal": "A",
+          "component.SafetyMonitor.resource.CLK": "CLK_C",
+          "component.SafetyMonitor.resource.CPU": "CPU_C",
+          "component.SafetyMonitor.resource.PWR": "PWR_A",
+          "component.SafetyMonitor.resource.SW": "SW_C",
+          "component.SafetyMonitor.type": "Monitor",
+          "component.SafetyOutput.dal": "A",
+          "component.SafetyOutput.resource.CLK": "CLK_SO",
+          "component.SafetyOutput.resource.CPU": "CPU_SO",
+          "component.SafetyOutput.resource.PWR": "PWR_SO",
+          "component.SafetyOutput.resource.SW": "SW_SO",
+          "component.SafetyOutput.type": "Output",
+          "component.StandbyCommand_B.dal": "A",
+          "component.StandbyCommand_B.type": "FCCCommand",
+          "component.StandbyController_B.dal": "A",
+          "component.StandbyController_B.resource.CLK": "CLK_E",
+          "component.StandbyController_B.resource.CPU": "CPU_E",
+          "component.StandbyController_B.resource.PWR": "PWR_E",
+          "component.StandbyController_B.resource.SW": "SW_E",
+          "component.StandbyController_B.type": "Controller",
+          "component.StandbyInput_B.dal": "A",
+          "component.StandbyInput_B.resource.CLK": "CLK_SBI",
+          "component.StandbyInput_B.resource.CPU": "CPU_SBI",
+          "component.StandbyInput_B.resource.PWR": "PWR_SBI",
+          "component.StandbyInput_B.resource.SW": "SW_SBI",
+          "component.StandbyInput_B.type": "Input",
+          "interface.0.dal": "A",
+          "interface.0.owner": "RTA_FCC_A",
+          "interface.0.port": "output",
+          "interface.0.signal": "PrimaryCommand_A",
+          "interface.0.type": "FCCCommand",
+          "interface.1.dal": "A",
+          "interface.1.owner": "SR_FCC",
+          "interface.1.port": "primaryChannel.output",
+          "interface.1.signal": "PrimaryCommand_A",
+          "interface.1.type": "FCCCommand",
+          "interface.2.dal": "A",
+          "interface.2.owner": "SR_FCC",
+          "interface.2.port": "standbyChannel.output",
+          "interface.2.signal": "StandbyCommand_B",
+          "interface.2.type": "FCCCommand",
+          "interface.3.dal": "A",
+          "interface.3.owner": "SR_FCC",
+          "interface.3.port": "output",
+          "interface.3.signal": "SelectedFCCCommand",
+          "interface.3.type": "FCCCommand",
+          "interface.4.dal": "A",
+          "interface.4.owner": "PSC_ACU",
+          "interface.4.port": "input",
+          "interface.4.signal": "SelectedFCCCommand",
+          "interface.4.type": "FCCCommand"
+        },
+        "blocked_by": []
+      },
+      {
+        "id": "RTA_FCC_A:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "SafetyMonitor",
+            "CommandSelector"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:PRIMARY_STANDBY_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.PRIMARY_STANDBY_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "AdvancedController",
+            "SafetyController",
+            "SafetyMonitor",
+            "CommandSelector",
+            "StandbyController_B"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:COMMAND_TYPE",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.COMMAND_TYPE",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "PrimaryCommand_A",
+            "StandbyCommand_B",
+            "SelectedFCCCommand"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "FCCFaultDetector",
+            "FCCSwitchingUnit"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:SINGLE_CHANNEL",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.SINGLE_CHANNEL",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:CPU_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.CPU_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [
+            "ActuatorControlProcessor",
+            "DataIntegrityChecker"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:MONITOR_CPU_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.MONITOR_CPU_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [
+            "ActuatorControlProcessor",
+            "AnomalyMonitor"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:SR_FCC.output->PSC_ACU.input",
+        "premise": "architecture_context AND SR_FCC.output_boundary_declared",
+        "conclusion": "compatible_boundary(SR_FCC.output, PSC_ACU.input)",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": "PSC_ACU",
+          "related_objects": [
+            "SelectedFCCCommand",
+            "SelectedFCCCommand"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "REFINEMENT:RTA_FCC_A->SR_FCC.primaryChannel",
+        "premise": "architecture_context AND RTA_FCC_A.output_boundary_declared",
+        "conclusion": "refines(RTA_FCC_A, SR_FCC.primaryChannel)",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": "SR_FCC",
+          "related_objects": [
+            "FCC_A"
+          ],
+          "trigger": "hierarchical_refinement",
+          "resource_types": []
+        },
+        "status": "BLOCKED_BY_DEPENDENCY",
+        "counterexample": null,
+        "blocked_by": [
+          "RTA_FCC_A:RESOURCE_INDEPENDENCE"
+        ]
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:PrimaryCommand_A",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(PrimaryCommand_A)",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": "SR_FCC",
+          "related_objects": [
+            "PrimaryCommand_A",
+            "RTA_FCC_A",
+            "SR_FCC"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:SelectedFCCCommand",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(SelectedFCCCommand)",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": "PSC_ACU",
+          "related_objects": [
+            "SelectedFCCCommand",
+            "SR_FCC",
+            "PSC_ACU"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      }
+    ],
+    "failed_obligation": {
+      "id": "RTA_FCC_A:RESOURCE_INDEPENDENCE",
+      "premise": "architecture_context",
+      "conclusion": "RTA_FCC_A.RESOURCE_INDEPENDENCE",
+      "trace": {
+        "source_pattern": "RTA_FCC_A",
+        "target_pattern": null,
+        "related_objects": [
+          "AdvancedController",
+          "SafetyController",
+          "SafetyMonitor"
+        ],
+        "trigger": "local_contract",
+        "resource_types": []
+      }
+    },
+    "counterexample": {
+      "component.ACU_Input.dal": "A",
+      "component.ACU_Input.resource.CLK": "CLK_ACU_IN",
+      "component.ACU_Input.resource.CPU": "CPU_ACU_IN",
+      "component.ACU_Input.resource.PWR": "PWR_ACU_IN",
+      "component.ACU_Input.resource.SW": "SW_ACU_IN",
+      "component.ACU_Input.type": "Input",
+      "component.ActuatorCommandOutput.dal": "A",
+      "component.ActuatorCommandOutput.type": "ActuatorCommand",
+      "component.ActuatorControlProcessor.dal": "A",
+      "component.ActuatorControlProcessor.resource.CLK": "CLK_H",
+      "component.ActuatorControlProcessor.resource.CPU": "CPU_H",
+      "component.ActuatorControlProcessor.resource.PWR": "PWR_H",
+      "component.ActuatorControlProcessor.resource.SW": "SW_H",
+      "component.ActuatorControlProcessor.type": "Processor",
+      "component.AdvancedController.dal": "B",
+      "component.AdvancedController.resource.CLK": "CLK_A",
+      "component.AdvancedController.resource.CPU": "CPU_A",
+      "component.AdvancedController.resource.PWR": "PWR_A",
+      "component.AdvancedController.resource.SW": "SW_A",
+      "component.AdvancedController.type": "Controller",
+      "component.AnomalyMonitor.dal": "A",
+      "component.AnomalyMonitor.resource.CLK": "CLK_J",
+      "component.AnomalyMonitor.resource.CPU": "CPU_J",
+      "component.AnomalyMonitor.resource.PWR": "PWR_J",
+      "component.AnomalyMonitor.resource.SW": "SW_J",
+      "component.AnomalyMonitor.type": "Monitor",
+      "component.CommandSelector.dal": "A",
+      "component.CommandSelector.resource.CLK": "CLK_D",
+      "component.CommandSelector.resource.CPU": "CPU_D",
+      "component.CommandSelector.resource.PWR": "PWR_D",
+      "component.CommandSelector.resource.SW": "SW_D",
+      "component.CommandSelector.type": "Selector",
+      "component.DataIntegrityChecker.dal": "A",
+      "component.DataIntegrityChecker.resource.CLK": "CLK_I",
+      "component.DataIntegrityChecker.resource.CPU": "CPU_I",
+      "component.DataIntegrityChecker.resource.PWR": "PWR_I",
+      "component.DataIntegrityChecker.resource.SW": "SW_I",
+      "component.DataIntegrityChecker.type": "Checker",
+      "component.FCCFaultDetector.dal": "A",
+      "component.FCCFaultDetector.resource.CLK": "CLK_FD",
+      "component.FCCFaultDetector.resource.CPU": "CPU_FD",
+      "component.FCCFaultDetector.resource.PWR": "PWR_FD",
+      "component.FCCFaultDetector.resource.SW": "SW_FD",
+      "component.FCCFaultDetector.type": "FaultDetector",
+      "component.FCCSwitchingUnit.dal": "A",
+      "component.FCCSwitchingUnit.resource.CLK": "CLK_SWU",
+      "component.FCCSwitchingUnit.resource.CPU": "CPU_SWU",
+      "component.FCCSwitchingUnit.resource.PWR": "PWR_SWU",
+      "component.FCCSwitchingUnit.resource.SW": "SW_SWU",
+      "component.FCCSwitchingUnit.type": "SwitchingUnit",
+      "component.FCC_A.dal": "A",
+      "component.FCC_A.type": "PrimaryChannel",
+      "component.FCC_B.dal": "A",
+      "component.FCC_B.type": "StandbyChannel",
+      "component.FeatureExtractor.dal": "B",
+      "component.FeatureExtractor.resource.CLK": "CLK_FE",
+      "component.FeatureExtractor.resource.CPU": "CPU_FE",
+      "component.FeatureExtractor.resource.PWR": "PWR_FE",
+      "component.FeatureExtractor.resource.SW": "SW_FE",
+      "component.FeatureExtractor.type": "Processor",
+      "component.PrimaryOutput.dal": "A",
+      "component.PrimaryOutput.resource.CLK": "CLK_PO",
+      "component.PrimaryOutput.resource.CPU": "CPU_PO",
+      "component.PrimaryOutput.resource.PWR": "PWR_PO",
+      "component.PrimaryOutput.resource.SW": "SW_PO",
+      "component.PrimaryOutput.type": "Output",
+      "component.RTA_Input.dal": "A",
+      "component.RTA_Input.resource.CLK": "CLK_IN",
+      "component.RTA_Input.resource.CPU": "CPU_IN",
+      "component.RTA_Input.resource.PWR": "PWR_IN",
+      "component.RTA_Input.resource.SW": "SW_IN",
+      "component.RTA_Input.type": "Input",
+      "component.SafeInputProcessor.dal": "A",
+      "component.SafeInputProcessor.resource.CLK": "CLK_SIP",
+      "component.SafeInputProcessor.resource.CPU": "CPU_SIP",
+      "component.SafeInputProcessor.resource.PWR": "PWR_SIP",
+      "component.SafeInputProcessor.resource.SW": "SW_SIP",
+      "component.SafeInputProcessor.type": "Processor",
+      "component.SafetyController.dal": "A",
+      "component.SafetyController.resource.CLK": "CLK_B",
+      "component.SafetyController.resource.CPU": "CPU_B",
+      "component.SafetyController.resource.PWR": "PWR_A",
+      "component.SafetyController.resource.SW": "SW_B",
+      "component.SafetyController.type": "Controller",
+      "component.SafetyMonitor.dal": "A",
+      "component.SafetyMonitor.resource.CLK": "CLK_C",
+      "component.SafetyMonitor.resource.CPU": "CPU_C",
+      "component.SafetyMonitor.resource.PWR": "PWR_A",
+      "component.SafetyMonitor.resource.SW": "SW_C",
+      "component.SafetyMonitor.type": "Monitor",
+      "component.SafetyOutput.dal": "A",
+      "component.SafetyOutput.resource.CLK": "CLK_SO",
+      "component.SafetyOutput.resource.CPU": "CPU_SO",
+      "component.SafetyOutput.resource.PWR": "PWR_SO",
+      "component.SafetyOutput.resource.SW": "SW_SO",
+      "component.SafetyOutput.type": "Output",
+      "component.StandbyCommand_B.dal": "A",
+      "component.StandbyCommand_B.type": "FCCCommand",
+      "component.StandbyController_B.dal": "A",
+      "component.StandbyController_B.resource.CLK": "CLK_E",
+      "component.StandbyController_B.resource.CPU": "CPU_E",
+      "component.StandbyController_B.resource.PWR": "PWR_E",
+      "component.StandbyController_B.resource.SW": "SW_E",
+      "component.StandbyController_B.type": "Controller",
+      "component.StandbyInput_B.dal": "A",
+      "component.StandbyInput_B.resource.CLK": "CLK_SBI",
+      "component.StandbyInput_B.resource.CPU": "CPU_SBI",
+      "component.StandbyInput_B.resource.PWR": "PWR_SBI",
+      "component.StandbyInput_B.resource.SW": "SW_SBI",
+      "component.StandbyInput_B.type": "Input",
+      "interface.0.dal": "A",
+      "interface.0.owner": "RTA_FCC_A",
+      "interface.0.port": "output",
+      "interface.0.signal": "PrimaryCommand_A",
+      "interface.0.type": "FCCCommand",
+      "interface.1.dal": "A",
+      "interface.1.owner": "SR_FCC",
+      "interface.1.port": "primaryChannel.output",
+      "interface.1.signal": "PrimaryCommand_A",
+      "interface.1.type": "FCCCommand",
+      "interface.2.dal": "A",
+      "interface.2.owner": "SR_FCC",
+      "interface.2.port": "standbyChannel.output",
+      "interface.2.signal": "StandbyCommand_B",
+      "interface.2.type": "FCCCommand",
+      "interface.3.dal": "A",
+      "interface.3.owner": "SR_FCC",
+      "interface.3.port": "output",
+      "interface.3.signal": "SelectedFCCCommand",
+      "interface.3.type": "FCCCommand",
+      "interface.4.dal": "A",
+      "interface.4.owner": "PSC_ACU",
+      "interface.4.port": "input",
+      "interface.4.signal": "SelectedFCCCommand",
+      "interface.4.type": "FCCCommand"
+    },
+    "guarantees": null,
+    "safety_goal": null,
+    "failure_analysis": null
+  },
+  {
+    "case_name": "layered_boundary_flow_failure",
+    "status": "OBLIGATION_FAILED",
+    "stage": "obligation",
+    "obligation_count": 12,
+    "context_objects": {
+      "RTA_FCC_A": [
+        "AdvancedController",
+        "CommandSelector",
+        "FeatureExtractor",
+        "PrimaryCommand_A",
+        "PrimaryOutput",
+        "RTA_Input",
+        "SafeInputProcessor",
+        "SafetyController",
+        "SafetyMonitor",
+        "SafetyOutput"
+      ],
+      "SR_FCC": [
+        "AdvancedController",
+        "CommandSelector",
+        "FCCFaultDetector",
+        "FCCSwitchingUnit",
+        "FCC_A",
+        "FCC_B",
+        "FeatureExtractor",
+        "PrimaryCommand_A",
+        "PrimaryOutput",
+        "RTA_Input",
+        "SafeInputProcessor",
+        "SafetyController",
+        "SafetyMonitor",
+        "SafetyOutput",
+        "SelectedFCCCommand",
+        "StandbyCommand_B",
+        "StandbyController_B"
+      ],
+      "PSC_ACU": [
+        "ACU_Input",
+        "ActuatorCommandOutput",
+        "ActuatorControlProcessor",
+        "AnomalyMonitor",
+        "DataIntegrityChecker",
+        "WrongFCCCommand"
+      ]
+    },
+    "unsat_core": [],
+    "obligation_results": [
+      {
+        "id": "RTA_FCC_A:DAL_A",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.DAL_A",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "SafetyController",
+            "SafetyMonitor",
+            "CommandSelector"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "RTA_FCC_A:RESOURCE_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.RESOURCE_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "AdvancedController",
+            "SafetyController",
+            "SafetyMonitor"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "RTA_FCC_A:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "SafetyMonitor",
+            "CommandSelector"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:PRIMARY_STANDBY_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.PRIMARY_STANDBY_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "AdvancedController",
+            "SafetyController",
+            "SafetyMonitor",
+            "CommandSelector",
+            "StandbyController_B"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:COMMAND_TYPE",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.COMMAND_TYPE",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "PrimaryCommand_A",
+            "StandbyCommand_B",
+            "SelectedFCCCommand"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "FCCFaultDetector",
+            "FCCSwitchingUnit"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:SINGLE_CHANNEL",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.SINGLE_CHANNEL",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:CPU_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.CPU_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [
+            "ActuatorControlProcessor",
+            "DataIntegrityChecker"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:MONITOR_CPU_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.MONITOR_CPU_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [
+            "ActuatorControlProcessor",
+            "AnomalyMonitor"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:SR_FCC.output->PSC_ACU.input",
+        "premise": "architecture_context AND SR_FCC.output_boundary_declared",
+        "conclusion": "compatible_boundary(SR_FCC.output, PSC_ACU.input)",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": "PSC_ACU",
+          "related_objects": [
+            "SelectedFCCCommand",
+            "WrongFCCCommand"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "COUNTEREXAMPLE",
+        "counterexample": {
+          "component.ACU_Input.dal": "A",
+          "component.ACU_Input.resource.CLK": "CLK_ACU_IN",
+          "component.ACU_Input.resource.CPU": "CPU_ACU_IN",
+          "component.ACU_Input.resource.PWR": "PWR_ACU_IN",
+          "component.ACU_Input.resource.SW": "SW_ACU_IN",
+          "component.ACU_Input.type": "Input",
+          "component.ActuatorCommandOutput.dal": "A",
+          "component.ActuatorCommandOutput.type": "ActuatorCommand",
+          "component.ActuatorControlProcessor.dal": "A",
+          "component.ActuatorControlProcessor.resource.CLK": "CLK_H",
+          "component.ActuatorControlProcessor.resource.CPU": "CPU_H",
+          "component.ActuatorControlProcessor.resource.PWR": "PWR_H",
+          "component.ActuatorControlProcessor.resource.SW": "SW_H",
+          "component.ActuatorControlProcessor.type": "Processor",
+          "component.AdvancedController.dal": "B",
+          "component.AdvancedController.resource.CLK": "CLK_A",
+          "component.AdvancedController.resource.CPU": "CPU_A",
+          "component.AdvancedController.resource.PWR": "PWR_A",
+          "component.AdvancedController.resource.SW": "SW_A",
+          "component.AdvancedController.type": "Controller",
+          "component.AnomalyMonitor.dal": "A",
+          "component.AnomalyMonitor.resource.CLK": "CLK_J",
+          "component.AnomalyMonitor.resource.CPU": "CPU_J",
+          "component.AnomalyMonitor.resource.PWR": "PWR_J",
+          "component.AnomalyMonitor.resource.SW": "SW_J",
+          "component.AnomalyMonitor.type": "Monitor",
+          "component.CommandSelector.dal": "A",
+          "component.CommandSelector.resource.CLK": "CLK_D",
+          "component.CommandSelector.resource.CPU": "CPU_D",
+          "component.CommandSelector.resource.PWR": "PWR_D",
+          "component.CommandSelector.resource.SW": "SW_D",
+          "component.CommandSelector.type": "Selector",
+          "component.DataIntegrityChecker.dal": "A",
+          "component.DataIntegrityChecker.resource.CLK": "CLK_I",
+          "component.DataIntegrityChecker.resource.CPU": "CPU_I",
+          "component.DataIntegrityChecker.resource.PWR": "PWR_I",
+          "component.DataIntegrityChecker.resource.SW": "SW_I",
+          "component.DataIntegrityChecker.type": "Checker",
+          "component.FCCFaultDetector.dal": "A",
+          "component.FCCFaultDetector.resource.CLK": "CLK_FD",
+          "component.FCCFaultDetector.resource.CPU": "CPU_FD",
+          "component.FCCFaultDetector.resource.PWR": "PWR_FD",
+          "component.FCCFaultDetector.resource.SW": "SW_FD",
+          "component.FCCFaultDetector.type": "FaultDetector",
+          "component.FCCSwitchingUnit.dal": "A",
+          "component.FCCSwitchingUnit.resource.CLK": "CLK_SWU",
+          "component.FCCSwitchingUnit.resource.CPU": "CPU_SWU",
+          "component.FCCSwitchingUnit.resource.PWR": "PWR_SWU",
+          "component.FCCSwitchingUnit.resource.SW": "SW_SWU",
+          "component.FCCSwitchingUnit.type": "SwitchingUnit",
+          "component.FCC_A.dal": "A",
+          "component.FCC_A.type": "PrimaryChannel",
+          "component.FCC_B.dal": "A",
+          "component.FCC_B.type": "StandbyChannel",
+          "component.FeatureExtractor.dal": "B",
+          "component.FeatureExtractor.resource.CLK": "CLK_FE",
+          "component.FeatureExtractor.resource.CPU": "CPU_FE",
+          "component.FeatureExtractor.resource.PWR": "PWR_FE",
+          "component.FeatureExtractor.resource.SW": "SW_FE",
+          "component.FeatureExtractor.type": "Processor",
+          "component.PrimaryOutput.dal": "A",
+          "component.PrimaryOutput.resource.CLK": "CLK_PO",
+          "component.PrimaryOutput.resource.CPU": "CPU_PO",
+          "component.PrimaryOutput.resource.PWR": "PWR_PO",
+          "component.PrimaryOutput.resource.SW": "SW_PO",
+          "component.PrimaryOutput.type": "Output",
+          "component.RTA_Input.dal": "A",
+          "component.RTA_Input.resource.CLK": "CLK_IN",
+          "component.RTA_Input.resource.CPU": "CPU_IN",
+          "component.RTA_Input.resource.PWR": "PWR_IN",
+          "component.RTA_Input.resource.SW": "SW_IN",
+          "component.RTA_Input.type": "Input",
+          "component.SafeInputProcessor.dal": "A",
+          "component.SafeInputProcessor.resource.CLK": "CLK_SIP",
+          "component.SafeInputProcessor.resource.CPU": "CPU_SIP",
+          "component.SafeInputProcessor.resource.PWR": "PWR_SIP",
+          "component.SafeInputProcessor.resource.SW": "SW_SIP",
+          "component.SafeInputProcessor.type": "Processor",
+          "component.SafetyController.dal": "A",
+          "component.SafetyController.resource.CLK": "CLK_B",
+          "component.SafetyController.resource.CPU": "CPU_B",
+          "component.SafetyController.resource.PWR": "PWR_B",
+          "component.SafetyController.resource.SW": "SW_B",
+          "component.SafetyController.type": "Controller",
+          "component.SafetyMonitor.dal": "A",
+          "component.SafetyMonitor.resource.CLK": "CLK_C",
+          "component.SafetyMonitor.resource.CPU": "CPU_C",
+          "component.SafetyMonitor.resource.PWR": "PWR_C",
+          "component.SafetyMonitor.resource.SW": "SW_C",
+          "component.SafetyMonitor.type": "Monitor",
+          "component.SafetyOutput.dal": "A",
+          "component.SafetyOutput.resource.CLK": "CLK_SO",
+          "component.SafetyOutput.resource.CPU": "CPU_SO",
+          "component.SafetyOutput.resource.PWR": "PWR_SO",
+          "component.SafetyOutput.resource.SW": "SW_SO",
+          "component.SafetyOutput.type": "Output",
+          "component.StandbyCommand_B.dal": "A",
+          "component.StandbyCommand_B.type": "FCCCommand",
+          "component.StandbyController_B.dal": "A",
+          "component.StandbyController_B.resource.CLK": "CLK_E",
+          "component.StandbyController_B.resource.CPU": "CPU_E",
+          "component.StandbyController_B.resource.PWR": "PWR_E",
+          "component.StandbyController_B.resource.SW": "SW_E",
+          "component.StandbyController_B.type": "Controller",
+          "component.StandbyInput_B.dal": "A",
+          "component.StandbyInput_B.resource.CLK": "CLK_SBI",
+          "component.StandbyInput_B.resource.CPU": "CPU_SBI",
+          "component.StandbyInput_B.resource.PWR": "PWR_SBI",
+          "component.StandbyInput_B.resource.SW": "SW_SBI",
+          "component.StandbyInput_B.type": "Input",
+          "interface.0.dal": "A",
+          "interface.0.owner": "RTA_FCC_A",
+          "interface.0.port": "output",
+          "interface.0.signal": "PrimaryCommand_A",
+          "interface.0.type": "FCCCommand",
+          "interface.1.dal": "A",
+          "interface.1.owner": "SR_FCC",
+          "interface.1.port": "primaryChannel.output",
+          "interface.1.signal": "PrimaryCommand_A",
+          "interface.1.type": "FCCCommand",
+          "interface.2.dal": "A",
+          "interface.2.owner": "SR_FCC",
+          "interface.2.port": "standbyChannel.output",
+          "interface.2.signal": "StandbyCommand_B",
+          "interface.2.type": "FCCCommand",
+          "interface.3.dal": "A",
+          "interface.3.owner": "SR_FCC",
+          "interface.3.port": "output",
+          "interface.3.signal": "SelectedFCCCommand",
+          "interface.3.type": "FCCCommand",
+          "interface.4.dal": "A",
+          "interface.4.owner": "PSC_ACU",
+          "interface.4.port": "input",
+          "interface.4.signal": "SelectedFCCCommand",
+          "interface.4.type": "FCCCommand"
+        },
+        "blocked_by": []
+      },
+      {
+        "id": "REFINEMENT:RTA_FCC_A->SR_FCC.primaryChannel",
+        "premise": "architecture_context AND RTA_FCC_A.output_boundary_declared",
+        "conclusion": "refines(RTA_FCC_A, SR_FCC.primaryChannel)",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": "SR_FCC",
+          "related_objects": [
+            "FCC_A"
+          ],
+          "trigger": "hierarchical_refinement",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:PrimaryCommand_A",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(PrimaryCommand_A)",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": "SR_FCC",
+          "related_objects": [
+            "PrimaryCommand_A",
+            "RTA_FCC_A",
+            "SR_FCC"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      }
+    ],
+    "failed_obligation": {
+      "id": "FLOW:SR_FCC.output->PSC_ACU.input",
+      "premise": "architecture_context AND SR_FCC.output_boundary_declared",
+      "conclusion": "compatible_boundary(SR_FCC.output, PSC_ACU.input)",
+      "trace": {
+        "source_pattern": "SR_FCC",
+        "target_pattern": "PSC_ACU",
+        "related_objects": [
+          "SelectedFCCCommand",
+          "WrongFCCCommand"
+        ],
+        "trigger": "boundary_connection",
+        "resource_types": []
+      }
+    },
+    "counterexample": {
+      "component.ACU_Input.dal": "A",
+      "component.ACU_Input.resource.CLK": "CLK_ACU_IN",
+      "component.ACU_Input.resource.CPU": "CPU_ACU_IN",
+      "component.ACU_Input.resource.PWR": "PWR_ACU_IN",
+      "component.ACU_Input.resource.SW": "SW_ACU_IN",
+      "component.ACU_Input.type": "Input",
+      "component.ActuatorCommandOutput.dal": "A",
+      "component.ActuatorCommandOutput.type": "ActuatorCommand",
+      "component.ActuatorControlProcessor.dal": "A",
+      "component.ActuatorControlProcessor.resource.CLK": "CLK_H",
+      "component.ActuatorControlProcessor.resource.CPU": "CPU_H",
+      "component.ActuatorControlProcessor.resource.PWR": "PWR_H",
+      "component.ActuatorControlProcessor.resource.SW": "SW_H",
+      "component.ActuatorControlProcessor.type": "Processor",
+      "component.AdvancedController.dal": "B",
+      "component.AdvancedController.resource.CLK": "CLK_A",
+      "component.AdvancedController.resource.CPU": "CPU_A",
+      "component.AdvancedController.resource.PWR": "PWR_A",
+      "component.AdvancedController.resource.SW": "SW_A",
+      "component.AdvancedController.type": "Controller",
+      "component.AnomalyMonitor.dal": "A",
+      "component.AnomalyMonitor.resource.CLK": "CLK_J",
+      "component.AnomalyMonitor.resource.CPU": "CPU_J",
+      "component.AnomalyMonitor.resource.PWR": "PWR_J",
+      "component.AnomalyMonitor.resource.SW": "SW_J",
+      "component.AnomalyMonitor.type": "Monitor",
+      "component.CommandSelector.dal": "A",
+      "component.CommandSelector.resource.CLK": "CLK_D",
+      "component.CommandSelector.resource.CPU": "CPU_D",
+      "component.CommandSelector.resource.PWR": "PWR_D",
+      "component.CommandSelector.resource.SW": "SW_D",
+      "component.CommandSelector.type": "Selector",
+      "component.DataIntegrityChecker.dal": "A",
+      "component.DataIntegrityChecker.resource.CLK": "CLK_I",
+      "component.DataIntegrityChecker.resource.CPU": "CPU_I",
+      "component.DataIntegrityChecker.resource.PWR": "PWR_I",
+      "component.DataIntegrityChecker.resource.SW": "SW_I",
+      "component.DataIntegrityChecker.type": "Checker",
+      "component.FCCFaultDetector.dal": "A",
+      "component.FCCFaultDetector.resource.CLK": "CLK_FD",
+      "component.FCCFaultDetector.resource.CPU": "CPU_FD",
+      "component.FCCFaultDetector.resource.PWR": "PWR_FD",
+      "component.FCCFaultDetector.resource.SW": "SW_FD",
+      "component.FCCFaultDetector.type": "FaultDetector",
+      "component.FCCSwitchingUnit.dal": "A",
+      "component.FCCSwitchingUnit.resource.CLK": "CLK_SWU",
+      "component.FCCSwitchingUnit.resource.CPU": "CPU_SWU",
+      "component.FCCSwitchingUnit.resource.PWR": "PWR_SWU",
+      "component.FCCSwitchingUnit.resource.SW": "SW_SWU",
+      "component.FCCSwitchingUnit.type": "SwitchingUnit",
+      "component.FCC_A.dal": "A",
+      "component.FCC_A.type": "PrimaryChannel",
+      "component.FCC_B.dal": "A",
+      "component.FCC_B.type": "StandbyChannel",
+      "component.FeatureExtractor.dal": "B",
+      "component.FeatureExtractor.resource.CLK": "CLK_FE",
+      "component.FeatureExtractor.resource.CPU": "CPU_FE",
+      "component.FeatureExtractor.resource.PWR": "PWR_FE",
+      "component.FeatureExtractor.resource.SW": "SW_FE",
+      "component.FeatureExtractor.type": "Processor",
+      "component.PrimaryOutput.dal": "A",
+      "component.PrimaryOutput.resource.CLK": "CLK_PO",
+      "component.PrimaryOutput.resource.CPU": "CPU_PO",
+      "component.PrimaryOutput.resource.PWR": "PWR_PO",
+      "component.PrimaryOutput.resource.SW": "SW_PO",
+      "component.PrimaryOutput.type": "Output",
+      "component.RTA_Input.dal": "A",
+      "component.RTA_Input.resource.CLK": "CLK_IN",
+      "component.RTA_Input.resource.CPU": "CPU_IN",
+      "component.RTA_Input.resource.PWR": "PWR_IN",
+      "component.RTA_Input.resource.SW": "SW_IN",
+      "component.RTA_Input.type": "Input",
+      "component.SafeInputProcessor.dal": "A",
+      "component.SafeInputProcessor.resource.CLK": "CLK_SIP",
+      "component.SafeInputProcessor.resource.CPU": "CPU_SIP",
+      "component.SafeInputProcessor.resource.PWR": "PWR_SIP",
+      "component.SafeInputProcessor.resource.SW": "SW_SIP",
+      "component.SafeInputProcessor.type": "Processor",
+      "component.SafetyController.dal": "A",
+      "component.SafetyController.resource.CLK": "CLK_B",
+      "component.SafetyController.resource.CPU": "CPU_B",
+      "component.SafetyController.resource.PWR": "PWR_B",
+      "component.SafetyController.resource.SW": "SW_B",
+      "component.SafetyController.type": "Controller",
+      "component.SafetyMonitor.dal": "A",
+      "component.SafetyMonitor.resource.CLK": "CLK_C",
+      "component.SafetyMonitor.resource.CPU": "CPU_C",
+      "component.SafetyMonitor.resource.PWR": "PWR_C",
+      "component.SafetyMonitor.resource.SW": "SW_C",
+      "component.SafetyMonitor.type": "Monitor",
+      "component.SafetyOutput.dal": "A",
+      "component.SafetyOutput.resource.CLK": "CLK_SO",
+      "component.SafetyOutput.resource.CPU": "CPU_SO",
+      "component.SafetyOutput.resource.PWR": "PWR_SO",
+      "component.SafetyOutput.resource.SW": "SW_SO",
+      "component.SafetyOutput.type": "Output",
+      "component.StandbyCommand_B.dal": "A",
+      "component.StandbyCommand_B.type": "FCCCommand",
+      "component.StandbyController_B.dal": "A",
+      "component.StandbyController_B.resource.CLK": "CLK_E",
+      "component.StandbyController_B.resource.CPU": "CPU_E",
+      "component.StandbyController_B.resource.PWR": "PWR_E",
+      "component.StandbyController_B.resource.SW": "SW_E",
+      "component.StandbyController_B.type": "Controller",
+      "component.StandbyInput_B.dal": "A",
+      "component.StandbyInput_B.resource.CLK": "CLK_SBI",
+      "component.StandbyInput_B.resource.CPU": "CPU_SBI",
+      "component.StandbyInput_B.resource.PWR": "PWR_SBI",
+      "component.StandbyInput_B.resource.SW": "SW_SBI",
+      "component.StandbyInput_B.type": "Input",
+      "interface.0.dal": "A",
+      "interface.0.owner": "RTA_FCC_A",
+      "interface.0.port": "output",
+      "interface.0.signal": "PrimaryCommand_A",
+      "interface.0.type": "FCCCommand",
+      "interface.1.dal": "A",
+      "interface.1.owner": "SR_FCC",
+      "interface.1.port": "primaryChannel.output",
+      "interface.1.signal": "PrimaryCommand_A",
+      "interface.1.type": "FCCCommand",
+      "interface.2.dal": "A",
+      "interface.2.owner": "SR_FCC",
+      "interface.2.port": "standbyChannel.output",
+      "interface.2.signal": "StandbyCommand_B",
+      "interface.2.type": "FCCCommand",
+      "interface.3.dal": "A",
+      "interface.3.owner": "SR_FCC",
+      "interface.3.port": "output",
+      "interface.3.signal": "SelectedFCCCommand",
+      "interface.3.type": "FCCCommand",
+      "interface.4.dal": "A",
+      "interface.4.owner": "PSC_ACU",
+      "interface.4.port": "input",
+      "interface.4.signal": "SelectedFCCCommand",
+      "interface.4.type": "FCCCommand"
+    },
+    "guarantees": null,
+    "safety_goal": null,
+    "failure_analysis": null
+  },
+  {
+    "case_name": "layered_goal_unsupported",
+    "status": "GOAL_UNSUPPORTED",
+    "stage": "goal",
+    "obligation_count": 13,
+    "context_objects": {
+      "RTA_FCC_A": [
+        "AdvancedController",
+        "CommandSelector",
+        "FeatureExtractor",
+        "PrimaryCommand_A",
+        "PrimaryOutput",
+        "RTA_Input",
+        "SafeInputProcessor",
+        "SafetyController",
+        "SafetyMonitor",
+        "SafetyOutput"
+      ],
+      "SR_FCC": [
+        "AdvancedController",
+        "CommandSelector",
+        "FCCFaultDetector",
+        "FCCSwitchingUnit",
+        "FCC_A",
+        "FCC_B",
+        "FeatureExtractor",
+        "PrimaryCommand_A",
+        "PrimaryOutput",
+        "RTA_Input",
+        "SafeInputProcessor",
+        "SafetyController",
+        "SafetyMonitor",
+        "SafetyOutput",
+        "SelectedFCCCommand",
+        "StandbyCommand_B",
+        "StandbyController_B"
+      ],
+      "PSC_ACU": [
+        "ACU_Input",
+        "ActuatorCommandOutput",
+        "ActuatorControlProcessor",
+        "AnomalyMonitor",
+        "DataIntegrityChecker",
+        "SelectedFCCCommand"
+      ]
+    },
+    "unsat_core": [],
+    "obligation_results": [
+      {
+        "id": "RTA_FCC_A:DAL_A",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.DAL_A",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "SafetyController",
+            "SafetyMonitor",
+            "CommandSelector"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "RTA_FCC_A:RESOURCE_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.RESOURCE_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "AdvancedController",
+            "SafetyController",
+            "SafetyMonitor"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "RTA_FCC_A:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "SafetyMonitor",
+            "CommandSelector"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:PRIMARY_STANDBY_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.PRIMARY_STANDBY_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "AdvancedController",
+            "SafetyController",
+            "SafetyMonitor",
+            "CommandSelector",
+            "StandbyController_B"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:COMMAND_TYPE",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.COMMAND_TYPE",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "PrimaryCommand_A",
+            "StandbyCommand_B",
+            "SelectedFCCCommand"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "FCCFaultDetector",
+            "FCCSwitchingUnit"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:SINGLE_CHANNEL",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.SINGLE_CHANNEL",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:CPU_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.CPU_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [
+            "ActuatorControlProcessor",
+            "DataIntegrityChecker"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:MONITOR_CPU_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.MONITOR_CPU_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [
+            "ActuatorControlProcessor",
+            "AnomalyMonitor"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:SR_FCC.output->PSC_ACU.input",
+        "premise": "architecture_context AND SR_FCC.output_boundary_declared",
+        "conclusion": "compatible_boundary(SR_FCC.output, PSC_ACU.input)",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": "PSC_ACU",
+          "related_objects": [
+            "SelectedFCCCommand",
+            "SelectedFCCCommand"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "REFINEMENT:RTA_FCC_A->SR_FCC.primaryChannel",
+        "premise": "architecture_context AND RTA_FCC_A.output_boundary_declared",
+        "conclusion": "refines(RTA_FCC_A, SR_FCC.primaryChannel)",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": "SR_FCC",
+          "related_objects": [
+            "FCC_A"
+          ],
+          "trigger": "hierarchical_refinement",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:PrimaryCommand_A",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(PrimaryCommand_A)",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": "SR_FCC",
+          "related_objects": [
+            "PrimaryCommand_A",
+            "RTA_FCC_A",
+            "SR_FCC"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:SelectedFCCCommand",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(SelectedFCCCommand)",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": "PSC_ACU",
+          "related_objects": [
+            "SelectedFCCCommand",
+            "SR_FCC",
+            "PSC_ACU"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      }
+    ],
+    "failed_obligation": null,
+    "counterexample": {
+      "component.ACU_Input.dal": "A",
+      "component.ACU_Input.resource.CLK": "CLK_ACU_IN",
+      "component.ACU_Input.resource.CPU": "CPU_ACU_IN",
+      "component.ACU_Input.resource.PWR": "PWR_ACU_IN",
+      "component.ACU_Input.resource.SW": "SW_ACU_IN",
+      "component.ACU_Input.type": "Input",
+      "component.ActuatorCommandOutput.dal": "A",
+      "component.ActuatorCommandOutput.type": "ActuatorCommand",
+      "component.ActuatorControlProcessor.dal": "A",
+      "component.ActuatorControlProcessor.resource.CLK": "CLK_H",
+      "component.ActuatorControlProcessor.resource.CPU": "CPU_H",
+      "component.ActuatorControlProcessor.resource.PWR": "PWR_H",
+      "component.ActuatorControlProcessor.resource.SW": "SW_H",
+      "component.ActuatorControlProcessor.type": "Processor",
+      "component.AdvancedController.dal": "B",
+      "component.AdvancedController.resource.CLK": "CLK_A",
+      "component.AdvancedController.resource.CPU": "CPU_A",
+      "component.AdvancedController.resource.PWR": "PWR_A",
+      "component.AdvancedController.resource.SW": "SW_A",
+      "component.AdvancedController.type": "Controller",
+      "component.AnomalyMonitor.dal": "A",
+      "component.AnomalyMonitor.resource.CLK": "CLK_J",
+      "component.AnomalyMonitor.resource.CPU": "CPU_J",
+      "component.AnomalyMonitor.resource.PWR": "PWR_J",
+      "component.AnomalyMonitor.resource.SW": "SW_J",
+      "component.AnomalyMonitor.type": "Monitor",
+      "component.CommandSelector.dal": "A",
+      "component.CommandSelector.resource.CLK": "CLK_D",
+      "component.CommandSelector.resource.CPU": "CPU_D",
+      "component.CommandSelector.resource.PWR": "PWR_D",
+      "component.CommandSelector.resource.SW": "SW_D",
+      "component.CommandSelector.type": "Selector",
+      "component.DataIntegrityChecker.dal": "A",
+      "component.DataIntegrityChecker.resource.CLK": "CLK_I",
+      "component.DataIntegrityChecker.resource.CPU": "CPU_I",
+      "component.DataIntegrityChecker.resource.PWR": "PWR_I",
+      "component.DataIntegrityChecker.resource.SW": "SW_I",
+      "component.DataIntegrityChecker.type": "Checker",
+      "component.FCCFaultDetector.dal": "A",
+      "component.FCCFaultDetector.resource.CLK": "CLK_FD",
+      "component.FCCFaultDetector.resource.CPU": "CPU_FD",
+      "component.FCCFaultDetector.resource.PWR": "PWR_FD",
+      "component.FCCFaultDetector.resource.SW": "SW_FD",
+      "component.FCCFaultDetector.type": "FaultDetector",
+      "component.FCCSwitchingUnit.dal": "A",
+      "component.FCCSwitchingUnit.resource.CLK": "CLK_SWU",
+      "component.FCCSwitchingUnit.resource.CPU": "CPU_SWU",
+      "component.FCCSwitchingUnit.resource.PWR": "PWR_SWU",
+      "component.FCCSwitchingUnit.resource.SW": "SW_SWU",
+      "component.FCCSwitchingUnit.type": "SwitchingUnit",
+      "component.FCC_A.dal": "A",
+      "component.FCC_A.type": "PrimaryChannel",
+      "component.FCC_B.dal": "A",
+      "component.FCC_B.type": "StandbyChannel",
+      "component.FeatureExtractor.dal": "B",
+      "component.FeatureExtractor.resource.CLK": "CLK_FE",
+      "component.FeatureExtractor.resource.CPU": "CPU_FE",
+      "component.FeatureExtractor.resource.PWR": "PWR_FE",
+      "component.FeatureExtractor.resource.SW": "SW_FE",
+      "component.FeatureExtractor.type": "Processor",
+      "component.PrimaryOutput.dal": "A",
+      "component.PrimaryOutput.resource.CLK": "CLK_PO",
+      "component.PrimaryOutput.resource.CPU": "CPU_PO",
+      "component.PrimaryOutput.resource.PWR": "PWR_PO",
+      "component.PrimaryOutput.resource.SW": "SW_PO",
+      "component.PrimaryOutput.type": "Output",
+      "component.RTA_Input.dal": "A",
+      "component.RTA_Input.resource.CLK": "CLK_IN",
+      "component.RTA_Input.resource.CPU": "CPU_IN",
+      "component.RTA_Input.resource.PWR": "PWR_IN",
+      "component.RTA_Input.resource.SW": "SW_IN",
+      "component.RTA_Input.type": "Input",
+      "component.SafeInputProcessor.dal": "A",
+      "component.SafeInputProcessor.resource.CLK": "CLK_SIP",
+      "component.SafeInputProcessor.resource.CPU": "CPU_SIP",
+      "component.SafeInputProcessor.resource.PWR": "PWR_SIP",
+      "component.SafeInputProcessor.resource.SW": "SW_SIP",
+      "component.SafeInputProcessor.type": "Processor",
+      "component.SafetyController.dal": "A",
+      "component.SafetyController.resource.CLK": "CLK_B",
+      "component.SafetyController.resource.CPU": "CPU_B",
+      "component.SafetyController.resource.PWR": "PWR_B",
+      "component.SafetyController.resource.SW": "SW_B",
+      "component.SafetyController.type": "Controller",
+      "component.SafetyMonitor.dal": "A",
+      "component.SafetyMonitor.resource.CLK": "CLK_C",
+      "component.SafetyMonitor.resource.CPU": "CPU_C",
+      "component.SafetyMonitor.resource.PWR": "PWR_C",
+      "component.SafetyMonitor.resource.SW": "SW_C",
+      "component.SafetyMonitor.type": "Monitor",
+      "component.SafetyOutput.dal": "A",
+      "component.SafetyOutput.resource.CLK": "CLK_SO",
+      "component.SafetyOutput.resource.CPU": "CPU_SO",
+      "component.SafetyOutput.resource.PWR": "PWR_SO",
+      "component.SafetyOutput.resource.SW": "SW_SO",
+      "component.SafetyOutput.type": "Output",
+      "component.StandbyCommand_B.dal": "A",
+      "component.StandbyCommand_B.type": "FCCCommand",
+      "component.StandbyController_B.dal": "A",
+      "component.StandbyController_B.resource.CLK": "CLK_E",
+      "component.StandbyController_B.resource.CPU": "CPU_E",
+      "component.StandbyController_B.resource.PWR": "PWR_E",
+      "component.StandbyController_B.resource.SW": "SW_E",
+      "component.StandbyController_B.type": "Controller",
+      "component.StandbyInput_B.dal": "A",
+      "component.StandbyInput_B.resource.CLK": "CLK_SBI",
+      "component.StandbyInput_B.resource.CPU": "CPU_SBI",
+      "component.StandbyInput_B.resource.PWR": "PWR_SBI",
+      "component.StandbyInput_B.resource.SW": "SW_SBI",
+      "component.StandbyInput_B.type": "Input",
+      "interface.0.dal": "A",
+      "interface.0.owner": "RTA_FCC_A",
+      "interface.0.port": "output",
+      "interface.0.signal": "PrimaryCommand_A",
+      "interface.0.type": "FCCCommand",
+      "interface.1.dal": "A",
+      "interface.1.owner": "SR_FCC",
+      "interface.1.port": "primaryChannel.output",
+      "interface.1.signal": "PrimaryCommand_A",
+      "interface.1.type": "FCCCommand",
+      "interface.2.dal": "A",
+      "interface.2.owner": "SR_FCC",
+      "interface.2.port": "standbyChannel.output",
+      "interface.2.signal": "StandbyCommand_B",
+      "interface.2.type": "FCCCommand",
+      "interface.3.dal": "A",
+      "interface.3.owner": "SR_FCC",
+      "interface.3.port": "output",
+      "interface.3.signal": "SelectedFCCCommand",
+      "interface.3.type": "FCCCommand",
+      "interface.4.dal": "A",
+      "interface.4.owner": "PSC_ACU",
+      "interface.4.port": "input",
+      "interface.4.signal": "SelectedFCCCommand",
+      "interface.4.type": "FCCCommand"
+    },
+    "guarantees": [
+      "RTA_FCC_A:OUTPUT_BOUNDARY_DECLARED",
+      "RTA_FCC_A:BOUNDED_COMMAND_OUTPUT",
+      "SR_FCC:OUTPUT_BOUNDARY_DECLARED",
+      "SR_FCC:CONTINUOUS_COMMAND_OUTPUT",
+      "PSC_ACU:OUTPUT_BOUNDARY_DECLARED",
+      "PSC_ACU:PROTECTED_COMMAND_OUTPUT"
+    ],
+    "safety_goal": {
+      "id": "GOAL_ADVANCED_CONTROLLER_DAL_A",
+      "formula": "component.AdvancedController.dal == A",
+      "status": "COUNTEREXAMPLE",
+      "supporting_guarantees": [],
+      "supporting_obligations": [],
+      "available_guarantees": [
+        "RTA_FCC_A:OUTPUT_BOUNDARY_DECLARED",
+        "RTA_FCC_A:BOUNDED_COMMAND_OUTPUT",
+        "SR_FCC:OUTPUT_BOUNDARY_DECLARED",
+        "SR_FCC:CONTINUOUS_COMMAND_OUTPUT",
+        "PSC_ACU:OUTPUT_BOUNDARY_DECLARED",
+        "PSC_ACU:PROTECTED_COMMAND_OUTPUT"
+      ]
+    },
+    "failure_analysis": null
+  },
+  {
+    "case_name": "layered_goal_supported",
+    "status": "ACCEPTED",
+    "stage": "goal",
+    "obligation_count": 13,
+    "context_objects": {
+      "RTA_FCC_A": [
+        "AdvancedController",
+        "CommandSelector",
+        "FeatureExtractor",
+        "PrimaryCommand_A",
+        "PrimaryOutput",
+        "RTA_Input",
+        "SafeInputProcessor",
+        "SafetyController",
+        "SafetyMonitor",
+        "SafetyOutput"
+      ],
+      "SR_FCC": [
+        "AdvancedController",
+        "CommandSelector",
+        "FCCFaultDetector",
+        "FCCSwitchingUnit",
+        "FCC_A",
+        "FCC_B",
+        "FeatureExtractor",
+        "PrimaryCommand_A",
+        "PrimaryOutput",
+        "RTA_Input",
+        "SafeInputProcessor",
+        "SafetyController",
+        "SafetyMonitor",
+        "SafetyOutput",
+        "SelectedFCCCommand",
+        "StandbyCommand_B",
+        "StandbyController_B"
+      ],
+      "PSC_ACU": [
+        "ACU_Input",
+        "ActuatorCommandOutput",
+        "ActuatorControlProcessor",
+        "AnomalyMonitor",
+        "DataIntegrityChecker",
+        "SelectedFCCCommand"
+      ]
+    },
+    "unsat_core": [],
+    "obligation_results": [
+      {
+        "id": "RTA_FCC_A:DAL_A",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.DAL_A",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "SafetyController",
+            "SafetyMonitor",
+            "CommandSelector"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "RTA_FCC_A:RESOURCE_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.RESOURCE_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "AdvancedController",
+            "SafetyController",
+            "SafetyMonitor"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "RTA_FCC_A:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "RTA_FCC_A.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": null,
+          "related_objects": [
+            "SafetyMonitor",
+            "CommandSelector"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:PRIMARY_STANDBY_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.PRIMARY_STANDBY_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "AdvancedController",
+            "SafetyController",
+            "SafetyMonitor",
+            "CommandSelector",
+            "StandbyController_B"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:COMMAND_TYPE",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.COMMAND_TYPE",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "PrimaryCommand_A",
+            "StandbyCommand_B",
+            "SelectedFCCCommand"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "SR_FCC:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "SR_FCC.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": null,
+          "related_objects": [
+            "FCCFaultDetector",
+            "FCCSwitchingUnit"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:SINGLE_CHANNEL",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.SINGLE_CHANNEL",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:CPU_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.CPU_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [
+            "ActuatorControlProcessor",
+            "DataIntegrityChecker"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PSC_ACU:MONITOR_CPU_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "PSC_ACU.MONITOR_CPU_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "PSC_ACU",
+          "target_pattern": null,
+          "related_objects": [
+            "ActuatorControlProcessor",
+            "AnomalyMonitor"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:SR_FCC.output->PSC_ACU.input",
+        "premise": "architecture_context AND SR_FCC.output_boundary_declared",
+        "conclusion": "compatible_boundary(SR_FCC.output, PSC_ACU.input)",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": "PSC_ACU",
+          "related_objects": [
+            "SelectedFCCCommand",
+            "SelectedFCCCommand"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "REFINEMENT:RTA_FCC_A->SR_FCC.primaryChannel",
+        "premise": "architecture_context AND RTA_FCC_A.output_boundary_declared",
+        "conclusion": "refines(RTA_FCC_A, SR_FCC.primaryChannel)",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": "SR_FCC",
+          "related_objects": [
+            "FCC_A"
+          ],
+          "trigger": "hierarchical_refinement",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:PrimaryCommand_A",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(PrimaryCommand_A)",
+        "trace": {
+          "source_pattern": "RTA_FCC_A",
+          "target_pattern": "SR_FCC",
+          "related_objects": [
+            "PrimaryCommand_A",
+            "RTA_FCC_A",
+            "SR_FCC"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:SelectedFCCCommand",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(SelectedFCCCommand)",
+        "trace": {
+          "source_pattern": "SR_FCC",
+          "target_pattern": "PSC_ACU",
+          "related_objects": [
+            "SelectedFCCCommand",
+            "SR_FCC",
+            "PSC_ACU"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      }
+    ],
+    "failed_obligation": null,
+    "counterexample": null,
+    "guarantees": [
+      "RTA_FCC_A:OUTPUT_BOUNDARY_DECLARED",
+      "RTA_FCC_A:BOUNDED_COMMAND_OUTPUT",
+      "SR_FCC:OUTPUT_BOUNDARY_DECLARED",
+      "SR_FCC:CONTINUOUS_COMMAND_OUTPUT",
+      "PSC_ACU:OUTPUT_BOUNDARY_DECLARED",
+      "PSC_ACU:PROTECTED_COMMAND_OUTPUT"
+    ],
+    "safety_goal": {
+      "id": "GOAL_PROTECTED_ACTUATOR_COMMAND",
+      "formula": "guarantee(RTA_FCC_A:BOUNDED_COMMAND_OUTPUT) AND guarantee(SR_FCC:CONTINUOUS_COMMAND_OUTPUT) AND guarantee(PSC_ACU:PROTECTED_COMMAND_OUTPUT) AND refines(RTA_FCC_A, SR_FCC.primaryChannel) AND compatible_boundary(SR_FCC.output, PSC_ACU.input) IMPLIES protected_actuator_command",
+      "status": "SUPPORTED_BY_RULE",
+      "supporting_guarantees": [
+        "RTA_FCC_A:BOUNDED_COMMAND_OUTPUT",
+        "SR_FCC:CONTINUOUS_COMMAND_OUTPUT",
+        "PSC_ACU:PROTECTED_COMMAND_OUTPUT"
+      ],
+      "supporting_obligations": [
+        "REFINEMENT:RTA_FCC_A->SR_FCC.primaryChannel",
+        "FLOW:SR_FCC.output->PSC_ACU.input"
+      ],
+      "available_guarantees": [
+        "RTA_FCC_A:OUTPUT_BOUNDARY_DECLARED",
+        "RTA_FCC_A:BOUNDED_COMMAND_OUTPUT",
+        "SR_FCC:OUTPUT_BOUNDARY_DECLARED",
+        "SR_FCC:CONTINUOUS_COMMAND_OUTPUT",
+        "PSC_ACU:OUTPUT_BOUNDARY_DECLARED",
+        "PSC_ACU:PROTECTED_COMMAND_OUTPUT"
+      ]
+    },
+    "failure_analysis": {
+      "LossOfActuatorCommand": {
+        "expression": "((F_FCCA_LOF and (F_FCCB_LOF or F_fd_miss or F_sw_fail)) or F_dp_perm or (F_dp_trans and F_recover_fail))",
+        "monotone": true,
+        "minimal_cut_sets": [
+          "F_FCCA_LOF;F_FCCB_LOF",
+          "F_FCCA_LOF;F_fd_miss",
+          "F_FCCA_LOF;F_sw_fail",
+          "F_dp_perm",
+          "F_dp_trans;F_recover_fail"
+        ],
+        "expansion_trace": {
+          "top_event": "LossOfActuatorCommand",
+          "substitutions": [
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "SR_FCC",
+              "event": "SR_FCC.loss_output"
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "PSC_ACU",
+              "event": "PSC_ACU.loss_output"
+            }
+          ],
+          "basic_event_sources": {
+            "F_FCCA_LOF": [
+              "SR_FCC.loss_output"
+            ],
+            "F_FCCB_LOF": [
+              "SR_FCC.loss_output"
+            ],
+            "F_dp_perm": [
+              "PSC_ACU.loss_output"
+            ],
+            "F_dp_trans": [
+              "PSC_ACU.loss_output"
+            ],
+            "F_fd_miss": [
+              "SR_FCC.loss_output"
+            ],
+            "F_recover_fail": [
+              "PSC_ACU.loss_output"
+            ],
+            "F_sw_fail": [
+              "SR_FCC.loss_output"
+            ]
+          }
+        }
+      },
+      "HazardousActuatorCommand": {
+        "expression": "((F_adv_vio and (F_mon_miss or F_safe_fail or F_sel_fail)) or (F_dp_err and F_am_miss))",
+        "monotone": true,
+        "minimal_cut_sets": [
+          "F_adv_vio;F_mon_miss",
+          "F_adv_vio;F_safe_fail",
+          "F_adv_vio;F_sel_fail",
+          "F_dp_err;F_am_miss"
+        ],
+        "expansion_trace": {
+          "top_event": "HazardousActuatorCommand",
+          "substitutions": [
+            {
+              "kind": "hierarchy_substitution",
+              "event": "SR_FCC.primary_channel_hazard",
+              "source_event": "RTA_FCC_A.hazardous_output",
+              "hierarchy": {
+                "child": "RTA_FCC_A",
+                "parent": "SR_FCC.primaryChannel"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "RTA_FCC_A",
+              "event": "RTA_FCC_A.hazardous_output"
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "PSC_ACU",
+              "event": "PSC_ACU.hazardous_output"
+            }
+          ],
+          "basic_event_sources": {
+            "F_adv_vio": [
+              "RTA_FCC_A.hazardous_output"
+            ],
+            "F_am_miss": [
+              "PSC_ACU.hazardous_output"
+            ],
+            "F_dp_err": [
+              "PSC_ACU.hazardous_output"
+            ],
+            "F_mon_miss": [
+              "RTA_FCC_A.hazardous_output"
+            ],
+            "F_safe_fail": [
+              "RTA_FCC_A.hazardous_output"
+            ],
+            "F_sel_fail": [
+              "RTA_FCC_A.hazardous_output"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "case_name": "layered_caseB_supported",
+    "status": "ACCEPTED",
+    "stage": "goal",
+    "obligation_count": 15,
+    "context_objects": {
+      "MN_Sensor": [
+        "Sensor_1",
+        "Sensor_2",
+        "Sensor_3",
+        "VotedFlightParameter",
+        "Voter"
+      ],
+      "CC_Nav": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "NavProcessor_A",
+        "NavProcessor_B",
+        "VotedFlightParameter"
+      ],
+      "IM_Display_L": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "DisplayGate_L",
+        "DisplayParameterOutput_L",
+        "IndependentMonitor_L",
+        "NavProcessor_A",
+        "NavProcessor_B"
+      ],
+      "IM_Display_R": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "DisplayGate_R",
+        "DisplayParameterOutput_R",
+        "IndependentMonitor_R",
+        "NavProcessor_A",
+        "NavProcessor_B"
+      ]
+    },
+    "unsat_core": [],
+    "obligation_results": [
+      {
+        "id": "MN_Sensor:CHANNEL_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "MN_Sensor.CHANNEL_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": null,
+          "related_objects": [
+            "Sensor_1",
+            "Sensor_2",
+            "Sensor_3"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "MN_Sensor:VOTER_DAL",
+        "premise": "architecture_context",
+        "conclusion": "MN_Sensor.VOTER_DAL",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": null,
+          "related_objects": [
+            "Voter",
+            "VotedFlightParameter"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:CHANNEL_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.CHANNEL_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_A",
+            "NavProcessor_B"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:COMPARATOR_A_CPU",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.COMPARATOR_A_CPU",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_A",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:COMPARATOR_B_CPU",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.COMPARATOR_B_CPU",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_L:MONITOR_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_L.MONITOR_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_L",
+            "NavProcessor_A",
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_L:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_L.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_L",
+            "DisplayGate_L"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_R:MONITOR_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_R.MONITOR_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "IM_Display_R",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_R",
+            "NavProcessor_A",
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_R:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_R.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "IM_Display_R",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_R",
+            "DisplayGate_R"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:MN_Sensor.output->CC_Nav.input",
+        "premise": "architecture_context AND MN_Sensor.output_boundary_declared",
+        "conclusion": "compatible_boundary(MN_Sensor.output, CC_Nav.input)",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": "CC_Nav",
+          "related_objects": [
+            "VotedFlightParameter",
+            "VotedFlightParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:CC_Nav.output->IM_Display_L.input",
+        "premise": "architecture_context AND CC_Nav.output_boundary_declared",
+        "conclusion": "compatible_boundary(CC_Nav.output, IM_Display_L.input)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_L",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CheckedNavParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:CC_Nav.output->IM_Display_R.input",
+        "premise": "architecture_context AND CC_Nav.output_boundary_declared",
+        "conclusion": "compatible_boundary(CC_Nav.output, IM_Display_R.input)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_R",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CheckedNavParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:VotedFlightParameter",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(VotedFlightParameter)",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": "CC_Nav",
+          "related_objects": [
+            "VotedFlightParameter",
+            "MN_Sensor",
+            "CC_Nav"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:CheckedNavParameter",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(CheckedNavParameter)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_L",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CC_Nav",
+            "IM_Display_L",
+            "IM_Display_R"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE",
+        "premise": "architecture_context AND parallel_instances_declared",
+        "conclusion": "independent_resources(IM_Display_L, IM_Display_R, ['PWR', 'CPU', 'CLK'])",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": "IM_Display_R",
+          "related_objects": [
+            "IndependentMonitor_L",
+            "DisplayGate_L",
+            "IndependentMonitor_R",
+            "DisplayGate_R"
+          ],
+          "trigger": "parallel_composition",
+          "resource_types": [
+            "PWR",
+            "CPU",
+            "CLK"
+          ]
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      }
+    ],
+    "failed_obligation": null,
+    "counterexample": null,
+    "guarantees": [
+      "MN_Sensor:OUTPUT_BOUNDARY_DECLARED",
+      "MN_Sensor:VOTED_PARAMETER_OUTPUT",
+      "CC_Nav:OUTPUT_BOUNDARY_DECLARED",
+      "CC_Nav:CHECKED_PARAMETER_OUTPUT",
+      "IM_Display_L:OUTPUT_BOUNDARY_DECLARED",
+      "IM_Display_L:GUARDED_DISPLAY_OUTPUT",
+      "IM_Display_R:OUTPUT_BOUNDARY_DECLARED",
+      "IM_Display_R:GUARDED_DISPLAY_OUTPUT"
+    ],
+    "safety_goal": {
+      "id": "GOAL_DUAL_GUARDED_PARAMETER_DISPLAY",
+      "formula": "guarantee(MN_Sensor:VOTED_PARAMETER_OUTPUT) AND guarantee(CC_Nav:CHECKED_PARAMETER_OUTPUT) AND guarantee(IM_Display_L:GUARDED_DISPLAY_OUTPUT) AND guarantee(IM_Display_R:GUARDED_DISPLAY_OUTPUT) AND compatible_boundary(MN_Sensor.output, CC_Nav.input) AND compatible_boundary(CC_Nav.output, IM_Display_L.input) AND compatible_boundary(CC_Nav.output, IM_Display_R.input) AND independent_resources(IM_Display_L, IM_Display_R, ['PWR', 'CPU', 'CLK']) IMPLIES dual_guarded_parameter_display",
+      "status": "SUPPORTED_BY_RULE",
+      "supporting_guarantees": [
+        "MN_Sensor:VOTED_PARAMETER_OUTPUT",
+        "CC_Nav:CHECKED_PARAMETER_OUTPUT",
+        "IM_Display_L:GUARDED_DISPLAY_OUTPUT",
+        "IM_Display_R:GUARDED_DISPLAY_OUTPUT"
+      ],
+      "supporting_obligations": [
+        "FLOW:MN_Sensor.output->CC_Nav.input",
+        "FLOW:CC_Nav.output->IM_Display_L.input",
+        "FLOW:CC_Nav.output->IM_Display_R.input",
+        "PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE"
+      ],
+      "available_guarantees": [
+        "MN_Sensor:OUTPUT_BOUNDARY_DECLARED",
+        "MN_Sensor:VOTED_PARAMETER_OUTPUT",
+        "CC_Nav:OUTPUT_BOUNDARY_DECLARED",
+        "CC_Nav:CHECKED_PARAMETER_OUTPUT",
+        "IM_Display_L:OUTPUT_BOUNDARY_DECLARED",
+        "IM_Display_L:GUARDED_DISPLAY_OUTPUT",
+        "IM_Display_R:OUTPUT_BOUNDARY_DECLARED",
+        "IM_Display_R:GUARDED_DISPLAY_OUTPUT"
+      ]
+    },
+    "failure_analysis": {
+      "HazardousParameterDisplayed": {
+        "expression": "((((F_s1_err and F_s2_err) or (F_s1_err and F_s3_err) or (F_s2_err and F_s3_err) or F_voter_err or (F_nav_diff and F_cmp_miss)) and F_im_l_miss) or (((F_s1_err and F_s2_err) or (F_s1_err and F_s3_err) or (F_s2_err and F_s3_err) or F_voter_err or (F_nav_diff and F_cmp_miss)) and F_im_r_miss))",
+        "monotone": true,
+        "minimal_cut_sets": [
+          "F_s1_err;F_s2_err;F_im_l_miss",
+          "F_s1_err;F_s3_err;F_im_l_miss",
+          "F_s2_err;F_s3_err;F_im_l_miss",
+          "F_voter_err;F_im_l_miss",
+          "F_nav_diff;F_cmp_miss;F_im_l_miss",
+          "F_s1_err;F_s2_err;F_im_r_miss",
+          "F_s1_err;F_s3_err;F_im_r_miss",
+          "F_s2_err;F_s3_err;F_im_r_miss",
+          "F_voter_err;F_im_r_miss",
+          "F_nav_diff;F_cmp_miss;F_im_r_miss"
+        ],
+        "expansion_trace": {
+          "top_event": "HazardousParameterDisplayed",
+          "substitutions": [
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "IM_Display_L",
+              "event": "IM_Display_L.hazardous_display"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "IM_Display_L.input_hazard",
+              "source_event": "CC_Nav.output_hazard",
+              "connection": {
+                "source": "CC_Nav.output",
+                "target": "IM_Display_L.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "CC_Nav",
+              "event": "CC_Nav.output_hazard"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "CC_Nav.input_hazard",
+              "source_event": "MN_Sensor.output_hazard",
+              "connection": {
+                "source": "MN_Sensor.output",
+                "target": "CC_Nav.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "MN_Sensor",
+              "event": "MN_Sensor.output_hazard"
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "IM_Display_R",
+              "event": "IM_Display_R.hazardous_display"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "IM_Display_R.input_hazard",
+              "source_event": "CC_Nav.output_hazard",
+              "connection": {
+                "source": "CC_Nav.output",
+                "target": "IM_Display_R.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "CC_Nav",
+              "event": "CC_Nav.output_hazard"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "CC_Nav.input_hazard",
+              "source_event": "MN_Sensor.output_hazard",
+              "connection": {
+                "source": "MN_Sensor.output",
+                "target": "CC_Nav.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "MN_Sensor",
+              "event": "MN_Sensor.output_hazard"
+            }
+          ],
+          "basic_event_sources": {
+            "F_cmp_miss": [
+              "CC_Nav.output_hazard"
+            ],
+            "F_im_l_miss": [
+              "IM_Display_L.hazardous_display"
+            ],
+            "F_im_r_miss": [
+              "IM_Display_R.hazardous_display"
+            ],
+            "F_nav_diff": [
+              "CC_Nav.output_hazard"
+            ],
+            "F_s1_err": [
+              "MN_Sensor.output_hazard"
+            ],
+            "F_s2_err": [
+              "MN_Sensor.output_hazard"
+            ],
+            "F_s3_err": [
+              "MN_Sensor.output_hazard"
+            ],
+            "F_voter_err": [
+              "MN_Sensor.output_hazard"
+            ]
+          }
+        }
+      },
+      "LossOfTrustedParameterDisplay": {
+        "expression": "((F_mn_output_loss or F_cc_output_loss or F_im_l_unavailable) and (F_mn_output_loss or F_cc_output_loss or F_im_r_unavailable))",
+        "monotone": true,
+        "minimal_cut_sets": [
+          "F_mn_output_loss",
+          "F_cc_output_loss",
+          "F_im_l_unavailable;F_im_r_unavailable"
+        ],
+        "expansion_trace": {
+          "top_event": "LossOfTrustedParameterDisplay",
+          "substitutions": [
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "IM_Display_L",
+              "event": "IM_Display_L.loss_trusted_display"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "IM_Display_L.input_loss",
+              "source_event": "CC_Nav.trusted_output_loss",
+              "connection": {
+                "source": "CC_Nav.output",
+                "target": "IM_Display_L.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "CC_Nav",
+              "event": "CC_Nav.trusted_output_loss"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "CC_Nav.input_loss",
+              "source_event": "MN_Sensor.output_loss",
+              "connection": {
+                "source": "MN_Sensor.output",
+                "target": "CC_Nav.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "MN_Sensor",
+              "event": "MN_Sensor.output_loss"
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "IM_Display_R",
+              "event": "IM_Display_R.loss_trusted_display"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "IM_Display_R.input_loss",
+              "source_event": "CC_Nav.trusted_output_loss",
+              "connection": {
+                "source": "CC_Nav.output",
+                "target": "IM_Display_R.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "CC_Nav",
+              "event": "CC_Nav.trusted_output_loss"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "CC_Nav.input_loss",
+              "source_event": "MN_Sensor.output_loss",
+              "connection": {
+                "source": "MN_Sensor.output",
+                "target": "CC_Nav.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "MN_Sensor",
+              "event": "MN_Sensor.output_loss"
+            },
+            {
+              "kind": "parallel_composition",
+              "left_instance": "IM_Display_L",
+              "right_instance": "IM_Display_R",
+              "left_event": "IM_Display_L.loss_trusted_display",
+              "right_event": "IM_Display_R.loss_trusted_display",
+              "operator": "AND"
+            }
+          ],
+          "basic_event_sources": {
+            "F_cc_output_loss": [
+              "CC_Nav.trusted_output_loss"
+            ],
+            "F_im_l_unavailable": [
+              "IM_Display_L.loss_trusted_display"
+            ],
+            "F_im_r_unavailable": [
+              "IM_Display_R.loss_trusted_display"
+            ],
+            "F_mn_output_loss": [
+              "MN_Sensor.output_loss"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "case_name": "layered_caseB_parallel_failure",
+    "status": "OBLIGATION_FAILED",
+    "stage": "obligation",
+    "obligation_count": 15,
+    "context_objects": {
+      "MN_Sensor": [
+        "Sensor_1",
+        "Sensor_2",
+        "Sensor_3",
+        "VotedFlightParameter",
+        "Voter"
+      ],
+      "CC_Nav": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "NavProcessor_A",
+        "NavProcessor_B",
+        "VotedFlightParameter"
+      ],
+      "IM_Display_L": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "DisplayGate_L",
+        "DisplayParameterOutput_L",
+        "IndependentMonitor_L",
+        "NavProcessor_A",
+        "NavProcessor_B"
+      ],
+      "IM_Display_R": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "DisplayGate_R",
+        "DisplayParameterOutput_R",
+        "IndependentMonitor_R",
+        "NavProcessor_A",
+        "NavProcessor_B"
+      ]
+    },
+    "unsat_core": [],
+    "obligation_results": [
+      {
+        "id": "MN_Sensor:CHANNEL_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "MN_Sensor.CHANNEL_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": null,
+          "related_objects": [
+            "Sensor_1",
+            "Sensor_2",
+            "Sensor_3"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "MN_Sensor:VOTER_DAL",
+        "premise": "architecture_context",
+        "conclusion": "MN_Sensor.VOTER_DAL",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": null,
+          "related_objects": [
+            "Voter",
+            "VotedFlightParameter"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:CHANNEL_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.CHANNEL_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_A",
+            "NavProcessor_B"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:COMPARATOR_A_CPU",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.COMPARATOR_A_CPU",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_A",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:COMPARATOR_B_CPU",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.COMPARATOR_B_CPU",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_L:MONITOR_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_L.MONITOR_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_L",
+            "NavProcessor_A",
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_L:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_L.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_L",
+            "DisplayGate_L"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_R:MONITOR_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_R.MONITOR_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "IM_Display_R",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_R",
+            "NavProcessor_A",
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_R:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_R.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "IM_Display_R",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_R",
+            "DisplayGate_R"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:MN_Sensor.output->CC_Nav.input",
+        "premise": "architecture_context AND MN_Sensor.output_boundary_declared",
+        "conclusion": "compatible_boundary(MN_Sensor.output, CC_Nav.input)",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": "CC_Nav",
+          "related_objects": [
+            "VotedFlightParameter",
+            "VotedFlightParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:CC_Nav.output->IM_Display_L.input",
+        "premise": "architecture_context AND CC_Nav.output_boundary_declared",
+        "conclusion": "compatible_boundary(CC_Nav.output, IM_Display_L.input)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_L",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CheckedNavParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:CC_Nav.output->IM_Display_R.input",
+        "premise": "architecture_context AND CC_Nav.output_boundary_declared",
+        "conclusion": "compatible_boundary(CC_Nav.output, IM_Display_R.input)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_R",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CheckedNavParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:VotedFlightParameter",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(VotedFlightParameter)",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": "CC_Nav",
+          "related_objects": [
+            "VotedFlightParameter",
+            "MN_Sensor",
+            "CC_Nav"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:CheckedNavParameter",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(CheckedNavParameter)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_L",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CC_Nav",
+            "IM_Display_L",
+            "IM_Display_R"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE",
+        "premise": "architecture_context AND parallel_instances_declared",
+        "conclusion": "independent_resources(IM_Display_L, IM_Display_R, ['PWR', 'CPU', 'CLK'])",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": "IM_Display_R",
+          "related_objects": [
+            "IndependentMonitor_L",
+            "DisplayGate_L",
+            "IndependentMonitor_R",
+            "DisplayGate_R"
+          ],
+          "trigger": "parallel_composition",
+          "resource_types": [
+            "PWR",
+            "CPU",
+            "CLK"
+          ]
+        },
+        "status": "COUNTEREXAMPLE",
+        "counterexample": {
+          "component.CheckedNavParameter.dal": "A",
+          "component.CheckedNavParameter.type": "CheckedParameter",
+          "component.CrossComparator.dal": "A",
+          "component.CrossComparator.resource.CLK": "CLK_CMP",
+          "component.CrossComparator.resource.CPU": "CPU_CMP",
+          "component.CrossComparator.resource.PWR": "PWR_CMP",
+          "component.CrossComparator.resource.SW": "SW_CMP",
+          "component.CrossComparator.type": "Comparator",
+          "component.DisplayGate_L.dal": "A",
+          "component.DisplayGate_L.resource.CLK": "CLK_GATE_L",
+          "component.DisplayGate_L.resource.CPU": "CPU_GATE_L",
+          "component.DisplayGate_L.resource.PWR": "PWR_GATE_L",
+          "component.DisplayGate_L.resource.SW": "SW_GATE_L",
+          "component.DisplayGate_L.type": "Gate",
+          "component.DisplayGate_R.dal": "A",
+          "component.DisplayGate_R.resource.CLK": "CLK_GATE_R",
+          "component.DisplayGate_R.resource.CPU": "CPU_GATE_R",
+          "component.DisplayGate_R.resource.PWR": "PWR_GATE_R",
+          "component.DisplayGate_R.resource.SW": "SW_GATE_R",
+          "component.DisplayGate_R.type": "Gate",
+          "component.DisplayParameterOutput_L.dal": "A",
+          "component.DisplayParameterOutput_L.type": "DisplayOutput",
+          "component.DisplayParameterOutput_R.dal": "A",
+          "component.DisplayParameterOutput_R.type": "DisplayOutput",
+          "component.IndependentMonitor_L.dal": "A",
+          "component.IndependentMonitor_L.resource.CLK": "CLK_IM_L",
+          "component.IndependentMonitor_L.resource.CPU": "CPU_IM_L",
+          "component.IndependentMonitor_L.resource.PWR": "PWR_IM_L",
+          "component.IndependentMonitor_L.resource.SW": "SW_IM_L",
+          "component.IndependentMonitor_L.type": "IndependentMonitor",
+          "component.IndependentMonitor_R.dal": "A",
+          "component.IndependentMonitor_R.resource.CLK": "CLK_IM_R",
+          "component.IndependentMonitor_R.resource.CPU": "CPU_IM_L",
+          "component.IndependentMonitor_R.resource.PWR": "PWR_IM_R",
+          "component.IndependentMonitor_R.resource.SW": "SW_IM_R",
+          "component.IndependentMonitor_R.type": "IndependentMonitor",
+          "component.NavProcessor_A.dal": "A",
+          "component.NavProcessor_A.resource.CLK": "CLK_NA",
+          "component.NavProcessor_A.resource.CPU": "CPU_NA",
+          "component.NavProcessor_A.resource.PWR": "PWR_NA",
+          "component.NavProcessor_A.resource.SW": "SW_NAV_A",
+          "component.NavProcessor_A.type": "NavProcessor",
+          "component.NavProcessor_B.dal": "A",
+          "component.NavProcessor_B.resource.CLK": "CLK_NB",
+          "component.NavProcessor_B.resource.CPU": "CPU_NB",
+          "component.NavProcessor_B.resource.PWR": "PWR_NB",
+          "component.NavProcessor_B.resource.SW": "SW_NAV_B",
+          "component.NavProcessor_B.type": "NavProcessor",
+          "component.Sensor_1.dal": "A",
+          "component.Sensor_1.resource.CLK": "CLK_1",
+          "component.Sensor_1.resource.CPU": "CPU_1",
+          "component.Sensor_1.resource.PWR": "PWR_1",
+          "component.Sensor_1.resource.SW": "SW_S1",
+          "component.Sensor_1.type": "Sensor",
+          "component.Sensor_2.dal": "A",
+          "component.Sensor_2.resource.CLK": "CLK_2",
+          "component.Sensor_2.resource.CPU": "CPU_2",
+          "component.Sensor_2.resource.PWR": "PWR_2",
+          "component.Sensor_2.resource.SW": "SW_S2",
+          "component.Sensor_2.type": "Sensor",
+          "component.Sensor_3.dal": "A",
+          "component.Sensor_3.resource.CLK": "CLK_3",
+          "component.Sensor_3.resource.CPU": "CPU_3",
+          "component.Sensor_3.resource.PWR": "PWR_3",
+          "component.Sensor_3.resource.SW": "SW_S3",
+          "component.Sensor_3.type": "Sensor",
+          "component.VotedFlightParameter.dal": "A",
+          "component.VotedFlightParameter.type": "FlightParameter",
+          "component.Voter.dal": "A",
+          "component.Voter.resource.CLK": "CLK_V",
+          "component.Voter.resource.CPU": "CPU_V",
+          "component.Voter.resource.PWR": "PWR_V",
+          "component.Voter.resource.SW": "SW_VOTER",
+          "component.Voter.type": "Voter",
+          "interface.0.dal": "A",
+          "interface.0.owner": "MN_Sensor",
+          "interface.0.port": "output",
+          "interface.0.signal": "VotedFlightParameter",
+          "interface.0.type": "FlightParameter",
+          "interface.1.dal": "A",
+          "interface.1.owner": "CC_Nav",
+          "interface.1.port": "input",
+          "interface.1.signal": "VotedFlightParameter",
+          "interface.1.type": "FlightParameter",
+          "interface.2.dal": "A",
+          "interface.2.owner": "CC_Nav",
+          "interface.2.port": "output",
+          "interface.2.signal": "CheckedNavParameter",
+          "interface.2.type": "CheckedParameter",
+          "interface.3.dal": "A",
+          "interface.3.owner": "IM_Display_L",
+          "interface.3.port": "input",
+          "interface.3.signal": "CheckedNavParameter",
+          "interface.3.type": "CheckedParameter",
+          "interface.4.dal": "A",
+          "interface.4.owner": "IM_Display_R",
+          "interface.4.port": "input",
+          "interface.4.signal": "CheckedNavParameter",
+          "interface.4.type": "CheckedParameter"
+        },
+        "blocked_by": []
+      }
+    ],
+    "failed_obligation": {
+      "id": "PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE",
+      "premise": "architecture_context AND parallel_instances_declared",
+      "conclusion": "independent_resources(IM_Display_L, IM_Display_R, ['PWR', 'CPU', 'CLK'])",
+      "trace": {
+        "source_pattern": "IM_Display_L",
+        "target_pattern": "IM_Display_R",
+        "related_objects": [
+          "IndependentMonitor_L",
+          "DisplayGate_L",
+          "IndependentMonitor_R",
+          "DisplayGate_R"
+        ],
+        "trigger": "parallel_composition",
+        "resource_types": [
+          "PWR",
+          "CPU",
+          "CLK"
+        ]
+      }
+    },
+    "counterexample": {
+      "component.CheckedNavParameter.dal": "A",
+      "component.CheckedNavParameter.type": "CheckedParameter",
+      "component.CrossComparator.dal": "A",
+      "component.CrossComparator.resource.CLK": "CLK_CMP",
+      "component.CrossComparator.resource.CPU": "CPU_CMP",
+      "component.CrossComparator.resource.PWR": "PWR_CMP",
+      "component.CrossComparator.resource.SW": "SW_CMP",
+      "component.CrossComparator.type": "Comparator",
+      "component.DisplayGate_L.dal": "A",
+      "component.DisplayGate_L.resource.CLK": "CLK_GATE_L",
+      "component.DisplayGate_L.resource.CPU": "CPU_GATE_L",
+      "component.DisplayGate_L.resource.PWR": "PWR_GATE_L",
+      "component.DisplayGate_L.resource.SW": "SW_GATE_L",
+      "component.DisplayGate_L.type": "Gate",
+      "component.DisplayGate_R.dal": "A",
+      "component.DisplayGate_R.resource.CLK": "CLK_GATE_R",
+      "component.DisplayGate_R.resource.CPU": "CPU_GATE_R",
+      "component.DisplayGate_R.resource.PWR": "PWR_GATE_R",
+      "component.DisplayGate_R.resource.SW": "SW_GATE_R",
+      "component.DisplayGate_R.type": "Gate",
+      "component.DisplayParameterOutput_L.dal": "A",
+      "component.DisplayParameterOutput_L.type": "DisplayOutput",
+      "component.DisplayParameterOutput_R.dal": "A",
+      "component.DisplayParameterOutput_R.type": "DisplayOutput",
+      "component.IndependentMonitor_L.dal": "A",
+      "component.IndependentMonitor_L.resource.CLK": "CLK_IM_L",
+      "component.IndependentMonitor_L.resource.CPU": "CPU_IM_L",
+      "component.IndependentMonitor_L.resource.PWR": "PWR_IM_L",
+      "component.IndependentMonitor_L.resource.SW": "SW_IM_L",
+      "component.IndependentMonitor_L.type": "IndependentMonitor",
+      "component.IndependentMonitor_R.dal": "A",
+      "component.IndependentMonitor_R.resource.CLK": "CLK_IM_R",
+      "component.IndependentMonitor_R.resource.CPU": "CPU_IM_L",
+      "component.IndependentMonitor_R.resource.PWR": "PWR_IM_R",
+      "component.IndependentMonitor_R.resource.SW": "SW_IM_R",
+      "component.IndependentMonitor_R.type": "IndependentMonitor",
+      "component.NavProcessor_A.dal": "A",
+      "component.NavProcessor_A.resource.CLK": "CLK_NA",
+      "component.NavProcessor_A.resource.CPU": "CPU_NA",
+      "component.NavProcessor_A.resource.PWR": "PWR_NA",
+      "component.NavProcessor_A.resource.SW": "SW_NAV_A",
+      "component.NavProcessor_A.type": "NavProcessor",
+      "component.NavProcessor_B.dal": "A",
+      "component.NavProcessor_B.resource.CLK": "CLK_NB",
+      "component.NavProcessor_B.resource.CPU": "CPU_NB",
+      "component.NavProcessor_B.resource.PWR": "PWR_NB",
+      "component.NavProcessor_B.resource.SW": "SW_NAV_B",
+      "component.NavProcessor_B.type": "NavProcessor",
+      "component.Sensor_1.dal": "A",
+      "component.Sensor_1.resource.CLK": "CLK_1",
+      "component.Sensor_1.resource.CPU": "CPU_1",
+      "component.Sensor_1.resource.PWR": "PWR_1",
+      "component.Sensor_1.resource.SW": "SW_S1",
+      "component.Sensor_1.type": "Sensor",
+      "component.Sensor_2.dal": "A",
+      "component.Sensor_2.resource.CLK": "CLK_2",
+      "component.Sensor_2.resource.CPU": "CPU_2",
+      "component.Sensor_2.resource.PWR": "PWR_2",
+      "component.Sensor_2.resource.SW": "SW_S2",
+      "component.Sensor_2.type": "Sensor",
+      "component.Sensor_3.dal": "A",
+      "component.Sensor_3.resource.CLK": "CLK_3",
+      "component.Sensor_3.resource.CPU": "CPU_3",
+      "component.Sensor_3.resource.PWR": "PWR_3",
+      "component.Sensor_3.resource.SW": "SW_S3",
+      "component.Sensor_3.type": "Sensor",
+      "component.VotedFlightParameter.dal": "A",
+      "component.VotedFlightParameter.type": "FlightParameter",
+      "component.Voter.dal": "A",
+      "component.Voter.resource.CLK": "CLK_V",
+      "component.Voter.resource.CPU": "CPU_V",
+      "component.Voter.resource.PWR": "PWR_V",
+      "component.Voter.resource.SW": "SW_VOTER",
+      "component.Voter.type": "Voter",
+      "interface.0.dal": "A",
+      "interface.0.owner": "MN_Sensor",
+      "interface.0.port": "output",
+      "interface.0.signal": "VotedFlightParameter",
+      "interface.0.type": "FlightParameter",
+      "interface.1.dal": "A",
+      "interface.1.owner": "CC_Nav",
+      "interface.1.port": "input",
+      "interface.1.signal": "VotedFlightParameter",
+      "interface.1.type": "FlightParameter",
+      "interface.2.dal": "A",
+      "interface.2.owner": "CC_Nav",
+      "interface.2.port": "output",
+      "interface.2.signal": "CheckedNavParameter",
+      "interface.2.type": "CheckedParameter",
+      "interface.3.dal": "A",
+      "interface.3.owner": "IM_Display_L",
+      "interface.3.port": "input",
+      "interface.3.signal": "CheckedNavParameter",
+      "interface.3.type": "CheckedParameter",
+      "interface.4.dal": "A",
+      "interface.4.owner": "IM_Display_R",
+      "interface.4.port": "input",
+      "interface.4.signal": "CheckedNavParameter",
+      "interface.4.type": "CheckedParameter"
+    },
+    "guarantees": null,
+    "safety_goal": null,
+    "failure_analysis": null
+  }
+]

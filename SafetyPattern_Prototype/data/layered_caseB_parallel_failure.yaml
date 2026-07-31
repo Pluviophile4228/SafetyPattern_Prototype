@@ -1,0 +1,10 @@
+extends: caseB_parallel_valid.yaml
+case_name: layered_caseB_parallel_failure
+
+# Only the right monitor CPU is rebound; local IM contracts and every boundary
+# connection remain valid, while the explicit parallel resource obligation
+# receives a concrete shared-CPU counterexample.
+components:
+  IndependentMonitor_R:
+    resources:
+      CPU: CPU_IM_L

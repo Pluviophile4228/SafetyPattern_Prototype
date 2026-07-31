@@ -1,0 +1,8 @@
+case,expected_status,observed_status,pass,violated_rule,rule_family,involved_elements,conflict_attribute,conflict_value,message
+caseB_valid,SAT,SAT,true,,,,,,
+caseB_invalid_1_mn_shared_power,UNSAT,UNSAT,true,MN_CHANNEL_RESOURCE_INDEPENDENCE,MN,Sensor_1;Sensor_2,PWR,PWR_1,MN_Sensor: MN input channels Sensor_1;Sensor_2 share PWR=PWR_1
+caseB_invalid_2_cc_shared_cpu,UNSAT,UNSAT,true,CC_COMPARATOR_INDEPENDENCE,CC,NavProcessor_A;NavProcessor_B,CPU,CPU_NA,CC_Nav: NavProcessor_A and NavProcessor_B share CPU=CPU_NA
+caseB_invalid_3_im_monitor_shared_clock,UNSAT,UNSAT,true,IM_MONITOR_INDEPENDENCE,IM,IndependentMonitor;CrossComparator,CLK,CLK_CMP,IM_Display: IndependentMonitor and upstream node CrossComparator share CLK=CLK_CMP
+caseB_invalid_4_interface_dal_conflict,UNSAT,UNSAT,true,INTERFACE_DAL_CONSISTENCY,Interface,CheckedNavParameter,DAL,A;B,"CheckedNavParameter has inconsistent DAL declarations: CC_Nav.output:DAL=A, IM_Display.input:DAL=B"
+caseB_invalid_5_data_path_broken,UNSAT,UNSAT,true,DATA_PATH_CONSISTENCY,Topology,CheckedNavParameter; IM_Display.input,DATA_PATH,CheckedNavParameter!=UncheckedNavParameter,"CC_Nav.output is bound to CheckedNavParameter, but IM_Display.input is bound to UncheckedNavParameter"
+caseB_invalid_6_control_path_missing,UNSAT,UNSAT,true,CONTROL_PATH_CONSISTENCY,Topology,IndependentMonitor; DisplayGate,CONTROL_PATH,MISSING_CONTROL_EDGE,IM_Display: missing control edge IndependentMonitor -> DisplayGate

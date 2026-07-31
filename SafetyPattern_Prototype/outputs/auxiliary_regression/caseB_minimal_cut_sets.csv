@@ -1,0 +1,6 @@
+case,top_event,cut_set_id,events,order
+caseB_valid,HazardousParameterDisplayed,TE3_CS1,F_s1_err;F_s2_err;F_im_miss,3
+caseB_valid,HazardousParameterDisplayed,TE3_CS2,F_s1_err;F_s3_err;F_im_miss,3
+caseB_valid,HazardousParameterDisplayed,TE3_CS3,F_s2_err;F_s3_err;F_im_miss,3
+caseB_valid,HazardousParameterDisplayed,TE3_CS4,F_voter_err;F_im_miss,2
+caseB_valid,HazardousParameterDisplayed,TE3_CS5,F_nav_diff;F_cmp_miss;F_im_miss,3

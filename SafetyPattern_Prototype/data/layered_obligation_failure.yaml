@@ -1,0 +1,2 @@
+extends: caseA_invalid_1_rta_shared_power.yaml
+case_name: layered_obligation_failure

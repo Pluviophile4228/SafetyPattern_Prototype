@@ -1,0 +1,8 @@
+case,expected_status,observed_status,pass,violated_rule,rule_family,involved_elements,conflict_attribute,conflict_value,message
+caseA_valid,SAT,SAT,true,,,,,,
+caseA_invalid_1_rta_shared_power,UNSAT,UNSAT,true,RTA_RESOURCE_INDEPENDENCE,RTA,AdvancedController;SafetyController;SafetyMonitor,PWR,PWR_A,RTA_FCC_A: RTA critical nodes AdvancedController;SafetyController;SafetyMonitor share PWR=PWR_A
+caseA_invalid_2_sr_shared_power,UNSAT,UNSAT,true,SR_PRIMARY_STANDBY_INDEPENDENCE,SR,FCC_A(CommandSelector);FCC_B(StandbyController_B),PWR,PWR_D,FCC_A(CommandSelector) and FCC_B(StandbyController_B) share PWR=PWR_D
+caseA_invalid_3_psc_shared_cpu,UNSAT,UNSAT,true,PSC_CPU_INDEPENDENCE,PSC,ActuatorControlProcessor;DataIntegrityChecker,CPU,CPU_H,PSC_ACU: ActuatorControlProcessor and DataIntegrityChecker share CPU=CPU_H
+caseA_invalid_4_interface_dal_conflict,UNSAT,UNSAT,true,INTERFACE_DAL_CONSISTENCY,Interface,SelectedFCCCommand,DAL,A;B,"SelectedFCCCommand has inconsistent DAL declarations: SR_FCC.output:DAL=A, PSC_ACU.input:DAL=B"
+caseA_invalid_5_data_path_broken,UNSAT,UNSAT,true,DATA_PATH_CONSISTENCY,Topology,SelectedFCCCommand; PSC_ACU.input,DATA_PATH,SelectedFCCCommand!=WrongFCCCommand,"SR_FCC.output is bound to SelectedFCCCommand, but PSC_ACU.input is bound to WrongFCCCommand"
+caseA_invalid_6_control_path_missing,UNSAT,UNSAT,true,CONTROL_PATH_CONSISTENCY,Topology,SafetyMonitor; CommandSelector,CONTROL_PATH,MISSING_CONTROL_EDGE,RTA_FCC_A: missing control edge SafetyMonitor -> CommandSelector

@@ -1,0 +1,288 @@
+case_name: caseA_invalid_1_rta_shared_power
+
+components:
+  FCC_A:
+    kind: composite
+    type: PrimaryChannel
+    dal: A
+    resources: {}
+
+  FCC_B:
+    kind: composite
+    type: StandbyChannel
+    dal: A
+    resources: {}
+
+  RTA_Input:
+    kind: atomic
+    type: Input
+    dal: A
+    resources:
+      PWR: PWR_IN
+      CLK: CLK_IN
+      SW: SW_IN
+      CPU: CPU_IN
+
+  FeatureExtractor:
+    kind: atomic
+    type: Processor
+    dal: B
+    resources:
+      PWR: PWR_FE
+      CLK: CLK_FE
+      SW: SW_FE
+      CPU: CPU_FE
+
+  AdvancedController:
+    kind: atomic
+    type: Controller
+    dal: B
+    resources:
+      PWR: PWR_A
+      CLK: CLK_A
+      SW: SW_A
+      CPU: CPU_A
+
+  PrimaryOutput:
+    kind: atomic
+    type: Output
+    dal: A
+    resources:
+      PWR: PWR_PO
+      CLK: CLK_PO
+      SW: SW_PO
+      CPU: CPU_PO
+
+  SafeInputProcessor:
+    kind: atomic
+    type: Processor
+    dal: A
+    resources:
+      PWR: PWR_SIP
+      CLK: CLK_SIP
+      SW: SW_SIP
+      CPU: CPU_SIP
+
+  SafetyController:
+    kind: atomic
+    type: Controller
+    dal: A
+    resources:
+      PWR: PWR_A
+      CLK: CLK_B
+      SW: SW_B
+      CPU: CPU_B
+
+  SafetyOutput:
+    kind: atomic
+    type: Output
+    dal: A
+    resources:
+      PWR: PWR_SO
+      CLK: CLK_SO
+      SW: SW_SO
+      CPU: CPU_SO
+
+  SafetyMonitor:
+    kind: atomic
+    type: Monitor
+    dal: A
+    resources:
+      PWR: PWR_A
+      CLK: CLK_C
+      SW: SW_C
+      CPU: CPU_C
+
+  CommandSelector:
+    kind: atomic
+    type: Selector
+    dal: A
+    resources:
+      PWR: PWR_D
+      CLK: CLK_D
+      SW: SW_D
+      CPU: CPU_D
+
+  FCCFaultDetector:
+    kind: atomic
+    type: FaultDetector
+    dal: A
+    resources:
+      PWR: PWR_FD
+      CLK: CLK_FD
+      SW: SW_FD
+      CPU: CPU_FD
+
+  FCCSwitchingUnit:
+    kind: atomic
+    type: SwitchingUnit
+    dal: A
+    resources:
+      PWR: PWR_SWU
+      CLK: CLK_SWU
+      SW: SW_SWU
+      CPU: CPU_SWU
+
+  StandbyInput_B:
+    kind: atomic
+    type: Input
+    dal: A
+    resources:
+      PWR: PWR_SBI
+      CLK: CLK_SBI
+      SW: SW_SBI
+      CPU: CPU_SBI
+
+  StandbyController_B:
+    kind: atomic
+    type: Controller
+    dal: A
+    resources:
+      PWR: PWR_E
+      CLK: CLK_E
+      SW: SW_E
+      CPU: CPU_E
+
+  StandbyCommand_B:
+    kind: signal
+    type: FCCCommand
+    dal: A
+    resources: {}
+
+  ACU_Input:
+    kind: atomic
+    type: Input
+    dal: A
+    resources:
+      PWR: PWR_ACU_IN
+      CLK: CLK_ACU_IN
+      SW: SW_ACU_IN
+      CPU: CPU_ACU_IN
+
+  ActuatorControlProcessor:
+    kind: atomic
+    type: Processor
+    dal: A
+    resources:
+      PWR: PWR_H
+      CLK: CLK_H
+      SW: SW_H
+      CPU: CPU_H
+
+  DataIntegrityChecker:
+    kind: atomic
+    type: Checker
+    dal: A
+    resources:
+      PWR: PWR_I
+      CLK: CLK_I
+      SW: SW_I
+      CPU: CPU_I
+
+  AnomalyMonitor:
+    kind: atomic
+    type: Monitor
+    dal: A
+    resources:
+      PWR: PWR_J
+      CLK: CLK_J
+      SW: SW_J
+      CPU: CPU_J
+
+  ActuatorCommandOutput:
+    kind: signal
+    type: ActuatorCommand
+    dal: A
+    resources: {}
+
+interfaces:
+  - signal: PrimaryCommand_A
+    owner: RTA_FCC_A
+    port: output
+    type: FCCCommand
+    dal: A
+
+  - signal: PrimaryCommand_A
+    owner: SR_FCC
+    port: primaryChannel.output
+    type: FCCCommand
+    dal: A
+
+  - signal: StandbyCommand_B
+    owner: SR_FCC
+    port: standbyChannel.output
+    type: FCCCommand
+    dal: A
+
+  - signal: SelectedFCCCommand
+    owner: SR_FCC
+    port: output
+    type: FCCCommand
+    dal: A
+
+  - signal: SelectedFCCCommand
+    owner: PSC_ACU
+    port: input
+    type: FCCCommand
+    dal: A
+
+patterns:
+  - id: RTA_FCC_A
+    kind: RTA
+    roles:
+      input: RTA_Input
+      feature_extractor: FeatureExtractor
+      advanced_controller: AdvancedController
+      primary_output: PrimaryOutput
+      safe_input_processor: SafeInputProcessor
+      safety_controller: SafetyController
+      safety_output: SafetyOutput
+      safety_monitor: SafetyMonitor
+      command_selector: CommandSelector
+      output: PrimaryCommand_A
+
+  - id: SR_FCC
+    kind: SR
+    roles:
+      primary_channel: FCC_A
+      standby_channel: FCC_B
+      fault_detector: FCCFaultDetector
+      switching_unit: FCCSwitchingUnit
+      primary_output: PrimaryCommand_A
+      standby_output: StandbyCommand_B
+      output: SelectedFCCCommand
+      primary_critical_nodes:
+        - AdvancedController
+        - SafetyController
+        - SafetyMonitor
+        - CommandSelector
+      standby_critical_nodes:
+        - StandbyController_B
+
+  - id: PSC_ACU
+    kind: PSC
+    roles:
+      input: SelectedFCCCommand
+      acu_input: ACU_Input
+      actuator_control_processor: ActuatorControlProcessor
+      data_integrity_checker: DataIntegrityChecker
+      anomaly_monitor: AnomalyMonitor
+      output: ActuatorCommandOutput
+
+edges:
+  - source: SafetyMonitor
+    target: CommandSelector
+    kind: control
+
+  - source: FCCFaultDetector
+    target: FCCSwitchingUnit
+    kind: control
+
+relations:
+  - kind: contains
+    parent: SR_FCC.primaryChannel
+    child: RTA_FCC_A
+
+  - kind: sequence
+    source: SR_FCC.output
+    target: PSC_ACU.input

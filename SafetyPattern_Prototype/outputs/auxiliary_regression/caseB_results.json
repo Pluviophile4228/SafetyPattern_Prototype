@@ -1,0 +1,136 @@
+{
+  "case": "caseB_nav_display_chain",
+  "consistency": [
+    {
+      "case": "caseB_valid",
+      "status": "SAT",
+      "violations": []
+    },
+    {
+      "case": "caseB_invalid_1_mn_shared_power",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "MN_CHANNEL_RESOURCE_INDEPENDENCE",
+          "rule_family": "MN",
+          "involved_elements": "Sensor_1;Sensor_2",
+          "conflict_attribute": "PWR",
+          "conflict_value": "PWR_1",
+          "message": "MN_Sensor: MN input channels Sensor_1;Sensor_2 share PWR=PWR_1"
+        }
+      ]
+    },
+    {
+      "case": "caseB_invalid_2_cc_shared_cpu",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "CC_COMPARATOR_INDEPENDENCE",
+          "rule_family": "CC",
+          "involved_elements": "NavProcessor_A;NavProcessor_B",
+          "conflict_attribute": "CPU",
+          "conflict_value": "CPU_NA",
+          "message": "CC_Nav: NavProcessor_A and NavProcessor_B share CPU=CPU_NA"
+        }
+      ]
+    },
+    {
+      "case": "caseB_invalid_3_im_monitor_shared_clock",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "IM_MONITOR_INDEPENDENCE",
+          "rule_family": "IM",
+          "involved_elements": "IndependentMonitor;CrossComparator",
+          "conflict_attribute": "CLK",
+          "conflict_value": "CLK_CMP",
+          "message": "IM_Display: IndependentMonitor and upstream node CrossComparator share CLK=CLK_CMP"
+        }
+      ]
+    },
+    {
+      "case": "caseB_invalid_4_interface_dal_conflict",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "INTERFACE_DAL_CONSISTENCY",
+          "rule_family": "Interface",
+          "involved_elements": "CheckedNavParameter",
+          "conflict_attribute": "DAL",
+          "conflict_value": "A;B",
+          "message": "CheckedNavParameter has inconsistent DAL declarations: CC_Nav.output:DAL=A, IM_Display.input:DAL=B"
+        }
+      ]
+    },
+    {
+      "case": "caseB_invalid_5_data_path_broken",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "DATA_PATH_CONSISTENCY",
+          "rule_family": "Topology",
+          "involved_elements": "CheckedNavParameter; IM_Display.input",
+          "conflict_attribute": "DATA_PATH",
+          "conflict_value": "CheckedNavParameter!=UncheckedNavParameter",
+          "message": "CC_Nav.output is bound to CheckedNavParameter, but IM_Display.input is bound to UncheckedNavParameter"
+        }
+      ]
+    },
+    {
+      "case": "caseB_invalid_6_control_path_missing",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "CONTROL_PATH_CONSISTENCY",
+          "rule_family": "Topology",
+          "involved_elements": "IndependentMonitor; DisplayGate",
+          "conflict_attribute": "CONTROL_PATH",
+          "conflict_value": "MISSING_CONTROL_EDGE",
+          "message": "IM_Display: missing control edge IndependentMonitor -> DisplayGate"
+        }
+      ]
+    }
+  ],
+  "top_event": {
+    "id": "TE_3",
+    "name": "HazardousParameterDisplayed",
+    "expression": "TE_3 = [(F_s1_err and F_s2_err) or (F_s1_err and F_s3_err) or (F_s2_err and F_s3_err) or F_voter_err or (F_nav_diff and F_cmp_miss)] and F_im_miss",
+    "minimal_cut_sets": [
+      {
+        "case": "caseB_valid",
+        "top_event": "HazardousParameterDisplayed",
+        "cut_set_id": "TE3_CS1",
+        "events": "F_s1_err;F_s2_err;F_im_miss",
+        "order": "3"
+      },
+      {
+        "case": "caseB_valid",
+        "top_event": "HazardousParameterDisplayed",
+        "cut_set_id": "TE3_CS2",
+        "events": "F_s1_err;F_s3_err;F_im_miss",
+        "order": "3"
+      },
+      {
+        "case": "caseB_valid",
+        "top_event": "HazardousParameterDisplayed",
+        "cut_set_id": "TE3_CS3",
+        "events": "F_s2_err;F_s3_err;F_im_miss",
+        "order": "3"
+      },
+      {
+        "case": "caseB_valid",
+        "top_event": "HazardousParameterDisplayed",
+        "cut_set_id": "TE3_CS4",
+        "events": "F_voter_err;F_im_miss",
+        "order": "2"
+      },
+      {
+        "case": "caseB_valid",
+        "top_event": "HazardousParameterDisplayed",
+        "cut_set_id": "TE3_CS5",
+        "events": "F_nav_diff;F_cmp_miss;F_im_miss",
+        "order": "3"
+      }
+    ]
+  }
+}

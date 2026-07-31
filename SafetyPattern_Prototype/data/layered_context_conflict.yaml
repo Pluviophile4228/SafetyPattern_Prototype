@@ -1,0 +1,11 @@
+extends: caseA_valid.yaml
+case_name: layered_context_conflict
+
+# A second architecture declaration assigns a different power source to the
+# same bound object.  The context solver must report both declarations in its
+# UNSAT core before any contract obligation is checked.
+context_assertions:
+  - id: CTX_ADVANCED_CONTROLLER_PWR_CONFLICT
+    subject: AdvancedController
+    attribute: resource:PWR
+    value: PWR_CONFLICT

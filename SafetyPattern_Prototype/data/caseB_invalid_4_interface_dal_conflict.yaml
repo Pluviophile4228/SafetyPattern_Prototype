@@ -1,0 +1,194 @@
+case_name: caseB_invalid_4_interface_dal_conflict
+
+components:
+  Sensor_1:
+    kind: atomic
+    type: Sensor
+    dal: A
+    resources:
+      PWR: PWR_1
+      CLK: CLK_1
+      SW: SW_S1
+      CPU: CPU_1
+
+  Sensor_2:
+    kind: atomic
+    type: Sensor
+    dal: A
+    resources:
+      PWR: PWR_2
+      CLK: CLK_2
+      SW: SW_S2
+      CPU: CPU_2
+
+  Sensor_3:
+    kind: atomic
+    type: Sensor
+    dal: A
+    resources:
+      PWR: PWR_3
+      CLK: CLK_3
+      SW: SW_S3
+      CPU: CPU_3
+
+  Voter:
+    kind: atomic
+    type: Voter
+    dal: A
+    resources:
+      PWR: PWR_V
+      CLK: CLK_V
+      SW: SW_VOTER
+      CPU: CPU_V
+
+  VotedFlightParameter:
+    kind: signal
+    type: FlightParameter
+    dal: A
+    resources:
+      PWR: null
+      CLK: null
+      SW: null
+      CPU: null
+
+  NavProcessor_A:
+    kind: atomic
+    type: NavProcessor
+    dal: A
+    resources:
+      PWR: PWR_NA
+      CLK: CLK_NA
+      SW: SW_NAV_A
+      CPU: CPU_NA
+
+  NavProcessor_B:
+    kind: atomic
+    type: NavProcessor
+    dal: A
+    resources:
+      PWR: PWR_NB
+      CLK: CLK_NB
+      SW: SW_NAV_B
+      CPU: CPU_NB
+
+  CrossComparator:
+    kind: atomic
+    type: Comparator
+    dal: A
+    resources:
+      PWR: PWR_CMP
+      CLK: CLK_CMP
+      SW: SW_CMP
+      CPU: CPU_CMP
+
+  CheckedNavParameter:
+    kind: signal
+    type: CheckedParameter
+    dal: A
+    resources:
+      PWR: null
+      CLK: null
+      SW: null
+      CPU: null
+
+  IndependentMonitor:
+    kind: atomic
+    type: IndependentMonitor
+    dal: A
+    resources:
+      PWR: PWR_IM
+      CLK: CLK_IM
+      SW: SW_IM
+      CPU: CPU_IM
+
+  DisplayGate:
+    kind: atomic
+    type: Gate
+    dal: A
+    resources:
+      PWR: PWR_GATE
+      CLK: CLK_GATE
+      SW: SW_GATE
+      CPU: CPU_GATE
+
+  DisplayParameterOutput:
+    kind: signal
+    type: DisplayOutput
+    dal: A
+    resources:
+      PWR: null
+      CLK: null
+      SW: null
+      CPU: null
+
+interfaces:
+  - signal: VotedFlightParameter
+    owner: MN_Sensor
+    port: output
+    type: FlightParameter
+    dal: A
+
+  - signal: VotedFlightParameter
+    owner: CC_Nav
+    port: input
+    type: FlightParameter
+    dal: A
+
+  - signal: CheckedNavParameter
+    owner: CC_Nav
+    port: output
+    type: CheckedParameter
+    dal: A
+
+  - signal: CheckedNavParameter
+    owner: IM_Display
+    port: input
+    type: CheckedParameter
+    dal: B
+
+patterns:
+  - id: MN_Sensor
+    kind: MN
+    roles:
+      inputChannels:
+        - Sensor_1
+        - Sensor_2
+        - Sensor_3
+      voter: Voter
+      output: VotedFlightParameter
+
+  - id: CC_Nav
+    kind: CC
+    roles:
+      input: VotedFlightParameter
+      channelA: NavProcessor_A
+      channelB: NavProcessor_B
+      comparator: CrossComparator
+      output: CheckedNavParameter
+
+  - id: IM_Display
+    kind: IM
+    roles:
+      input: CheckedNavParameter
+      monitor: IndependentMonitor
+      gate: DisplayGate
+      output: DisplayParameterOutput
+      upstream_critical_nodes:
+        - NavProcessor_A
+        - NavProcessor_B
+        - CrossComparator
+
+edges:
+  - source: IndependentMonitor
+    target: DisplayGate
+    kind: control
+
+
+relations:
+  - kind: sequence
+    source: MN_Sensor.output
+    target: CC_Nav.input
+
+  - kind: sequence
+    source: CC_Nav.output
+    target: IM_Display.input

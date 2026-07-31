@@ -1,0 +1,1470 @@
+[
+  {
+    "case_name": "caseB_parallel_valid",
+    "status": "ANALYSIS_COMPLETED",
+    "stage": "failure_analysis",
+    "obligation_count": 15,
+    "context_objects": {
+      "MN_Sensor": [
+        "Sensor_1",
+        "Sensor_2",
+        "Sensor_3",
+        "VotedFlightParameter",
+        "Voter"
+      ],
+      "CC_Nav": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "NavProcessor_A",
+        "NavProcessor_B",
+        "VotedFlightParameter"
+      ],
+      "IM_Display_L": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "DisplayGate_L",
+        "DisplayParameterOutput_L",
+        "IndependentMonitor_L",
+        "NavProcessor_A",
+        "NavProcessor_B"
+      ],
+      "IM_Display_R": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "DisplayGate_R",
+        "DisplayParameterOutput_R",
+        "IndependentMonitor_R",
+        "NavProcessor_A",
+        "NavProcessor_B"
+      ]
+    },
+    "unsat_core": [],
+    "instance_results": [
+      {
+        "pattern_id": "MN_Sensor",
+        "type_status": "TYPE_OK",
+        "type_diagnostics": [],
+        "embedding_status": "EMBEDDED",
+        "embedding_diagnostics": [],
+        "instantiation_status": "VALID",
+        "instantiation_diagnostics": [],
+        "context_status": "CONSISTENT",
+        "local_premise_results": [
+          {
+            "id": "MN_Sensor:CHANNEL_INDEPENDENCE",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          },
+          {
+            "id": "MN_Sensor:VOTER_DAL",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          }
+        ],
+        "instance_status": "ESTABLISHED",
+        "released_evidence": [
+          "guarantee:MN_Sensor:OUTPUT_BOUNDARY_DECLARED",
+          "instance:MN_Sensor:ESTABLISHED"
+        ]
+      },
+      {
+        "pattern_id": "CC_Nav",
+        "type_status": "TYPE_OK",
+        "type_diagnostics": [],
+        "embedding_status": "EMBEDDED",
+        "embedding_diagnostics": [],
+        "instantiation_status": "VALID",
+        "instantiation_diagnostics": [],
+        "context_status": "CONSISTENT",
+        "local_premise_results": [
+          {
+            "id": "CC_Nav:CHANNEL_INDEPENDENCE",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          },
+          {
+            "id": "CC_Nav:COMPARATOR_A_CPU",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          },
+          {
+            "id": "CC_Nav:COMPARATOR_B_CPU",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          }
+        ],
+        "instance_status": "ESTABLISHED",
+        "released_evidence": [
+          "guarantee:CC_Nav:OUTPUT_BOUNDARY_DECLARED",
+          "instance:CC_Nav:ESTABLISHED"
+        ]
+      },
+      {
+        "pattern_id": "IM_Display_L",
+        "type_status": "TYPE_OK",
+        "type_diagnostics": [],
+        "embedding_status": "EMBEDDED",
+        "embedding_diagnostics": [],
+        "instantiation_status": "VALID",
+        "instantiation_diagnostics": [],
+        "context_status": "CONSISTENT",
+        "local_premise_results": [
+          {
+            "id": "IM_Display_L:MONITOR_INDEPENDENCE",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          },
+          {
+            "id": "IM_Display_L:CONTROL_PATH",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          }
+        ],
+        "instance_status": "ESTABLISHED",
+        "released_evidence": [
+          "guarantee:IM_Display_L:OUTPUT_BOUNDARY_DECLARED",
+          "instance:IM_Display_L:ESTABLISHED"
+        ]
+      },
+      {
+        "pattern_id": "IM_Display_R",
+        "type_status": "TYPE_OK",
+        "type_diagnostics": [],
+        "embedding_status": "EMBEDDED",
+        "embedding_diagnostics": [],
+        "instantiation_status": "VALID",
+        "instantiation_diagnostics": [],
+        "context_status": "CONSISTENT",
+        "local_premise_results": [
+          {
+            "id": "IM_Display_R:MONITOR_INDEPENDENCE",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          },
+          {
+            "id": "IM_Display_R:CONTROL_PATH",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          }
+        ],
+        "instance_status": "ESTABLISHED",
+        "released_evidence": [
+          "guarantee:IM_Display_R:OUTPUT_BOUNDARY_DECLARED",
+          "instance:IM_Display_R:ESTABLISHED"
+        ]
+      }
+    ],
+    "combination_status": "ESTABLISHED",
+    "failure_spec_status": "COMPLETE",
+    "smt_query_count": 31,
+    "obligation_results": [
+      {
+        "id": "MN_Sensor:CHANNEL_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "MN_Sensor.CHANNEL_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": null,
+          "related_objects": [
+            "Sensor_1",
+            "Sensor_2",
+            "Sensor_3"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "MN_Sensor:VOTER_DAL",
+        "premise": "architecture_context",
+        "conclusion": "MN_Sensor.VOTER_DAL",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": null,
+          "related_objects": [
+            "Voter",
+            "VotedFlightParameter"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:CHANNEL_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.CHANNEL_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_A",
+            "NavProcessor_B"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:COMPARATOR_A_CPU",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.COMPARATOR_A_CPU",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_A",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:COMPARATOR_B_CPU",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.COMPARATOR_B_CPU",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_L:MONITOR_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_L.MONITOR_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_L",
+            "NavProcessor_A",
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_L:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_L.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_L",
+            "DisplayGate_L"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_R:MONITOR_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_R.MONITOR_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "IM_Display_R",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_R",
+            "NavProcessor_A",
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_R:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_R.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "IM_Display_R",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_R",
+            "DisplayGate_R"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:MN_Sensor.output->CC_Nav.input",
+        "premise": "architecture_context AND MN_Sensor.output_boundary_declared",
+        "conclusion": "compatible_boundary(MN_Sensor.output, CC_Nav.input)",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": "CC_Nav",
+          "related_objects": [
+            "VotedFlightParameter",
+            "VotedFlightParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "dependencies": [
+          "guarantee:MN_Sensor:OUTPUT_BOUNDARY_DECLARED"
+        ],
+        "conclusion_evidence": "conclusion:FLOW:MN_Sensor.output->CC_Nav.input",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:CC_Nav.output->IM_Display_L.input",
+        "premise": "architecture_context AND CC_Nav.output_boundary_declared",
+        "conclusion": "compatible_boundary(CC_Nav.output, IM_Display_L.input)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_L",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CheckedNavParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "dependencies": [
+          "guarantee:CC_Nav:OUTPUT_BOUNDARY_DECLARED"
+        ],
+        "conclusion_evidence": "conclusion:FLOW:CC_Nav.output->IM_Display_L.input",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:CC_Nav.output->IM_Display_R.input",
+        "premise": "architecture_context AND CC_Nav.output_boundary_declared",
+        "conclusion": "compatible_boundary(CC_Nav.output, IM_Display_R.input)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_R",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CheckedNavParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "dependencies": [
+          "guarantee:CC_Nav:OUTPUT_BOUNDARY_DECLARED"
+        ],
+        "conclusion_evidence": "conclusion:FLOW:CC_Nav.output->IM_Display_R.input",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:VotedFlightParameter",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(VotedFlightParameter)",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": "CC_Nav",
+          "related_objects": [
+            "VotedFlightParameter",
+            "MN_Sensor",
+            "CC_Nav"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": "conclusion:OVERLAP_SIGNATURE:VotedFlightParameter",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:CheckedNavParameter",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(CheckedNavParameter)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_L",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CC_Nav",
+            "IM_Display_L",
+            "IM_Display_R"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": "conclusion:OVERLAP_SIGNATURE:CheckedNavParameter",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE",
+        "premise": "architecture_context AND parallel_instances_declared",
+        "conclusion": "independent_resources(IM_Display_L, IM_Display_R, ['PWR', 'CPU', 'CLK'])",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": "IM_Display_R",
+          "related_objects": [
+            "IndependentMonitor_L",
+            "DisplayGate_L",
+            "IndependentMonitor_R",
+            "DisplayGate_R"
+          ],
+          "trigger": "parallel_composition",
+          "resource_types": [
+            "PWR",
+            "CPU",
+            "CLK"
+          ]
+        },
+        "dependencies": [
+          "instance:IM_Display_L:ESTABLISHED",
+          "instance:IM_Display_R:ESTABLISHED"
+        ],
+        "conclusion_evidence": "conclusion:PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      }
+    ],
+    "failed_obligation": null,
+    "counterexample": null,
+    "available_evidence": [
+      "conclusion:FLOW:CC_Nav.output->IM_Display_L.input",
+      "conclusion:FLOW:CC_Nav.output->IM_Display_R.input",
+      "conclusion:FLOW:MN_Sensor.output->CC_Nav.input",
+      "conclusion:OVERLAP_SIGNATURE:CheckedNavParameter",
+      "conclusion:OVERLAP_SIGNATURE:VotedFlightParameter",
+      "conclusion:PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE",
+      "guarantee:CC_Nav:OUTPUT_BOUNDARY_DECLARED",
+      "guarantee:IM_Display_L:OUTPUT_BOUNDARY_DECLARED",
+      "guarantee:IM_Display_R:OUTPUT_BOUNDARY_DECLARED",
+      "guarantee:MN_Sensor:OUTPUT_BOUNDARY_DECLARED",
+      "instance:CC_Nav:ESTABLISHED",
+      "instance:IM_Display_L:ESTABLISHED",
+      "instance:IM_Display_R:ESTABLISHED",
+      "instance:MN_Sensor:ESTABLISHED"
+    ],
+    "failure_analysis": {
+      "HazardousParameterDisplayed": {
+        "status": "EXPANDED",
+        "diagnostic": null,
+        "expression": "((((F_s1_err and F_s2_err) or (F_s1_err and F_s3_err) or (F_s2_err and F_s3_err) or F_voter_err or (F_nav_diff and F_cmp_miss)) and F_im_l_miss) or (((F_s1_err and F_s2_err) or (F_s1_err and F_s3_err) or (F_s2_err and F_s3_err) or F_voter_err or (F_nav_diff and F_cmp_miss)) and F_im_r_miss))",
+        "monotone": true,
+        "expansion_trace": {
+          "top_event": "HazardousParameterDisplayed",
+          "substitutions": [
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "IM_Display_L",
+              "event": "IM_Display_L.hazardous_display"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "IM_Display_L.input_hazard",
+              "source_event": "CC_Nav.output_hazard",
+              "connection": {
+                "source": "CC_Nav.output",
+                "target": "IM_Display_L.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "CC_Nav",
+              "event": "CC_Nav.output_hazard"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "CC_Nav.input_hazard",
+              "source_event": "MN_Sensor.output_hazard",
+              "connection": {
+                "source": "MN_Sensor.output",
+                "target": "CC_Nav.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "MN_Sensor",
+              "event": "MN_Sensor.output_hazard"
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "IM_Display_R",
+              "event": "IM_Display_R.hazardous_display"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "IM_Display_R.input_hazard",
+              "source_event": "CC_Nav.output_hazard",
+              "connection": {
+                "source": "CC_Nav.output",
+                "target": "IM_Display_R.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "CC_Nav",
+              "event": "CC_Nav.output_hazard"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "CC_Nav.input_hazard",
+              "source_event": "MN_Sensor.output_hazard",
+              "connection": {
+                "source": "MN_Sensor.output",
+                "target": "CC_Nav.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "MN_Sensor",
+              "event": "MN_Sensor.output_hazard"
+            }
+          ],
+          "basic_event_sources": {
+            "F_cmp_miss": [
+              "CC_Nav.output_hazard"
+            ],
+            "F_im_l_miss": [
+              "IM_Display_L.hazardous_display"
+            ],
+            "F_im_r_miss": [
+              "IM_Display_R.hazardous_display"
+            ],
+            "F_nav_diff": [
+              "CC_Nav.output_hazard"
+            ],
+            "F_s1_err": [
+              "MN_Sensor.output_hazard"
+            ],
+            "F_s2_err": [
+              "MN_Sensor.output_hazard"
+            ],
+            "F_s3_err": [
+              "MN_Sensor.output_hazard"
+            ],
+            "F_voter_err": [
+              "MN_Sensor.output_hazard"
+            ]
+          }
+        },
+        "minimal_cut_sets": [
+          "F_s1_err;F_s2_err;F_im_l_miss",
+          "F_s1_err;F_s3_err;F_im_l_miss",
+          "F_s2_err;F_s3_err;F_im_l_miss",
+          "F_voter_err;F_im_l_miss",
+          "F_nav_diff;F_cmp_miss;F_im_l_miss",
+          "F_s1_err;F_s2_err;F_im_r_miss",
+          "F_s1_err;F_s3_err;F_im_r_miss",
+          "F_s2_err;F_s3_err;F_im_r_miss",
+          "F_voter_err;F_im_r_miss",
+          "F_nav_diff;F_cmp_miss;F_im_r_miss"
+        ]
+      },
+      "LossOfTrustedParameterDisplay": {
+        "status": "EXPANDED",
+        "diagnostic": null,
+        "expression": "((F_mn_output_loss or F_cc_output_loss or F_im_l_unavailable) and (F_mn_output_loss or F_cc_output_loss or F_im_r_unavailable))",
+        "monotone": true,
+        "expansion_trace": {
+          "top_event": "LossOfTrustedParameterDisplay",
+          "substitutions": [
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "IM_Display_L",
+              "event": "IM_Display_L.loss_trusted_display"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "IM_Display_L.input_loss",
+              "source_event": "CC_Nav.trusted_output_loss",
+              "connection": {
+                "source": "CC_Nav.output",
+                "target": "IM_Display_L.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "CC_Nav",
+              "event": "CC_Nav.trusted_output_loss"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "CC_Nav.input_loss",
+              "source_event": "MN_Sensor.output_loss",
+              "connection": {
+                "source": "MN_Sensor.output",
+                "target": "CC_Nav.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "MN_Sensor",
+              "event": "MN_Sensor.output_loss"
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "IM_Display_R",
+              "event": "IM_Display_R.loss_trusted_display"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "IM_Display_R.input_loss",
+              "source_event": "CC_Nav.trusted_output_loss",
+              "connection": {
+                "source": "CC_Nav.output",
+                "target": "IM_Display_R.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "CC_Nav",
+              "event": "CC_Nav.trusted_output_loss"
+            },
+            {
+              "kind": "boundary_transfer",
+              "event": "CC_Nav.input_loss",
+              "source_event": "MN_Sensor.output_loss",
+              "connection": {
+                "source": "MN_Sensor.output",
+                "target": "CC_Nav.input"
+              }
+            },
+            {
+              "kind": "local_pattern_formula",
+              "pattern": "MN_Sensor",
+              "event": "MN_Sensor.output_loss"
+            },
+            {
+              "kind": "parallel_composition",
+              "left_instance": "IM_Display_L",
+              "right_instance": "IM_Display_R",
+              "left_event": "IM_Display_L.loss_trusted_display",
+              "right_event": "IM_Display_R.loss_trusted_display",
+              "operator": "AND"
+            }
+          ],
+          "basic_event_sources": {
+            "F_cc_output_loss": [
+              "CC_Nav.trusted_output_loss"
+            ],
+            "F_im_l_unavailable": [
+              "IM_Display_L.loss_trusted_display"
+            ],
+            "F_im_r_unavailable": [
+              "IM_Display_R.loss_trusted_display"
+            ],
+            "F_mn_output_loss": [
+              "MN_Sensor.output_loss"
+            ]
+          }
+        },
+        "minimal_cut_sets": [
+          "F_mn_output_loss",
+          "F_cc_output_loss",
+          "F_im_l_unavailable;F_im_r_unavailable"
+        ]
+      }
+    }
+  },
+  {
+    "case_name": "layered_caseB_parallel_failure",
+    "status": "COMBINATION_NOT_ESTABLISHED",
+    "stage": "combination",
+    "obligation_count": 15,
+    "context_objects": {
+      "MN_Sensor": [
+        "Sensor_1",
+        "Sensor_2",
+        "Sensor_3",
+        "VotedFlightParameter",
+        "Voter"
+      ],
+      "CC_Nav": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "NavProcessor_A",
+        "NavProcessor_B",
+        "VotedFlightParameter"
+      ],
+      "IM_Display_L": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "DisplayGate_L",
+        "DisplayParameterOutput_L",
+        "IndependentMonitor_L",
+        "NavProcessor_A",
+        "NavProcessor_B"
+      ],
+      "IM_Display_R": [
+        "CheckedNavParameter",
+        "CrossComparator",
+        "DisplayGate_R",
+        "DisplayParameterOutput_R",
+        "IndependentMonitor_R",
+        "NavProcessor_A",
+        "NavProcessor_B"
+      ]
+    },
+    "unsat_core": [],
+    "instance_results": [
+      {
+        "pattern_id": "MN_Sensor",
+        "type_status": "TYPE_OK",
+        "type_diagnostics": [],
+        "embedding_status": "EMBEDDED",
+        "embedding_diagnostics": [],
+        "instantiation_status": "VALID",
+        "instantiation_diagnostics": [],
+        "context_status": "CONSISTENT",
+        "local_premise_results": [
+          {
+            "id": "MN_Sensor:CHANNEL_INDEPENDENCE",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          },
+          {
+            "id": "MN_Sensor:VOTER_DAL",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          }
+        ],
+        "instance_status": "ESTABLISHED",
+        "released_evidence": [
+          "guarantee:MN_Sensor:OUTPUT_BOUNDARY_DECLARED",
+          "instance:MN_Sensor:ESTABLISHED"
+        ]
+      },
+      {
+        "pattern_id": "CC_Nav",
+        "type_status": "TYPE_OK",
+        "type_diagnostics": [],
+        "embedding_status": "EMBEDDED",
+        "embedding_diagnostics": [],
+        "instantiation_status": "VALID",
+        "instantiation_diagnostics": [],
+        "context_status": "CONSISTENT",
+        "local_premise_results": [
+          {
+            "id": "CC_Nav:CHANNEL_INDEPENDENCE",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          },
+          {
+            "id": "CC_Nav:COMPARATOR_A_CPU",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          },
+          {
+            "id": "CC_Nav:COMPARATOR_B_CPU",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          }
+        ],
+        "instance_status": "ESTABLISHED",
+        "released_evidence": [
+          "guarantee:CC_Nav:OUTPUT_BOUNDARY_DECLARED",
+          "instance:CC_Nav:ESTABLISHED"
+        ]
+      },
+      {
+        "pattern_id": "IM_Display_L",
+        "type_status": "TYPE_OK",
+        "type_diagnostics": [],
+        "embedding_status": "EMBEDDED",
+        "embedding_diagnostics": [],
+        "instantiation_status": "VALID",
+        "instantiation_diagnostics": [],
+        "context_status": "CONSISTENT",
+        "local_premise_results": [
+          {
+            "id": "IM_Display_L:MONITOR_INDEPENDENCE",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          },
+          {
+            "id": "IM_Display_L:CONTROL_PATH",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          }
+        ],
+        "instance_status": "ESTABLISHED",
+        "released_evidence": [
+          "guarantee:IM_Display_L:OUTPUT_BOUNDARY_DECLARED",
+          "instance:IM_Display_L:ESTABLISHED"
+        ]
+      },
+      {
+        "pattern_id": "IM_Display_R",
+        "type_status": "TYPE_OK",
+        "type_diagnostics": [],
+        "embedding_status": "EMBEDDED",
+        "embedding_diagnostics": [],
+        "instantiation_status": "VALID",
+        "instantiation_diagnostics": [],
+        "context_status": "CONSISTENT",
+        "local_premise_results": [
+          {
+            "id": "IM_Display_R:MONITOR_INDEPENDENCE",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          },
+          {
+            "id": "IM_Display_R:CONTROL_PATH",
+            "status": "PROVED",
+            "counterexample": null,
+            "blocked_by": []
+          }
+        ],
+        "instance_status": "ESTABLISHED",
+        "released_evidence": [
+          "guarantee:IM_Display_R:OUTPUT_BOUNDARY_DECLARED",
+          "instance:IM_Display_R:ESTABLISHED"
+        ]
+      }
+    ],
+    "combination_status": "NOT_ESTABLISHED",
+    "failure_spec_status": null,
+    "smt_query_count": 31,
+    "obligation_results": [
+      {
+        "id": "MN_Sensor:CHANNEL_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "MN_Sensor.CHANNEL_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": null,
+          "related_objects": [
+            "Sensor_1",
+            "Sensor_2",
+            "Sensor_3"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "MN_Sensor:VOTER_DAL",
+        "premise": "architecture_context",
+        "conclusion": "MN_Sensor.VOTER_DAL",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": null,
+          "related_objects": [
+            "Voter",
+            "VotedFlightParameter"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:CHANNEL_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.CHANNEL_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_A",
+            "NavProcessor_B"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:COMPARATOR_A_CPU",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.COMPARATOR_A_CPU",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_A",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "CC_Nav:COMPARATOR_B_CPU",
+        "premise": "architecture_context",
+        "conclusion": "CC_Nav.COMPARATOR_B_CPU",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": null,
+          "related_objects": [
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_L:MONITOR_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_L.MONITOR_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_L",
+            "NavProcessor_A",
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_L:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_L.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_L",
+            "DisplayGate_L"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_R:MONITOR_INDEPENDENCE",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_R.MONITOR_INDEPENDENCE",
+        "trace": {
+          "source_pattern": "IM_Display_R",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_R",
+            "NavProcessor_A",
+            "NavProcessor_B",
+            "CrossComparator"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "IM_Display_R:CONTROL_PATH",
+        "premise": "architecture_context",
+        "conclusion": "IM_Display_R.CONTROL_PATH",
+        "trace": {
+          "source_pattern": "IM_Display_R",
+          "target_pattern": null,
+          "related_objects": [
+            "IndependentMonitor_R",
+            "DisplayGate_R"
+          ],
+          "trigger": "local_contract",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": null,
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:MN_Sensor.output->CC_Nav.input",
+        "premise": "architecture_context AND MN_Sensor.output_boundary_declared",
+        "conclusion": "compatible_boundary(MN_Sensor.output, CC_Nav.input)",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": "CC_Nav",
+          "related_objects": [
+            "VotedFlightParameter",
+            "VotedFlightParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "dependencies": [
+          "guarantee:MN_Sensor:OUTPUT_BOUNDARY_DECLARED"
+        ],
+        "conclusion_evidence": "conclusion:FLOW:MN_Sensor.output->CC_Nav.input",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:CC_Nav.output->IM_Display_L.input",
+        "premise": "architecture_context AND CC_Nav.output_boundary_declared",
+        "conclusion": "compatible_boundary(CC_Nav.output, IM_Display_L.input)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_L",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CheckedNavParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "dependencies": [
+          "guarantee:CC_Nav:OUTPUT_BOUNDARY_DECLARED"
+        ],
+        "conclusion_evidence": "conclusion:FLOW:CC_Nav.output->IM_Display_L.input",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "FLOW:CC_Nav.output->IM_Display_R.input",
+        "premise": "architecture_context AND CC_Nav.output_boundary_declared",
+        "conclusion": "compatible_boundary(CC_Nav.output, IM_Display_R.input)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_R",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CheckedNavParameter"
+          ],
+          "trigger": "boundary_connection",
+          "resource_types": []
+        },
+        "dependencies": [
+          "guarantee:CC_Nav:OUTPUT_BOUNDARY_DECLARED"
+        ],
+        "conclusion_evidence": "conclusion:FLOW:CC_Nav.output->IM_Display_R.input",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:VotedFlightParameter",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(VotedFlightParameter)",
+        "trace": {
+          "source_pattern": "MN_Sensor",
+          "target_pattern": "CC_Nav",
+          "related_objects": [
+            "VotedFlightParameter",
+            "MN_Sensor",
+            "CC_Nav"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": "conclusion:OVERLAP_SIGNATURE:VotedFlightParameter",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "OVERLAP_SIGNATURE:CheckedNavParameter",
+        "premise": "architecture_context",
+        "conclusion": "compatible_signature(CheckedNavParameter)",
+        "trace": {
+          "source_pattern": "CC_Nav",
+          "target_pattern": "IM_Display_L",
+          "related_objects": [
+            "CheckedNavParameter",
+            "CC_Nav",
+            "IM_Display_L",
+            "IM_Display_R"
+          ],
+          "trigger": "context_overlap:shared_boundary",
+          "resource_types": []
+        },
+        "dependencies": [],
+        "conclusion_evidence": "conclusion:OVERLAP_SIGNATURE:CheckedNavParameter",
+        "status": "PROVED",
+        "counterexample": null,
+        "blocked_by": []
+      },
+      {
+        "id": "PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE",
+        "premise": "architecture_context AND parallel_instances_declared",
+        "conclusion": "independent_resources(IM_Display_L, IM_Display_R, ['PWR', 'CPU', 'CLK'])",
+        "trace": {
+          "source_pattern": "IM_Display_L",
+          "target_pattern": "IM_Display_R",
+          "related_objects": [
+            "IndependentMonitor_L",
+            "DisplayGate_L",
+            "IndependentMonitor_R",
+            "DisplayGate_R"
+          ],
+          "trigger": "parallel_composition",
+          "resource_types": [
+            "PWR",
+            "CPU",
+            "CLK"
+          ]
+        },
+        "dependencies": [
+          "instance:IM_Display_L:ESTABLISHED",
+          "instance:IM_Display_R:ESTABLISHED"
+        ],
+        "conclusion_evidence": "conclusion:PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE",
+        "status": "OBLIGATION_FAILED",
+        "counterexample": {
+          "component.CheckedNavParameter.dal": "A",
+          "component.CheckedNavParameter.type": "CheckedParameter",
+          "component.CrossComparator.dal": "A",
+          "component.CrossComparator.resource.CLK": "CLK_CMP",
+          "component.CrossComparator.resource.CPU": "CPU_CMP",
+          "component.CrossComparator.resource.PWR": "PWR_CMP",
+          "component.CrossComparator.resource.SW": "SW_CMP",
+          "component.CrossComparator.type": "Comparator",
+          "component.DisplayGate_L.dal": "A",
+          "component.DisplayGate_L.resource.CLK": "CLK_GATE_L",
+          "component.DisplayGate_L.resource.CPU": "CPU_GATE_L",
+          "component.DisplayGate_L.resource.PWR": "PWR_GATE_L",
+          "component.DisplayGate_L.resource.SW": "SW_GATE_L",
+          "component.DisplayGate_L.type": "Gate",
+          "component.DisplayGate_R.dal": "A",
+          "component.DisplayGate_R.resource.CLK": "CLK_GATE_R",
+          "component.DisplayGate_R.resource.CPU": "CPU_GATE_R",
+          "component.DisplayGate_R.resource.PWR": "PWR_GATE_R",
+          "component.DisplayGate_R.resource.SW": "SW_GATE_R",
+          "component.DisplayGate_R.type": "Gate",
+          "component.DisplayParameterOutput_L.dal": "A",
+          "component.DisplayParameterOutput_L.type": "DisplayOutput",
+          "component.DisplayParameterOutput_R.dal": "A",
+          "component.DisplayParameterOutput_R.type": "DisplayOutput",
+          "component.IndependentMonitor_L.dal": "A",
+          "component.IndependentMonitor_L.resource.CLK": "CLK_IM_L",
+          "component.IndependentMonitor_L.resource.CPU": "CPU_IM_L",
+          "component.IndependentMonitor_L.resource.PWR": "PWR_IM_L",
+          "component.IndependentMonitor_L.resource.SW": "SW_IM_L",
+          "component.IndependentMonitor_L.type": "IndependentMonitor",
+          "component.IndependentMonitor_R.dal": "A",
+          "component.IndependentMonitor_R.resource.CLK": "CLK_IM_R",
+          "component.IndependentMonitor_R.resource.CPU": "CPU_IM_L",
+          "component.IndependentMonitor_R.resource.PWR": "PWR_IM_R",
+          "component.IndependentMonitor_R.resource.SW": "SW_IM_R",
+          "component.IndependentMonitor_R.type": "IndependentMonitor",
+          "component.NavProcessor_A.dal": "A",
+          "component.NavProcessor_A.resource.CLK": "CLK_NA",
+          "component.NavProcessor_A.resource.CPU": "CPU_NA",
+          "component.NavProcessor_A.resource.PWR": "PWR_NA",
+          "component.NavProcessor_A.resource.SW": "SW_NAV_A",
+          "component.NavProcessor_A.type": "NavProcessor",
+          "component.NavProcessor_B.dal": "A",
+          "component.NavProcessor_B.resource.CLK": "CLK_NB",
+          "component.NavProcessor_B.resource.CPU": "CPU_NB",
+          "component.NavProcessor_B.resource.PWR": "PWR_NB",
+          "component.NavProcessor_B.resource.SW": "SW_NAV_B",
+          "component.NavProcessor_B.type": "NavProcessor",
+          "component.Sensor_1.dal": "A",
+          "component.Sensor_1.resource.CLK": "CLK_1",
+          "component.Sensor_1.resource.CPU": "CPU_1",
+          "component.Sensor_1.resource.PWR": "PWR_1",
+          "component.Sensor_1.resource.SW": "SW_S1",
+          "component.Sensor_1.type": "Sensor",
+          "component.Sensor_2.dal": "A",
+          "component.Sensor_2.resource.CLK": "CLK_2",
+          "component.Sensor_2.resource.CPU": "CPU_2",
+          "component.Sensor_2.resource.PWR": "PWR_2",
+          "component.Sensor_2.resource.SW": "SW_S2",
+          "component.Sensor_2.type": "Sensor",
+          "component.Sensor_3.dal": "A",
+          "component.Sensor_3.resource.CLK": "CLK_3",
+          "component.Sensor_3.resource.CPU": "CPU_3",
+          "component.Sensor_3.resource.PWR": "PWR_3",
+          "component.Sensor_3.resource.SW": "SW_S3",
+          "component.Sensor_3.type": "Sensor",
+          "component.VotedFlightParameter.dal": "A",
+          "component.VotedFlightParameter.type": "FlightParameter",
+          "component.Voter.dal": "A",
+          "component.Voter.resource.CLK": "CLK_V",
+          "component.Voter.resource.CPU": "CPU_V",
+          "component.Voter.resource.PWR": "PWR_V",
+          "component.Voter.resource.SW": "SW_VOTER",
+          "component.Voter.type": "Voter",
+          "interface.0.dal": "A",
+          "interface.0.owner": "MN_Sensor",
+          "interface.0.port": "output",
+          "interface.0.signal": "VotedFlightParameter",
+          "interface.0.type": "FlightParameter",
+          "interface.1.dal": "A",
+          "interface.1.owner": "CC_Nav",
+          "interface.1.port": "input",
+          "interface.1.signal": "VotedFlightParameter",
+          "interface.1.type": "FlightParameter",
+          "interface.2.dal": "A",
+          "interface.2.owner": "CC_Nav",
+          "interface.2.port": "output",
+          "interface.2.signal": "CheckedNavParameter",
+          "interface.2.type": "CheckedParameter",
+          "interface.3.dal": "A",
+          "interface.3.owner": "IM_Display_L",
+          "interface.3.port": "input",
+          "interface.3.signal": "CheckedNavParameter",
+          "interface.3.type": "CheckedParameter",
+          "interface.4.dal": "A",
+          "interface.4.owner": "IM_Display_R",
+          "interface.4.port": "input",
+          "interface.4.signal": "CheckedNavParameter",
+          "interface.4.type": "CheckedParameter"
+        },
+        "blocked_by": []
+      }
+    ],
+    "failed_obligation": {
+      "id": "PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE",
+      "premise": "architecture_context AND parallel_instances_declared",
+      "conclusion": "independent_resources(IM_Display_L, IM_Display_R, ['PWR', 'CPU', 'CLK'])",
+      "trace": {
+        "source_pattern": "IM_Display_L",
+        "target_pattern": "IM_Display_R",
+        "related_objects": [
+          "IndependentMonitor_L",
+          "DisplayGate_L",
+          "IndependentMonitor_R",
+          "DisplayGate_R"
+        ],
+        "trigger": "parallel_composition",
+        "resource_types": [
+          "PWR",
+          "CPU",
+          "CLK"
+        ]
+      },
+      "dependencies": [
+        "instance:IM_Display_L:ESTABLISHED",
+        "instance:IM_Display_R:ESTABLISHED"
+      ],
+      "conclusion_evidence": "conclusion:PARALLEL:IM_Display_L<->IM_Display_R:RESOURCE_INDEPENDENCE"
+    },
+    "counterexample": {
+      "component.CheckedNavParameter.dal": "A",
+      "component.CheckedNavParameter.type": "CheckedParameter",
+      "component.CrossComparator.dal": "A",
+      "component.CrossComparator.resource.CLK": "CLK_CMP",
+      "component.CrossComparator.resource.CPU": "CPU_CMP",
+      "component.CrossComparator.resource.PWR": "PWR_CMP",
+      "component.CrossComparator.resource.SW": "SW_CMP",
+      "component.CrossComparator.type": "Comparator",
+      "component.DisplayGate_L.dal": "A",
+      "component.DisplayGate_L.resource.CLK": "CLK_GATE_L",
+      "component.DisplayGate_L.resource.CPU": "CPU_GATE_L",
+      "component.DisplayGate_L.resource.PWR": "PWR_GATE_L",
+      "component.DisplayGate_L.resource.SW": "SW_GATE_L",
+      "component.DisplayGate_L.type": "Gate",
+      "component.DisplayGate_R.dal": "A",
+      "component.DisplayGate_R.resource.CLK": "CLK_GATE_R",
+      "component.DisplayGate_R.resource.CPU": "CPU_GATE_R",
+      "component.DisplayGate_R.resource.PWR": "PWR_GATE_R",
+      "component.DisplayGate_R.resource.SW": "SW_GATE_R",
+      "component.DisplayGate_R.type": "Gate",
+      "component.DisplayParameterOutput_L.dal": "A",
+      "component.DisplayParameterOutput_L.type": "DisplayOutput",
+      "component.DisplayParameterOutput_R.dal": "A",
+      "component.DisplayParameterOutput_R.type": "DisplayOutput",
+      "component.IndependentMonitor_L.dal": "A",
+      "component.IndependentMonitor_L.resource.CLK": "CLK_IM_L",
+      "component.IndependentMonitor_L.resource.CPU": "CPU_IM_L",
+      "component.IndependentMonitor_L.resource.PWR": "PWR_IM_L",
+      "component.IndependentMonitor_L.resource.SW": "SW_IM_L",
+      "component.IndependentMonitor_L.type": "IndependentMonitor",
+      "component.IndependentMonitor_R.dal": "A",
+      "component.IndependentMonitor_R.resource.CLK": "CLK_IM_R",
+      "component.IndependentMonitor_R.resource.CPU": "CPU_IM_L",
+      "component.IndependentMonitor_R.resource.PWR": "PWR_IM_R",
+      "component.IndependentMonitor_R.resource.SW": "SW_IM_R",
+      "component.IndependentMonitor_R.type": "IndependentMonitor",
+      "component.NavProcessor_A.dal": "A",
+      "component.NavProcessor_A.resource.CLK": "CLK_NA",
+      "component.NavProcessor_A.resource.CPU": "CPU_NA",
+      "component.NavProcessor_A.resource.PWR": "PWR_NA",
+      "component.NavProcessor_A.resource.SW": "SW_NAV_A",
+      "component.NavProcessor_A.type": "NavProcessor",
+      "component.NavProcessor_B.dal": "A",
+      "component.NavProcessor_B.resource.CLK": "CLK_NB",
+      "component.NavProcessor_B.resource.CPU": "CPU_NB",
+      "component.NavProcessor_B.resource.PWR": "PWR_NB",
+      "component.NavProcessor_B.resource.SW": "SW_NAV_B",
+      "component.NavProcessor_B.type": "NavProcessor",
+      "component.Sensor_1.dal": "A",
+      "component.Sensor_1.resource.CLK": "CLK_1",
+      "component.Sensor_1.resource.CPU": "CPU_1",
+      "component.Sensor_1.resource.PWR": "PWR_1",
+      "component.Sensor_1.resource.SW": "SW_S1",
+      "component.Sensor_1.type": "Sensor",
+      "component.Sensor_2.dal": "A",
+      "component.Sensor_2.resource.CLK": "CLK_2",
+      "component.Sensor_2.resource.CPU": "CPU_2",
+      "component.Sensor_2.resource.PWR": "PWR_2",
+      "component.Sensor_2.resource.SW": "SW_S2",
+      "component.Sensor_2.type": "Sensor",
+      "component.Sensor_3.dal": "A",
+      "component.Sensor_3.resource.CLK": "CLK_3",
+      "component.Sensor_3.resource.CPU": "CPU_3",
+      "component.Sensor_3.resource.PWR": "PWR_3",
+      "component.Sensor_3.resource.SW": "SW_S3",
+      "component.Sensor_3.type": "Sensor",
+      "component.VotedFlightParameter.dal": "A",
+      "component.VotedFlightParameter.type": "FlightParameter",
+      "component.Voter.dal": "A",
+      "component.Voter.resource.CLK": "CLK_V",
+      "component.Voter.resource.CPU": "CPU_V",
+      "component.Voter.resource.PWR": "PWR_V",
+      "component.Voter.resource.SW": "SW_VOTER",
+      "component.Voter.type": "Voter",
+      "interface.0.dal": "A",
+      "interface.0.owner": "MN_Sensor",
+      "interface.0.port": "output",
+      "interface.0.signal": "VotedFlightParameter",
+      "interface.0.type": "FlightParameter",
+      "interface.1.dal": "A",
+      "interface.1.owner": "CC_Nav",
+      "interface.1.port": "input",
+      "interface.1.signal": "VotedFlightParameter",
+      "interface.1.type": "FlightParameter",
+      "interface.2.dal": "A",
+      "interface.2.owner": "CC_Nav",
+      "interface.2.port": "output",
+      "interface.2.signal": "CheckedNavParameter",
+      "interface.2.type": "CheckedParameter",
+      "interface.3.dal": "A",
+      "interface.3.owner": "IM_Display_L",
+      "interface.3.port": "input",
+      "interface.3.signal": "CheckedNavParameter",
+      "interface.3.type": "CheckedParameter",
+      "interface.4.dal": "A",
+      "interface.4.owner": "IM_Display_R",
+      "interface.4.port": "input",
+      "interface.4.signal": "CheckedNavParameter",
+      "interface.4.type": "CheckedParameter"
+    },
+    "available_evidence": [
+      "conclusion:FLOW:CC_Nav.output->IM_Display_L.input",
+      "conclusion:FLOW:CC_Nav.output->IM_Display_R.input",
+      "conclusion:FLOW:MN_Sensor.output->CC_Nav.input",
+      "conclusion:OVERLAP_SIGNATURE:CheckedNavParameter",
+      "conclusion:OVERLAP_SIGNATURE:VotedFlightParameter",
+      "guarantee:CC_Nav:OUTPUT_BOUNDARY_DECLARED",
+      "guarantee:IM_Display_L:OUTPUT_BOUNDARY_DECLARED",
+      "guarantee:IM_Display_R:OUTPUT_BOUNDARY_DECLARED",
+      "guarantee:MN_Sensor:OUTPUT_BOUNDARY_DECLARED",
+      "instance:CC_Nav:ESTABLISHED",
+      "instance:IM_Display_L:ESTABLISHED",
+      "instance:IM_Display_R:ESTABLISHED",
+      "instance:MN_Sensor:ESTABLISHED"
+    ],
+    "failure_analysis": null
+  }
+]

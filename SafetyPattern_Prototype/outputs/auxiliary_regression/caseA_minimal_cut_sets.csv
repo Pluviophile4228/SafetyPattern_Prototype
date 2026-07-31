@@ -1,0 +1,10 @@
+case,top_event,cut_set_id,events,order
+caseA_valid,LossOfActuatorCommand,TE1_CS1,F_FCCA_LOF;F_FCCB_LOF,2
+caseA_valid,LossOfActuatorCommand,TE1_CS2,F_FCCA_LOF;F_fd_miss,2
+caseA_valid,LossOfActuatorCommand,TE1_CS3,F_FCCA_LOF;F_sw_fail,2
+caseA_valid,LossOfActuatorCommand,TE1_CS4,F_dp_perm,1
+caseA_valid,LossOfActuatorCommand,TE1_CS5,F_dp_trans;F_recover_fail,2
+caseA_valid,HazardousActuatorCommand,TE2_CS1,F_adv_vio;F_mon_miss,2
+caseA_valid,HazardousActuatorCommand,TE2_CS2,F_adv_vio;F_safe_fail,2
+caseA_valid,HazardousActuatorCommand,TE2_CS3,F_adv_vio;F_sel_fail,2
+caseA_valid,HazardousActuatorCommand,TE2_CS4,F_dp_err;F_am_miss,2

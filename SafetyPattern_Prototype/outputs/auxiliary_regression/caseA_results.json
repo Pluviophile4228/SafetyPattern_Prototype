@@ -1,0 +1,162 @@
+{
+  "case": "caseA_flight_control_chain",
+  "consistency": [
+    {
+      "case": "caseA_valid",
+      "status": "SAT",
+      "violations": []
+    },
+    {
+      "case": "caseA_invalid_1_rta_shared_power",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "RTA_RESOURCE_INDEPENDENCE",
+          "rule_family": "RTA",
+          "involved_elements": "AdvancedController;SafetyController;SafetyMonitor",
+          "conflict_attribute": "PWR",
+          "conflict_value": "PWR_A",
+          "message": "RTA_FCC_A: RTA critical nodes AdvancedController;SafetyController;SafetyMonitor share PWR=PWR_A"
+        }
+      ]
+    },
+    {
+      "case": "caseA_invalid_2_sr_shared_power",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "SR_PRIMARY_STANDBY_INDEPENDENCE",
+          "rule_family": "SR",
+          "involved_elements": "FCC_A(CommandSelector);FCC_B(StandbyController_B)",
+          "conflict_attribute": "PWR",
+          "conflict_value": "PWR_D",
+          "message": "FCC_A(CommandSelector) and FCC_B(StandbyController_B) share PWR=PWR_D"
+        }
+      ]
+    },
+    {
+      "case": "caseA_invalid_3_psc_shared_cpu",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "PSC_CPU_INDEPENDENCE",
+          "rule_family": "PSC",
+          "involved_elements": "ActuatorControlProcessor;DataIntegrityChecker",
+          "conflict_attribute": "CPU",
+          "conflict_value": "CPU_H",
+          "message": "PSC_ACU: ActuatorControlProcessor and DataIntegrityChecker share CPU=CPU_H"
+        }
+      ]
+    },
+    {
+      "case": "caseA_invalid_4_interface_dal_conflict",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "INTERFACE_DAL_CONSISTENCY",
+          "rule_family": "Interface",
+          "involved_elements": "SelectedFCCCommand",
+          "conflict_attribute": "DAL",
+          "conflict_value": "A;B",
+          "message": "SelectedFCCCommand has inconsistent DAL declarations: SR_FCC.output:DAL=A, PSC_ACU.input:DAL=B"
+        }
+      ]
+    },
+    {
+      "case": "caseA_invalid_5_data_path_broken",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "DATA_PATH_CONSISTENCY",
+          "rule_family": "Topology",
+          "involved_elements": "SelectedFCCCommand; PSC_ACU.input",
+          "conflict_attribute": "DATA_PATH",
+          "conflict_value": "SelectedFCCCommand!=WrongFCCCommand",
+          "message": "SR_FCC.output is bound to SelectedFCCCommand, but PSC_ACU.input is bound to WrongFCCCommand"
+        }
+      ]
+    },
+    {
+      "case": "caseA_invalid_6_control_path_missing",
+      "status": "UNSAT",
+      "violations": [
+        {
+          "rule_id": "CONTROL_PATH_CONSISTENCY",
+          "rule_family": "Topology",
+          "involved_elements": "SafetyMonitor; CommandSelector",
+          "conflict_attribute": "CONTROL_PATH",
+          "conflict_value": "MISSING_CONTROL_EDGE",
+          "message": "RTA_FCC_A: missing control edge SafetyMonitor -> CommandSelector"
+        }
+      ]
+    }
+  ],
+  "top_events": {
+    "expression": "TE_1 = (F_FCCA_LOF and (F_FCCB_LOF or F_fd_miss or F_sw_fail)) or F_dp_perm or (F_dp_trans and F_recover_fail)\nTE_2 = (F_adv_vio and (F_mon_miss or F_safe_fail or F_sel_fail)) or (F_dp_err and F_am_miss)",
+    "minimal_cut_sets": [
+      {
+        "case": "caseA_valid",
+        "top_event": "LossOfActuatorCommand",
+        "cut_set_id": "TE1_CS1",
+        "events": "F_FCCA_LOF;F_FCCB_LOF",
+        "order": "2"
+      },
+      {
+        "case": "caseA_valid",
+        "top_event": "LossOfActuatorCommand",
+        "cut_set_id": "TE1_CS2",
+        "events": "F_FCCA_LOF;F_fd_miss",
+        "order": "2"
+      },
+      {
+        "case": "caseA_valid",
+        "top_event": "LossOfActuatorCommand",
+        "cut_set_id": "TE1_CS3",
+        "events": "F_FCCA_LOF;F_sw_fail",
+        "order": "2"
+      },
+      {
+        "case": "caseA_valid",
+        "top_event": "LossOfActuatorCommand",
+        "cut_set_id": "TE1_CS4",
+        "events": "F_dp_perm",
+        "order": "1"
+      },
+      {
+        "case": "caseA_valid",
+        "top_event": "LossOfActuatorCommand",
+        "cut_set_id": "TE1_CS5",
+        "events": "F_dp_trans;F_recover_fail",
+        "order": "2"
+      },
+      {
+        "case": "caseA_valid",
+        "top_event": "HazardousActuatorCommand",
+        "cut_set_id": "TE2_CS1",
+        "events": "F_adv_vio;F_mon_miss",
+        "order": "2"
+      },
+      {
+        "case": "caseA_valid",
+        "top_event": "HazardousActuatorCommand",
+        "cut_set_id": "TE2_CS2",
+        "events": "F_adv_vio;F_safe_fail",
+        "order": "2"
+      },
+      {
+        "case": "caseA_valid",
+        "top_event": "HazardousActuatorCommand",
+        "cut_set_id": "TE2_CS3",
+        "events": "F_adv_vio;F_sel_fail",
+        "order": "2"
+      },
+      {
+        "case": "caseA_valid",
+        "top_event": "HazardousActuatorCommand",
+        "cut_set_id": "TE2_CS4",
+        "events": "F_dp_err;F_am_miss",
+        "order": "2"
+      }
+    ]
+  }
+}
