@@ -1,12 +1,18 @@
 # Architecture descriptions and formal mapping
 
-## Three separate stages
+## Executed workflow
 
-1. Native modeling projects and preparation of the structured case description. `models/caseA.sml2` and `models/CaseB.sml2` contain the Case A/B projects; `models/SafetyPattern.sml2` contains an SRP modeling example. All three include the same embedded `config.sml2` dependency. The structured YAML descriptions are the executable case inputs. The prototype supplies no automatic SysML-to-YAML converter or historical element-mapping log. See `models/README.md` for the supplied project contents and the remaining authoring-process details.
-2. YAML to Python architecture objects. `src/checker.py:_load_architecture_dict()` reads YAML and resolves `extends`; `load_architecture()` calls `src/model.py:architecture_from_dict()`.
-3. Python architecture objects to facts and checks. `src/establishment.py:ArchitectureContext` creates typed/named fact variables and formulas. Structural relations also participate in Python-level context queries and obligation generation.
+1. Structured YAML to Python architecture objects. `src/checker.py:_load_architecture_dict()` reads YAML and resolves `extends`; `load_architecture()` calls `src/model.py:architecture_from_dict()`.
+2. Python architecture objects to facts and constraints. `src/establishment.py:ArchitectureContext` creates typed/named fact variables and formulas. Structural relations also participate in Python-level context queries and obligation generation.
+3. Obligation generation and checking. `build_obligations()` constructs the obligations; the checker evaluates them using the architecture context and SMT backend, then aggregates the establishment result. Failure expansion follows when composition establishment succeeds.
 
-The prototype's executable input is a structured description, not a directly parsed SysML v2 model.
+This is the implemented transformation and verification path. Its entry point is the structured architecture description.
+
+## Native architecture representations
+
+`models/caseA.sml2` and `models/CaseB.sml2` preserve the native Case A/B architecture projects; `models/SafetyPattern.sml2` contains an SRP modeling example. All three include the same embedded `config.sml2` dependency. These files are supplementary architecture-representation material, not inputs consumed by the Python checker.
+
+No historical manual preparation record or native-model/YAML authoring order is supplied in this archive, and the author cannot currently reconstruct those steps. The archive therefore provides no claimed native-model-to-YAML execution step, automatic SysML-to-YAML converter or historical element-mapping log. It retains the native projects and the executable YAML as separate supplied materials. The field handling and formal mapping below document the implemented YAML-based path.
 
 ## Input fields
 
@@ -53,7 +59,7 @@ Component names are preserved in fact keys such as `component.<name>.resource.CP
 
 ## Supplied native models and name correspondence
 
-The native project containers, their embedded configuration containers and their SQLite databases were read successfully during the November 12 packaging review. No project was opened or resaved in MDesign-V2 during that review.
+The native project containers, their embedded configuration containers and their SQLite databases were read successfully during the November 12 packaging review. No project was opened or resaved in M-Design V2 during that review.
 
 The review compared active `notation` records with `ebnf_key=identification` to the YAML object names:
 
@@ -62,15 +68,14 @@ The review compared active `notation` records with `ebnf_key=identification` to 
 | `models/caseA.sml2` | `data/caseA_valid.yaml` | 17 of 21 | 3 of 3 |
 | `models/CaseB.sml2` | `data/caseB_parallel_valid.yaml` with its parent `caseB_valid.yaml` | 15 of 15 | 4 of 4 |
 
-For Case A, `RTA_Input`, `StandbyInput_B`, `StandbyController_B` and `StandbyCommand_B` have no exact same-name identification record. The project contains names including `A_input`, `B_input` and `FCC_B_Processor`; assigning these to the four YAML objects requires the author's confirmation of the intended boundaries and bindings. No correspondence has been assigned solely from name similarity.
+For Case A, `RTA_Input`, `StandbyInput_B`, `StandbyController_B` and `StandbyCommand_B` have no exact same-name identification record. The author could not recover their historical correspondences. These four mappings remain unrecorded; no assignment has been made from name similarity. The 17/21 and 15/15 results above are name comparisons, not an element-level semantic-equivalence check.
 
 These are newly prepared name-comparison observations, not a historical model-to-YAML conversion record. The native `require_data_mapping` table contains no records in any of the three supplied projects, and no separate SysML-element-to-YAML correspondence file is supplied.
 
-## Modeling preparation to confirm
+## Historical preparation and current application access
 
-- Actual native-model/YAML authoring order and manual actions.
-- MDesign-V2 application version, native opening of the supplied projects and resolution of the embedded configuration after relocation.
-- View names and saved versions used for the paper.
-- The four Case A object correspondences above, and any existing element-ID-to-YAML correspondence records. A table prepared now should be identified as a new correspondence table.
+- The manual model/YAML preparation order, view-version correspondence and four Case A mappings are not recoverable from the retained records. They are recorded as unavailable historical information, not as completed transformation steps.
+- The author used a trial edition of M-Design V2 and cannot currently open the projects. Their exact application build and post-relocation native opening have not been accepted. Original local path metadata is retained in the supplied files.
+- If original correspondence records or a usable modeling environment become available later, any additional mapping or portability check should be recorded as new evidence with its own date and provenance.
 
 The supplied modeling projects and the existing YAML-to-Python-to-fact implementation document separate parts of the workflow. The executable transformation begins with the structured YAML description.
