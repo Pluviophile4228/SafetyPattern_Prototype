@@ -1,0 +1,187 @@
+warmup K= 1 variant=valid resources=isolated repetition=1
+warmup K= 1 variant=valid resources=chain_independent repetition=1
+warmup K= 2 variant=valid resources=isolated repetition=1
+warmup K= 2 variant=valid resources=chain_independent repetition=1
+warmup K= 4 variant=valid resources=isolated repetition=1
+warmup K= 4 variant=valid resources=chain_independent repetition=1
+warmup K= 8 variant=valid resources=isolated repetition=1
+warmup K= 8 variant=valid resources=chain_independent repetition=1
+warmup K=16 variant=valid resources=isolated repetition=1
+warmup K=16 variant=valid resources=chain_independent repetition=1
+warmup K=32 variant=valid resources=isolated repetition=1
+warmup K=32 variant=valid resources=chain_independent repetition=1
+warmup K=64 variant=valid resources=isolated repetition=1
+warmup K=64 variant=valid resources=chain_independent repetition=1
+K= 1 variant=valid              resources=isolated           repetition=1 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=isolated           repetition=2 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=isolated           repetition=3 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=isolated           repetition=4 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=isolated           repetition=5 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=isolated           repetition=6 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=isolated           repetition=7 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=isolated           repetition=8 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=isolated           repetition=9 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=isolated           repetition=10 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=chain_independent  repetition=1 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=chain_independent  repetition=2 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=chain_independent  repetition=3 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=chain_independent  repetition=4 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=chain_independent  repetition=5 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=chain_independent  repetition=6 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=chain_independent  repetition=7 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=chain_independent  repetition=8 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=chain_independent  repetition=9 status=ANALYSIS_COMPLETED
+K= 1 variant=valid              resources=chain_independent  repetition=10 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=isolated           repetition=1 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=isolated           repetition=2 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=isolated           repetition=3 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=isolated           repetition=4 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=isolated           repetition=5 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=isolated           repetition=6 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=isolated           repetition=7 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=isolated           repetition=8 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=isolated           repetition=9 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=isolated           repetition=10 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=chain_independent  repetition=1 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=chain_independent  repetition=2 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=chain_independent  repetition=3 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=chain_independent  repetition=4 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=chain_independent  repetition=5 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=chain_independent  repetition=6 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=chain_independent  repetition=7 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=chain_independent  repetition=8 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=chain_independent  repetition=9 status=ANALYSIS_COMPLETED
+K= 2 variant=valid              resources=chain_independent  repetition=10 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=isolated           repetition=1 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=isolated           repetition=2 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=isolated           repetition=3 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=isolated           repetition=4 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=isolated           repetition=5 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=isolated           repetition=6 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=isolated           repetition=7 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=isolated           repetition=8 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=isolated           repetition=9 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=isolated           repetition=10 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=chain_independent  repetition=1 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=chain_independent  repetition=2 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=chain_independent  repetition=3 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=chain_independent  repetition=4 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=chain_independent  repetition=5 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=chain_independent  repetition=6 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=chain_independent  repetition=7 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=chain_independent  repetition=8 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=chain_independent  repetition=9 status=ANALYSIS_COMPLETED
+K= 4 variant=valid              resources=chain_independent  repetition=10 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=isolated           repetition=1 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=isolated           repetition=2 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=isolated           repetition=3 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=isolated           repetition=4 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=isolated           repetition=5 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=isolated           repetition=6 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=isolated           repetition=7 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=isolated           repetition=8 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=isolated           repetition=9 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=isolated           repetition=10 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=chain_independent  repetition=1 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=chain_independent  repetition=2 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=chain_independent  repetition=3 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=chain_independent  repetition=4 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=chain_independent  repetition=5 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=chain_independent  repetition=6 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=chain_independent  repetition=7 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=chain_independent  repetition=8 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=chain_independent  repetition=9 status=ANALYSIS_COMPLETED
+K= 8 variant=valid              resources=chain_independent  repetition=10 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=isolated           repetition=1 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=isolated           repetition=2 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=isolated           repetition=3 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=isolated           repetition=4 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=isolated           repetition=5 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=isolated           repetition=6 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=isolated           repetition=7 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=isolated           repetition=8 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=isolated           repetition=9 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=isolated           repetition=10 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=chain_independent  repetition=1 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=chain_independent  repetition=2 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=chain_independent  repetition=3 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=chain_independent  repetition=4 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=chain_independent  repetition=5 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=chain_independent  repetition=6 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=chain_independent  repetition=7 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=chain_independent  repetition=8 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=chain_independent  repetition=9 status=ANALYSIS_COMPLETED
+K=16 variant=valid              resources=chain_independent  repetition=10 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=isolated           repetition=1 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=isolated           repetition=2 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=isolated           repetition=3 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=isolated           repetition=4 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=isolated           repetition=5 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=isolated           repetition=6 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=isolated           repetition=7 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=isolated           repetition=8 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=isolated           repetition=9 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=isolated           repetition=10 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=chain_independent  repetition=1 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=chain_independent  repetition=2 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=chain_independent  repetition=3 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=chain_independent  repetition=4 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=chain_independent  repetition=5 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=chain_independent  repetition=6 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=chain_independent  repetition=7 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=chain_independent  repetition=8 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=chain_independent  repetition=9 status=ANALYSIS_COMPLETED
+K=32 variant=valid              resources=chain_independent  repetition=10 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=isolated           repetition=1 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=isolated           repetition=2 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=isolated           repetition=3 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=isolated           repetition=4 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=isolated           repetition=5 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=isolated           repetition=6 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=isolated           repetition=7 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=isolated           repetition=8 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=isolated           repetition=9 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=isolated           repetition=10 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=chain_independent  repetition=1 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=chain_independent  repetition=2 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=chain_independent  repetition=3 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=chain_independent  repetition=4 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=chain_independent  repetition=5 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=chain_independent  repetition=6 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=chain_independent  repetition=7 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=chain_independent  repetition=8 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=chain_independent  repetition=9 status=ANALYSIS_COMPLETED
+K=64 variant=valid              resources=chain_independent  repetition=10 status=ANALYSIS_COMPLETED
+{
+  "formal_records_validated": 140,
+  "warmup_records_validated": 14,
+  "all_counts_and_local_evidence_checked": true,
+  "all_cross_unit_traces_checked": true,
+  "source_fingerprints_match": true
+}
+K | configuration | instances | objects | relations | obligations | median verification ms
+1 | chain_independent | 7 | 36 | 6 | 28 | 104.3072
+1 | isolated | 7 | 36 | 6 | 28 | 101.5367
+2 | chain_independent | 14 | 72 | 13 | 57 | 278.1613
+2 | isolated | 14 | 72 | 12 | 56 | 268.2831
+4 | chain_independent | 28 | 144 | 27 | 115 | 812.0397
+4 | isolated | 28 | 144 | 24 | 112 | 784.4148
+8 | chain_independent | 56 | 288 | 55 | 231 | 2708.8022
+8 | isolated | 56 | 288 | 48 | 224 | 2604.0834
+16 | chain_independent | 112 | 576 | 111 | 463 | 9985.6475
+16 | isolated | 112 | 576 | 96 | 448 | 9554.9960
+32 | chain_independent | 224 | 1152 | 223 | 927 | 39881.2765
+32 | isolated | 224 | 1152 | 192 | 896 | 38427.6021
+64 | chain_independent | 448 | 2304 | 447 | 1855 | 168186.6122
+64 | isolated | 448 | 2304 | 384 | 1792 | 162212.9751
+{
+  "changed_original_files": [
+    "run_scalability_experiment.py",
+    "src/scalability.py",
+    "tests/test_scalability.py"
+  ],
+  "protected_files_unchanged": 64,
+  "default_architecture_fingerprints_matched": 6,
+  "original_k2_non_timing_fields_matched": true
+}
+Report updated: <workspace>\.codex-build\cross-unit-resources-20261110\report.md

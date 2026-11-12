@@ -1,0 +1,7 @@
+{
+  "formal_records_validated": 20,
+  "warmup_records_validated": 2,
+  "all_counts_and_local_evidence_checked": true,
+  "all_cross_unit_traces_checked": true,
+  "source_fingerprints_match": true
+}

@@ -1,13 +1,15 @@
 """Mixed-architecture scalability experiment for the layered checker.
 
 The experiment is deliberately independent from the paper cases.  A scale
-``K`` creates ``K`` isolated mixed units; every unit reuses the existing RTA,
+``K`` creates ``K`` isolated mixed units by default; every unit reuses the existing RTA,
 SR, PSC, MN, CC and dual-IM contracts and their real composition relations.
+Optional resource configurations add explicit adjacent-unit IM independence.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from collections import Counter
+from dataclasses import dataclass, replace
 from pathlib import Path
 from statistics import median, quantiles
 from time import perf_counter_ns
@@ -38,6 +40,20 @@ from .model import Architecture, Component, Edge, InterfaceDecl, PatternInstance
 
 SIZES = (1, 2, 4, 8, 16, 32, 64)
 VARIANTS = ("valid", "controlled_failure")
+RESOURCE_CONFIGURATIONS = ("isolated", "chain_independent", "chain_shared_cpu")
+
+
+def validate_configuration(unit_count: int, variant: str, resource_configuration: str) -> None:
+    if unit_count < 1:
+        raise ValueError("Mixed-unit count must be at least one")
+    if variant not in VARIANTS:
+        raise ValueError(f"Unknown scalability variant: {variant}")
+    if resource_configuration not in RESOURCE_CONFIGURATIONS:
+        raise ValueError(f"Unknown resource configuration: {resource_configuration}")
+    if resource_configuration != "isolated" and variant != "valid":
+        raise ValueError("Cross-unit configurations cannot be combined with the original PSC controlled failure")
+    if resource_configuration == "chain_shared_cpu" and unit_count < 2:
+        raise ValueError("A cross-unit shared-CPU configuration requires K >= 2")
 
 
 def _ms(start_ns: int, end_ns: int) -> float:
@@ -296,13 +312,12 @@ def _failure_semantics(unit_count: int) -> dict[str, Any]:
     return {"local": local, "boundary_transfers": transfers, "hierarchy_substitutions": hierarchy, "top_events": top_events, "parallel_compositions": parallel_compositions}
 
 
-def generate_mixed_architecture(unit_count: int, variant: str = "valid") -> Architecture:
+def generate_mixed_architecture(
+    unit_count: int, variant: str = "valid", *, resource_configuration: str = "isolated",
+) -> Architecture:
     """Generate a deterministic ``K``-unit heterogeneous architecture in memory."""
 
-    if unit_count < 1:
-        raise ValueError("Mixed-unit count must be at least one")
-    if variant not in VARIANTS:
-        raise ValueError(f"Unknown scalability variant: {variant}")
+    validate_configuration(unit_count, variant, resource_configuration)
     components: dict[str, Component] = {}
     interfaces: list[InterfaceDecl] = []
     patterns: list[PatternInstance] = []
@@ -312,8 +327,25 @@ def generate_mixed_architecture(unit_count: int, variant: str = "valid") -> Arch
     for unit in range(1, unit_count + 1):
         _add_flight_control_unit(unit, components, interfaces, patterns, relations, edges, variant == "controlled_failure" and unit == unit_count)
         _add_display_unit(unit, components, interfaces, patterns, relations, edges, parallel_relations)
+    if resource_configuration != "isolated":
+        # Same roles, resources and disjointness semantics as the existing
+        # within-unit IM declaration, now explicitly applied across units.
+        parallel_relations.extend({
+            "left_instance": f"IM_Display_L_{unit}",
+            "right_instance": f"IM_Display_L_{unit + 1}",
+            "constrained_resources": ["PWR", "CPU", "CLK"],
+            "resource_roles": ["monitor", "gate"],
+        } for unit in range(1, unit_count))
+    if resource_configuration == "chain_shared_cpu":
+        left = components[f"IndependentMonitor_L_{unit_count - 1}"]
+        right_name = f"IndependentMonitor_L_{unit_count}"
+        right = components[right_name]
+        components[right_name] = replace(right, resources={**right.resources, "CPU": left.resources["CPU"]})
+    case_name = f"scalability_{variant}_K{unit_count}"
+    if resource_configuration != "isolated":
+        case_name = f"scalability_{variant}_{resource_configuration}_K{unit_count}"
     return Architecture(
-        case_name=f"scalability_{variant}_K{unit_count}", components=components, interfaces=interfaces,
+        case_name=case_name, components=components, interfaces=interfaces,
         patterns=patterns, relations=relations, edges=edges, parallel_relations=parallel_relations,
         failure_semantics=_failure_semantics(unit_count),
     )
@@ -358,7 +390,9 @@ def timed_mixed_evaluation(arch: Architecture) -> tuple[MixedReport, dict[str, A
     context = ArchitectureContext(arch)
     context_objects = {pattern.id: sorted(context.context_objects(pattern)) for pattern in arch.patterns}
     context_extraction_ms = _ms(start, perf_counter_ns())
+    start = perf_counter_ns()
     instantiations = check_instantiations(arch)
+    instantiation_check_ms = _ms(start, perf_counter_ns())
     if any(
         item.instantiation_status != "VALID"
         for item in instantiations.values()
@@ -371,7 +405,7 @@ def timed_mixed_evaluation(arch: Architecture) -> tuple[MixedReport, dict[str, A
     start = perf_counter_ns()
     consistent, core = _context_consistency(context)
     context_check_ms = _ms(start, perf_counter_ns())
-    common_timing = {**counts, "context_extraction_ms": context_extraction_ms, "obligation_generation_ms": obligation_generation_ms, "context_check_ms": context_check_ms}
+    common_timing = {**counts, "context_extraction_ms": context_extraction_ms, "instantiation_check_ms": instantiation_check_ms, "obligation_generation_ms": obligation_generation_ms, "context_check_ms": context_check_ms}
     if not consistent:
         raise AssertionError(f"Scalability generator produced inconsistent context: {core}")
 
@@ -494,16 +528,59 @@ def environment_info() -> dict[str, Any]:
     }
 
 
-def run_once(unit_count: int, variant: str) -> dict[str, Any]:
+def _render_obligation_result(result: ObligationResult) -> dict[str, Any]:
+    obligation = result.obligation
+    return {
+        "id": obligation.id, "premise": obligation.premise.text, "conclusion": obligation.conclusion.text,
+        "trace": {
+            "source_pattern": obligation.trace.source_pattern,
+            "target_pattern": obligation.trace.target_pattern,
+            "related_objects": list(obligation.trace.related_objects),
+            "trigger": obligation.trace.trigger,
+            "resource_types": list(obligation.trace.resource_types),
+        },
+        "dependencies": list(obligation.dependencies),
+        "conclusion_evidence": obligation.conclusion_evidence,
+        "status": result.status, "blocked_by": list(result.blocked_by),
+        "counterexample": result.counterexample,
+    }
+
+
+def run_once(unit_count: int, variant: str, *, resource_configuration: str = "isolated") -> dict[str, Any]:
     start = perf_counter_ns()
-    arch = generate_mixed_architecture(unit_count, variant)
+    arch = generate_mixed_architecture(unit_count, variant, resource_configuration=resource_configuration)
     generation_ms = _ms(start, perf_counter_ns())
     report, timing = timed_mixed_evaluation(arch)
+    total_run_ms = _ms(start, perf_counter_ns())
+    # Rendering is outside the original verification timing interval.
+    cross_ids = {
+        f"PARALLEL:IM_Display_L_{unit}<->IM_Display_L_{unit + 1}:RESOURCE_INDEPENDENCE"
+        for unit in range(1, unit_count)
+    } if resource_configuration != "isolated" else set()
+    cross_results = [item for item in report.obligation_results if item.obligation.id in cross_ids]
+    failed_result = next((item for item in report.obligation_results
+                          if report.failed_obligation and item.obligation.id == report.failed_obligation.id), None)
     top_events = report.failure_analysis or {}
     return {
-        "K": unit_count, "variant": variant, "model_generation_ms": generation_ms, "model_loading_ms": 0.0,
+        "K": unit_count, "variant": variant, "resource_configuration": resource_configuration,
+        "model_generation_ms": generation_ms, "model_loading_ms": 0.0, "total_run_ms": total_run_ms,
         "architecture_object_count": len(arch.components), "pattern_type_count": len({item.kind for item in arch.patterns}),
         "pattern_instance_count": len(arch.patterns),
+        "combination_declaration_count": len(arch.relations) + len(arch.parallel_relations),
+        "sequence_relation_count": sum(item.kind == "sequence" for item in arch.relations),
+        "containment_relation_count": sum(item.kind == "contains" for item in arch.relations),
+        "parallel_relation_count": len(arch.parallel_relations),
+        "cross_unit_relation_count": len(arch.parallel_relations) - unit_count,
+        "cross_unit_obligation_count": len(cross_results),
+        "cross_unit_obligations": [_render_obligation_result(item) for item in cross_results],
+        "obligation_status_counts": dict(Counter(item.status for item in report.obligation_results)),
+        "non_proved_obligations": [_render_obligation_result(item) for item in report.obligation_results if item.status != "PROVED"],
+        "all_instances_established": all(item.instance_status == "ESTABLISHED" for item in report.instance_results),
+        "instance_results": [{"pattern_id": item.pattern_id, "instantiation_status": item.instantiation_status,
+                              "instance_status": item.instance_status,
+                              "local_premise_results": [{"id": local.obligation.id, "status": local.status}
+                                                        for local in item.local_premise_results]}
+                             for item in report.instance_results],
         "established_instance_count": sum(
             item.instance_status == "ESTABLISHED"
             for item in report.instance_results
@@ -513,6 +590,8 @@ def run_once(unit_count: int, variant: str) -> dict[str, Any]:
         "top_event_count": len(top_events), "minimal_cut_set_count": sum(len(item.get("minimal_cut_sets", [])) for item in top_events.values()),
         "final_status": report.status, "failed_obligation_id": report.failed_obligation.id if report.failed_obligation else None,
         "failed_trace": {"trigger": report.failed_obligation.trace.trigger, "related_objects": list(report.failed_obligation.trace.related_objects)} if report.failed_obligation else None,
+        "failed_obligation": _render_obligation_result(failed_result) if failed_result else None,
+        "counterexample": report.counterexample,
         **timing,
     }
 
@@ -526,23 +605,25 @@ def _summary(values: list[float]) -> dict[str, float]:
 
 
 def summarise(records: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
-    groups: dict[tuple[int, str], list[dict[str, Any]]] = {}
+    groups: dict[tuple[int, str, str], list[dict[str, Any]]] = {}
     for record in records:
-        groups.setdefault((record["K"], record["variant"]), []).append(record)
+        groups.setdefault((record["K"], record["variant"], record.get("resource_configuration", "isolated")), []).append(record)
     phase_keys = [
         "model_generation_ms",
         "model_loading_ms",
         "context_extraction_ms",
+        "instantiation_check_ms",
         "obligation_generation_ms",
         "context_check_ms",
         "obligation_check_ms",
         "combination_aggregation_ms",
         "failure_analysis_ms",
         "total_verification_ms",
+        "total_run_ms",
     ]
     summaries = []
-    for (size, variant), items in sorted(groups.items()):
-        result = {"K": size, "variant": variant, "formal_run_count": len(items)}
+    for (size, variant, configuration), items in sorted(groups.items()):
+        result = {"K": size, "variant": variant, "resource_configuration": configuration, "formal_run_count": len(items)}
         for key in (
             "architecture_object_count",
             "pattern_type_count",
@@ -561,16 +642,30 @@ def summarise(records: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
             "smt_query_count",
             "final_status",
             "failure_analysis_skipped",
+            "combination_declaration_count",
+            "sequence_relation_count",
+            "containment_relation_count",
+            "parallel_relation_count",
+            "cross_unit_relation_count",
+            "cross_unit_obligation_count",
+            "all_instances_established",
         ):
-            result[key] = items[0][key]
+            result[key] = items[0].get(key)
+            if any(item.get(key) != result[key] for item in items):
+                raise ValueError(f"inconsistent {key} across repetitions for K={size}, {variant}, {configuration}")
         for key in phase_keys:
-            values = [float(item[key]) for item in items if item[key] is not None]
+            values = [float(item[key]) for item in items if item.get(key) is not None]
             if values:
                 result.update({f"{key}_{stat}": value for stat, value in _summary(values).items()})
             else:
                 result[f"{key}_median_ms"] = None
-        result["formula_expected_total"] = 28 * size
+        expected_cross = size - 1 if configuration != "isolated" else 0
+        result["formula_expected_total"] = 28 * size + expected_cross
         result["formula_matches_actual"] = result["formula_expected_total"] == result["total_obligation_count"]
+        result["cross_unit_count_matches_expected"] = (
+            result["cross_unit_relation_count"] == expected_cross
+            and result["cross_unit_obligation_count"] == expected_cross
+        )
         summaries.append(result)
     return summaries
 

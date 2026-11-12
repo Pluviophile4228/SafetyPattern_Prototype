@@ -1,0 +1,59 @@
+{
+  "environment": {
+    "operating_system": "Windows-11-10.0.26200-SP0",
+    "cpu_model": "12th Gen Intel(R) Core(TM) i5-12600KF",
+    "logical_cpu_count": 16,
+    "total_memory": 34191212544,
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "z3_version": "4.16.0",
+    "parallel_enabled": "false",
+    "smt_threads": "1",
+    "project_commit": null,
+    "run_timestamp": "2026-11-10T06:11:12.038163+00:00",
+    "source_sha256": {
+      "run_scalability_experiment.py": "5a3941a0f7389da252a0df366c55b80bf9ced00e5b31e03858d146fb5230ca01",
+      "src/scalability.py": "ff4b426613f5bdaf90742d7e75fe5e46bb85e57ee1cd85115e661102dfe31a1c",
+      "src/establishment.py": "54fda1c6928e33e776d8807ca401d13bad820baf46348637efdd710a5f915fa8",
+      "src/pattern_contracts.py": "3c66ff0866cae98af9d9fff8e707df92cd58ae044b0c9e2d2e348cf6f47dab5c",
+      "src/model.py": "f5bb9086b2df55775c7dc99126b435222a1ff08953fedc9d5f7f62144da14445",
+      "src/failure_expansion.py": "00cfa104b3459ee812bfad5b26164b20b214fa22d770767ee5624ff9d620c009"
+    }
+  },
+  "configuration": {
+    "sizes": [
+      2
+    ],
+    "repetitions": 10,
+    "warmup": 1,
+    "variants": [
+      "valid"
+    ],
+    "resource_configurations": [
+      "chain_independent",
+      "chain_shared_cpu"
+    ],
+    "model_loading_mode": "in_memory",
+    "failure_analysis": "included when combination established; skipped otherwise",
+    "cross_unit_chain": {
+      "instances": "IM_Display_L_i -> IM_Display_L_(i+1)",
+      "resource_roles": [
+        "monitor",
+        "gate"
+      ],
+      "constrained_resources": [
+        "PWR",
+        "CPU",
+        "CLK"
+      ],
+      "shared_cpu_pair": "last adjacent pair only, when chain_shared_cpu"
+    },
+    "timing_semantics": {
+      "instantiation_check_ms": "structural type and role-embedding checks only; not SMT local establishment",
+      "obligation_check_ms": "original evaluate_obligations interval: local establishment, evidence scheduling and SMT calls",
+      "context_check_ms": "original context-consistency check interval",
+      "total_verification_ms": "original interval, excludes model generation, result rendering and file I/O",
+      "total_run_ms": "model generation and verification; excludes result rendering and file I/O",
+      "separate_local_establishment_or_pure_smt_timer": "not available in unchanged checker; no fabricated subphase values"
+    }
+  }
+}
