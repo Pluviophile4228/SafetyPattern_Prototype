@@ -2,7 +2,7 @@
 
 ## Recorded November 10 experiment environment
 
-The authoritative records are `results/scalability-20261110/scalability_results.json` and `scalability_configuration.json`.
+The authoritative records are `results/scalability/scalability_results.json` and `scalability_configuration.json`.
 
 | Item | Recorded value |
 |---|---|
@@ -32,4 +32,4 @@ PyYAML is used for the case inputs. Z3 is used by verification. pytest is used b
 
 The reader launcher explicitly sets `parallel.enable=False` and `smt.threads=1` before invoking the unchanged prototype. Historical launch records only show these values as observed by the environment recorder. No CPU-affinity or additional thread-control setting is added to the historical record.
 
-Model and figure application versions can be added by the author when filling `models/` and `figures/`.
+The three supplied `.sml2` project manifests record `version=1.0.0.17` and `clientVersion=1.1.0.0`. These are stored manifest fields, not a recovered installer or an independently confirmed MDesign-V2 application version. Confirm the application version when testing the projects in MDesign-V2. The supplied PNGs have empty software-version metadata; no Origin application version or project file is recorded. See `models/README.md` and `figures/README.md`.

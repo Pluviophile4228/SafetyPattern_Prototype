@@ -284,42 +284,42 @@
       "transformation": "byte_copy"
     },
     {
-      "archive_path": "results/scalability-20261110/scalability_results.json",
+      "archive_path": "results/scalability/scalability_results.json",
       "source": ".codex-build/cross-unit-resources-20261110/scale-comparison/scalability_results.json",
       "source_sha256": "7c1a17719936fa78f32c16e72d3e7e5f20b83b6f24e067df49ed2e3e9a3eb241",
       "archive_sha256": "7c1a17719936fa78f32c16e72d3e7e5f20b83b6f24e067df49ed2e3e9a3eb241",
       "transformation": "byte_copy"
     },
     {
-      "archive_path": "results/scalability-20261110/scalability_results.csv",
+      "archive_path": "results/scalability/scalability_results.csv",
       "source": ".codex-build/cross-unit-resources-20261110/scale-comparison/scalability_results.csv",
       "source_sha256": "3621e4c80559441563f7d76ca6f862a69550c9ca1286521f0761c1740174e3f4",
       "archive_sha256": "3621e4c80559441563f7d76ca6f862a69550c9ca1286521f0761c1740174e3f4",
       "transformation": "byte_copy"
     },
     {
-      "archive_path": "results/scalability-20261110/scalability_summary.csv",
+      "archive_path": "results/scalability/scalability_summary.csv",
       "source": ".codex-build/cross-unit-resources-20261110/scale-comparison/scalability_summary.csv",
       "source_sha256": "e2a8f26922b0930eb7e70b526727727262bcaf8594cc4a1acda1d1dda3d859be",
       "archive_sha256": "e2a8f26922b0930eb7e70b526727727262bcaf8594cc4a1acda1d1dda3d859be",
       "transformation": "byte_copy"
     },
     {
-      "archive_path": "results/scalability-20261110/scalability_configuration.json",
+      "archive_path": "results/scalability/scalability_configuration.json",
       "source": ".codex-build/cross-unit-resources-20261110/scale-comparison/scalability_configuration.json",
       "source_sha256": "70ca8dbb70f124d7c158c28f467e1187c85d0ed70fd0f43a1761762896329a5c",
       "archive_sha256": "70ca8dbb70f124d7c158c28f467e1187c85d0ed70fd0f43a1761762896329a5c",
       "transformation": "byte_copy"
     },
     {
-      "archive_path": "results/scalability-20261110/scalability_warmup.jsonl",
+      "archive_path": "results/scalability/scalability_warmup.jsonl",
       "source": ".codex-build/cross-unit-resources-20261110/scale-comparison/scalability_warmup.jsonl",
       "source_sha256": "1581c19bbba1d37e216f8fcb0a4c88d18371c75088def3ee3818454488099bb2",
       "archive_sha256": "1581c19bbba1d37e216f8fcb0a4c88d18371c75088def3ee3818454488099bb2",
       "transformation": "byte_copy"
     },
     {
-      "archive_path": "results/scalability-20261110/validation.json",
+      "archive_path": "results/scalability/validation.json",
       "source": ".codex-build/cross-unit-resources-20261110/scale-comparison/validation.json",
       "source_sha256": "5645ec72908ce6c7e57089d3f437fa913f4b50ee72cb172b7a926608dd9b3269",
       "archive_sha256": "5645ec72908ce6c7e57089d3f437fa913f4b50ee72cb172b7a926608dd9b3269",
@@ -399,15 +399,108 @@
       "archive_path": "provenance/historical-run.json",
       "source": ".codex-build/cross-unit-resources-20261110/job.json",
       "source_sha256": "1718684c200aa77647fc6bde605e95a3f96ec8ca1eacb588ede7c79269721069",
-      "archive_sha256": "ae78a039f3a7691da805765d07069bab2603e25651ae1712166990adb4cf8e04",
+      "archive_sha256": "dd6ef64ede771f715afa0b143831bdb2651747352178b9a4a6db0f33178cc121",
       "transformation": "Historical command interpreter/output paths normalized; cwd/note added"
     },
     {
-      "archive_path": "results/scalability-20261110/origin_data_20261110.xlsx",
+      "archive_path": "results/scalability/origin_data_20261110.xlsx",
       "source": ".codex-build/cross-unit-resources-20261110/scale-comparison/origin_data_20261110.xlsx",
       "source_sha256": "5c0a242c316d3c0a93e081be95b4512d940ceecf377bbd0fe9c36361544d0242",
-      "archive_sha256": "c6ce808bacee2943aa1b5495b7ef386a7224e20fa58168314e05c02fb9b4da3c",
-      "transformation": "Three Environment source-path cells changed to archive-relative paths; values/formulas preserved"
+      "archive_sha256": "ee5939c0a6d682a0129f25931ecbd300cc339d03c4d02fdaf31829cadd028136",
+      "transformation": "Three Environment source-path cells normalized to results/scalability/; all other values, formulas, caches and cell formatting preserved"
+    },
+    {
+      "archive_path": "models/caseA.sml2",
+      "source": "Author supplied directly in the publication directory before the 2026-11-12 refresh; original location not recorded",
+      "source_sha256": "354172291d5c7bea2ee39135fb2242cecec5a4dd7f32898627908c8738bb6981",
+      "archive_sha256": "354172291d5c7bea2ee39135fb2242cecec5a4dd7f32898627908c8738bb6981",
+      "transformation": "author_supplied_unchanged",
+      "fingerprint_first_recorded": "2026-11-12",
+      "fingerprint_scope": "First packaging snapshot, not historical model/plot execution provenance"
+    },
+    {
+      "archive_path": "models/CaseB.sml2",
+      "source": "Author supplied directly in the publication directory before the 2026-11-12 refresh; original location not recorded",
+      "source_sha256": "27afb2a1c311d78666832e094d9f757253ed5e72cfc32f9ef5c949d527f642ab",
+      "archive_sha256": "27afb2a1c311d78666832e094d9f757253ed5e72cfc32f9ef5c949d527f642ab",
+      "transformation": "author_supplied_unchanged",
+      "fingerprint_first_recorded": "2026-11-12",
+      "fingerprint_scope": "First packaging snapshot, not historical model/plot execution provenance"
+    },
+    {
+      "archive_path": "models/SafetyPattern.sml2",
+      "source": "Author supplied directly in the publication directory before the 2026-11-12 refresh; original location not recorded",
+      "source_sha256": "9188141a075946e47d149d14d06dae00ab088be73a010982c9d5813d38d97adc",
+      "archive_sha256": "9188141a075946e47d149d14d06dae00ab088be73a010982c9d5813d38d97adc",
+      "transformation": "author_supplied_unchanged",
+      "fingerprint_first_recorded": "2026-11-12",
+      "fingerprint_scope": "First packaging snapshot, not historical model/plot execution provenance"
+    },
+    {
+      "archive_path": "figures/a-context-extraction.png",
+      "source": "Author supplied directly in the publication directory before the 2026-11-12 refresh; original location not recorded",
+      "source_sha256": "a60fbd4cd4616ad5f66989d8ac93c908d6f51b0d795f4b10614b91e4926107f9",
+      "archive_sha256": "a60fbd4cd4616ad5f66989d8ac93c908d6f51b0d795f4b10614b91e4926107f9",
+      "transformation": "author_supplied_unchanged",
+      "fingerprint_first_recorded": "2026-11-12",
+      "fingerprint_scope": "First packaging snapshot, not historical model/plot execution provenance"
+    },
+    {
+      "archive_path": "figures/b-obligation-generation.png",
+      "source": "Author supplied directly in the publication directory before the 2026-11-12 refresh; original location not recorded",
+      "source_sha256": "3c3d2eb67c666faeab4e9da8a0a3c049ffca60b75c067bc780ecc74b656d9a01",
+      "archive_sha256": "3c3d2eb67c666faeab4e9da8a0a3c049ffca60b75c067bc780ecc74b656d9a01",
+      "transformation": "author_supplied_unchanged",
+      "fingerprint_first_recorded": "2026-11-12",
+      "fingerprint_scope": "First packaging snapshot, not historical model/plot execution provenance"
+    },
+    {
+      "archive_path": "figures/c-context-check.png",
+      "source": "Author supplied directly in the publication directory before the 2026-11-12 refresh; original location not recorded",
+      "source_sha256": "a5cf09a3043d027054fbc6dfb14c2b352223ace5ae9d8b6b15f210f96b87135f",
+      "archive_sha256": "a5cf09a3043d027054fbc6dfb14c2b352223ace5ae9d8b6b15f210f96b87135f",
+      "transformation": "author_supplied_unchanged",
+      "fingerprint_first_recorded": "2026-11-12",
+      "fingerprint_scope": "First packaging snapshot, not historical model/plot execution provenance"
+    },
+    {
+      "archive_path": "figures/d-obligation-check.png",
+      "source": "Author supplied directly in the publication directory before the 2026-11-12 refresh; original location not recorded",
+      "source_sha256": "ab189d8a3f1daec71ea4b823da56e39da49e124ecd03e2c002e50ef73c4b33a0",
+      "archive_sha256": "ab189d8a3f1daec71ea4b823da56e39da49e124ecd03e2c002e50ef73c4b33a0",
+      "transformation": "author_supplied_unchanged",
+      "fingerprint_first_recorded": "2026-11-12",
+      "fingerprint_scope": "First packaging snapshot, not historical model/plot execution provenance"
+    },
+    {
+      "archive_path": "figures/e-combination-aggregation.png",
+      "source": "Author supplied directly in the publication directory before the 2026-11-12 refresh; original location not recorded",
+      "source_sha256": "f021cfd371c0d8a0cacd2203b8f76589a346c35385b24a8d7d5519ab6d311a42",
+      "archive_sha256": "f021cfd371c0d8a0cacd2203b8f76589a346c35385b24a8d7d5519ab6d311a42",
+      "transformation": "author_supplied_unchanged",
+      "fingerprint_first_recorded": "2026-11-12",
+      "fingerprint_scope": "First packaging snapshot, not historical model/plot execution provenance"
+    },
+    {
+      "archive_path": "figures/f-failure-expansion.png",
+      "source": "Author supplied directly in the publication directory before the 2026-11-12 refresh; original location not recorded",
+      "source_sha256": "b84ff1c8f4968cd55b0ad8284c94c719a03424f9e0e4d6bf1ddbd2dcf9eca139",
+      "archive_sha256": "b84ff1c8f4968cd55b0ad8284c94c719a03424f9e0e4d6bf1ddbd2dcf9eca139",
+      "transformation": "author_supplied_unchanged",
+      "fingerprint_first_recorded": "2026-11-12",
+      "fingerprint_scope": "First packaging snapshot, not historical model/plot execution provenance"
+    },
+    {
+      "archive_path": "figures/scalability_total_time.png",
+      "source": "Author supplied directly in the publication directory before the 2026-11-12 refresh; original location not recorded",
+      "source_sha256": "086927a3c52cfac965cccfec9d88968520c07d49994b1aa68c76cf79223f5a1e",
+      "archive_sha256": "086927a3c52cfac965cccfec9d88968520c07d49994b1aa68c76cf79223f5a1e",
+      "transformation": "author_supplied_unchanged",
+      "fingerprint_first_recorded": "2026-11-12",
+      "fingerprint_scope": "First packaging snapshot, not historical model/plot execution provenance"
     }
-  ]
+  ],
+  "last_updated": "2026-11-12",
+  "archive_layout": "Scalability results are in results/scalability/. Historical source paths and experiment dates are retained.",
+  "supplied_materials_notice": "The supplied native models and PNGs are unchanged. Their hashes were first captured for packaging on 2026-11-12 and are not historical modeling or plotting execution records."
 }

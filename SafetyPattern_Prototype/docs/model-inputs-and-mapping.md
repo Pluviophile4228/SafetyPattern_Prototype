@@ -2,7 +2,7 @@
 
 ## Three separate stages
 
-1. Native modeling project and preparation of the structured case description. The author will provide the project in `models/`. No SysML-to-YAML automatic converter or historical element-mapping log is supplied by this prototype. The actual authoring order and manual preparation steps are to be confirmed by the author below.
+1. Native modeling projects and preparation of the structured case description. `models/caseA.sml2` and `models/CaseB.sml2` contain the Case A/B projects; `models/SafetyPattern.sml2` contains an SRP modeling example. All three include the same embedded `config.sml2` dependency. The structured YAML descriptions are the executable case inputs. The prototype supplies no automatic SysML-to-YAML converter or historical element-mapping log. See `models/README.md` for the supplied project contents and the remaining authoring-process details.
 2. YAML to Python architecture objects. `src/checker.py:_load_architecture_dict()` reads YAML and resolves `extends`; `load_architecture()` calls `src/model.py:architecture_from_dict()`.
 3. Python architecture objects to facts and checks. `src/establishment.py:ArchitectureContext` creates typed/named fact variables and formulas. Structural relations also participate in Python-level context queries and obligation generation.
 
@@ -51,13 +51,26 @@ Component names are preserved in fact keys such as `component.<name>.resource.CP
 
 `build_obligations()` generates obligations. `ObligationTrace` carries source/target pattern identifiers, related objects, trigger and resource kinds. Reports retain those identifiers and counterexamples. This is traceability from the supplied architecture description to checks and results, not a recorded original SysML-element transformation history.
 
-## Author-supplied modeling preparation
+## Supplied native models and name correspondence
 
-Pending material, to be completed with the native project:
+The native project containers, their embedded configuration containers and their SQLite databases were read successfully during the November 12 packaging review. No project was opened or resaved in MDesign-V2 during that review.
 
-- Actual model/YAML authoring order and manual actions.
-- MDesign-V2 version and project/library dependencies.
-- View names and the saved versions used for the paper.
-- Existing element-ID-to-YAML correspondences, if any. If reconstructed now, label them as a newly prepared correspondence table rather than a historical conversion log.
+The review compared active `notation` records with `ebnf_key=identification` to the YAML object names:
 
-Do not add an automatic transformation claim unless an actual converter and its execution evidence are supplied.
+| Native project | Executable YAML | Same-name component entries | Same-name pattern IDs |
+|---|---|---:|---:|
+| `models/caseA.sml2` | `data/caseA_valid.yaml` | 17 of 21 | 3 of 3 |
+| `models/CaseB.sml2` | `data/caseB_parallel_valid.yaml` with its parent `caseB_valid.yaml` | 15 of 15 | 4 of 4 |
+
+For Case A, `RTA_Input`, `StandbyInput_B`, `StandbyController_B` and `StandbyCommand_B` have no exact same-name identification record. The project contains names including `A_input`, `B_input` and `FCC_B_Processor`; assigning these to the four YAML objects requires the author's confirmation of the intended boundaries and bindings. No correspondence has been assigned solely from name similarity.
+
+These are newly prepared name-comparison observations, not a historical model-to-YAML conversion record. The native `require_data_mapping` table contains no records in any of the three supplied projects, and no separate SysML-element-to-YAML correspondence file is supplied.
+
+## Modeling preparation to confirm
+
+- Actual native-model/YAML authoring order and manual actions.
+- MDesign-V2 application version, native opening of the supplied projects and resolution of the embedded configuration after relocation.
+- View names and saved versions used for the paper.
+- The four Case A object correspondences above, and any existing element-ID-to-YAML correspondence records. A table prepared now should be identified as a new correspondence table.
+
+The supplied modeling projects and the existing YAML-to-Python-to-fact implementation document separate parts of the workflow. The executable transformation begins with the structured YAML description.

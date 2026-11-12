@@ -139,7 +139,7 @@ def main() -> None:
     if args.write_checksums:
         write_checksums()
     report = {'files_checked': check_hashes(), 'yaml_inputs': check_inputs(),
-              'scalability_20261110': check_experiment('scalability-20261110', 140, 14),
+              'scalability': check_experiment('scalability', 140, 14),
               'cross_unit_k2': check_experiment('cross-unit-k2', 20, 2),
               'experiments_executed': False}
     print(json.dumps(report, indent=2))

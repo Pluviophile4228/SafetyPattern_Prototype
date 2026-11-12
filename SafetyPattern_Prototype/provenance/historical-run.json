@@ -13,7 +13,7 @@
     "isolated",
     "chain_independent",
     "--output-dir",
-    "results/scalability-20261110",
+    "results/scalability",
     "--skip-plots"
   ],
   "expected_formal_records": 140,
